@@ -10,7 +10,7 @@ public class Biblioteca {
 		MusicaLP tangerine = new MusicaLP("Tangerine", "Led Zeppelin III","Led Zeppelin", 1970, 45);
 		MusicaLP time = new MusicaLP("Time","The Dark Side of The Moon", "Pink Floyd", 1973, 45);
 		MusicaLP getBack = new MusicaLP("Get Back", "Let It Be", "Beatles", 1970, 45);
-		
+		//oi
 		MusicaCD detento = new MusicaCD("Diario de Um Detento", "Sobrevivendo ao Inferno", "Racionais", 1997);
 		MusicaCD tissue = new MusicaCD("Scar Tissue", "Californication", "Red Hot Chilli Peppers", 1999);
 		MusicaCD lithium = new MusicaCD("Lithium", "Nevermind", "Nirvana", 1991);
