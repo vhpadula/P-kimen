@@ -14,11 +14,19 @@ public class Janela extends Canvas{
 	
 	public Janela (int largura, int altura, String titulo, Jogo jogo) throws IOException {
 		JFrame frame = new JFrame(titulo);
+		String imagePath;
+		String sistemaOperacional = System.getProperty("os.name");
+		if(sistemaOperacional.contains("Mac")){
+			imagePath = "scenarios/Classic.png";
+		}
+		else{
+			imagePath = "src/scenarios/Classic.png";
+		}
 		
 		frame.setPreferredSize(new Dimension(largura, altura));
 		frame.setMaximumSize(new Dimension(largura, altura));
 		frame.setMinimumSize(new Dimension(largura, altura));
-		frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src/scenarios/Classic.png")))));
+		frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(imagePath)))));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false); //por enquanto vou deixar sem poder mudar de tamanho
