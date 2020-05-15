@@ -18,7 +18,7 @@ public class Janela extends Canvas{
 		frame.setPreferredSize(new Dimension(largura, altura));
 		frame.setMaximumSize(new Dimension(largura, altura));
 		frame.setMinimumSize(new Dimension(largura, altura));
-		frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("scenarios\\Classic.png")))));
+		frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src\\scenarios\\Classic.png")))));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false); //por enquanto vou deixar sem poder mudar de tamanho
