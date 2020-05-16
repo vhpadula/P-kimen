@@ -19,16 +19,15 @@ public class Janela extends Canvas{
 		String imagePath;
 		String sistemaOperacional = System.getProperty("os.name");
 		if (sistemaOperacional.contains("Windows")) {
-			imagePath = "src/scenarios/Classic.png";
+			imagePath = "src/scenarios/selva.png";
 		} else {
-			imagePath = "scenarios/Classic.png";
+			imagePath = "scenarios/selva.png";
 		}
 
 		imagem = ImageIO.read(new File(imagePath));
 		frame.setPreferredSize(new Dimension(largura, altura));
 		frame.setMaximumSize(new Dimension(largura, altura));
 		frame.setMinimumSize(new Dimension(largura, altura));
-		frame.setContentPane(new JLabel(new ImageIcon(imagem)));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);

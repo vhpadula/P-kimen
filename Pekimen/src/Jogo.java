@@ -16,11 +16,20 @@ public class Jogo extends Canvas implements Runnable{
 	public static final int WIDTH = 640, HEIGHT = 480;
 	
 	private Thread thread;
+	
 	Janela janela;
+	Mapa mapa;
 	private boolean running = false;
+	
+	private Controle controle;
 	
 	public Jogo() throws IOException {
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
+		controle= new Controle();
+		mapa = new Mapa(true);
+		for (int i =0; i< mapa.paredes.size(); i++) {
+			controle.addObjeto(mapa.paredes.get(i));
+		}
 	}
 
 	public synchronized void iniciar() {
@@ -61,10 +70,9 @@ public class Jogo extends Canvas implements Runnable{
 				timer += 1000;
 				System.out.println("FPS: " + frames);
 				janela.frame.setTitle("PacMan | " + frames + " fps"); //mostra o fps na janela
-				
 				//atualiza o tamanho da janela
-				janela.imagem= janela.imagem.getScaledInstance(janela.frame.getWidth(),janela.frame.getHeight(), Image.SCALE_DEFAULT);
-				janela.frame.setContentPane(new JLabel(new ImageIcon(janela.imagem)));
+				//janela.imagem= janela.imagem.getScaledInstance(janela.frame.getWidth(),janela.frame.getHeight(), Image.SCALE_DEFAULT);
+				//janela.frame.setContentPane(new JLabel(new ImageIcon(janela.imagem)));
 				frames = 0;
 			}
 		}
@@ -72,7 +80,7 @@ public class Jogo extends Canvas implements Runnable{
 	}
 	
 	private void tick() {
-		
+		controle.tick();
 	}
 	
 	private void render() {
@@ -84,6 +92,9 @@ public class Jogo extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
+		
+		g.drawImage(janela.imagem, janela.getWidth(),janela.getHeight(), null);
+		controle.render(g);
 		g.dispose();
 		bs.show();
 	}
