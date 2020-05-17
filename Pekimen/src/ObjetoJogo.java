@@ -15,7 +15,13 @@ public abstract class ObjetoJogo {
 		this.x = x;
 		this.y = y;
 		this.id=id;
-		String sistemaOperacional = System.getProperty("os.name");
+		imagePath = SetPath.setPath(imagePath);
+		try {
+			this.textura= ImageIO.read(new File(imagePath));
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		/*String sistemaOperacional = System.getProperty("os.name");
 		if (sistemaOperacional.contains("Windows")) {
 			imagePath = "src/"+ imagePath;
 		}
@@ -23,7 +29,7 @@ public abstract class ObjetoJogo {
 			this.textura= ImageIO.read(new File(imagePath));
 		}catch(IOException e) {
 			System.out.println(e);
-		}
+		}*/
 		
 	}
 

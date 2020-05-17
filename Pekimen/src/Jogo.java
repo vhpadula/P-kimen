@@ -8,7 +8,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 640, HEIGHT = 680;
+	public static final int WIDTH = 856, HEIGHT = 768;
 
 	private Thread thread;
 

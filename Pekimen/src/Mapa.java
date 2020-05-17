@@ -3,16 +3,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Mapa{
+public class Mapa {
 	private int rows;
 	private int cols;
 	private char[][] map;
-	ArrayList<Parede> paredes= new ArrayList<Parede>();
-	ArrayList<Pastilha> pastilhas= new ArrayList<Pastilha>();
+	ArrayList<Parede> paredes = new ArrayList<Parede>();
+	ArrayList<Pastilha> pastilhas = new ArrayList<Pastilha>();
+
 	public Mapa(boolean load) {
 		if (load) {
 			try {
-				BufferedReader buff = new BufferedReader(new FileReader("src\\map.txt"));
+				String mapPath = SetPath.setPath("map.txt");
+				BufferedReader buff = new BufferedReader(new FileReader(mapPath));
 				String line = null;
 				int i = 0;
 				char[][] maps = new char[34][32];
@@ -36,26 +38,25 @@ public class Mapa{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
-	
+
 	void fazParedes() throws IOException {
-		for (int i= 0; i<rows; i++) {
-			for (int j=0; j<cols; j++) {
-				if (map[i][j]== '|') {
-					paredes.add(new Parede (j,i,"texturas\\terra.png", ID.Parede));
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == '|') {
+					paredes.add(new Parede(j, i, "texturas\\terra.png", ID.Parede));
 				}
 			}
 		}
 	}
-	
-	
+
 	void fazPastilhas() throws IOException {
-		for (int i= 0; i<rows; i++) {
-			for (int j=0; j<cols; j++) {
-				if (map[i][j]== 'o') {
-					pastilhas.add(new Pastilha (j,i,"texturas\\pastilha.png", ID.Pastilha));
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'o') {
+					pastilhas.add(new Pastilha(j, i, "texturas\\pastilha.png", ID.Pastilha));
 				}
 			}
 		}

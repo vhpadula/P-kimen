@@ -1,6 +1,5 @@
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,13 +14,7 @@ public class Janela extends Canvas{
 	BufferedImage imagem;
 	public Janela (int largura, int altura, String titulo, Jogo jogo) throws IOException {
 		frame = new JFrame(titulo);
-		String imagePath;
-		String sistemaOperacional = System.getProperty("os.name");
-		if (sistemaOperacional.contains("Windows")) {
-			imagePath = "src/scenarios/selva.png";
-		} else {
-			imagePath = "scenarios/selva.png";
-		}
+		String imagePath = SetPath.setPath("scenarios/selva.png");
 
 		imagem = ImageIO.read(new File(imagePath));
 		frame.setPreferredSize(new Dimension(largura, altura));

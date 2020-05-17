@@ -8,8 +8,6 @@ public class Parede extends ObjetoJogo {
 
 	Parede(int x, int y, String imagePath, ID id) throws IOException {
 		super(x, y,imagePath, id);
-	
-		
 		
 	}
 
@@ -20,7 +18,7 @@ public class Parede extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, 20 * x, 20 * y, 20, 20, null);
+		g.drawImage(textura, 30 * x, 21 * y, 30, 21, null);
 
 	}
 
