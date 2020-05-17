@@ -16,10 +16,22 @@ public class KeyInput extends KeyAdapter {
 			if (temp.id==ID.Pacman) {
 				
 				
-				if (key==KeyEvent.VK_W) temp.setY(temp.y-1);
-				if (key==KeyEvent.VK_S) temp.setY(temp.y+1);
-				if (key==KeyEvent.VK_A) temp.setX(temp.x-1);
-				if (key==KeyEvent.VK_D) temp.setX(temp.x+1);
+				if (key==KeyEvent.VK_W) {
+					temp.setVy(-1);
+					temp.setVx(0);
+				}
+				if (key==KeyEvent.VK_S) {
+					temp.setVy(1);
+					temp.setVx(0);
+				}
+				if (key==KeyEvent.VK_A) {
+					temp.setVx(-1);
+					temp.setVy(0);
+				}
+				if (key==KeyEvent.VK_D) {
+					temp.setVx(1);
+					temp.setVy(0);
+				}
 			}
 		}
 	}

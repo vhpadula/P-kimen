@@ -9,12 +9,14 @@ public abstract class ObjetoJogo {
 	protected int x, Vx;
 	protected int y, Vy;
 	protected ID id;
+	Mapa mapa;
 	protected BufferedImage textura;
 
-	ObjetoJogo(int x, int y, String imagePath, ID id) {
+	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa) {
 		this.x = x;
 		this.y = y;
 		this.id=id;
+		this.mapa= mapa;
 		imagePath = SetPath.setPath(imagePath);
 		try {
 			this.textura= ImageIO.read(new File(imagePath));

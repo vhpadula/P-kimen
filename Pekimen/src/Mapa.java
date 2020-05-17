@@ -1,19 +1,19 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class Mapa {
-	private int rows;
-	private int cols;
-	private char[][] map;
-	ArrayList<Parede> paredes = new ArrayList<Parede>();
-	ArrayList<Pastilha> pastilhas = new ArrayList<Pastilha>();
+	public int rows;
+	public int cols;
+	public char[][] map;
+	Controle controle;
 
-	public Mapa(boolean load) {
+	public Mapa(boolean load, Controle ctrl) {
+		this.controle=ctrl;
 		if (load) {
 			try {
-				String mapPath = SetPath.setPath("map.txt");
+				String mapPath = SetPath.setPath("maps\\classic.txt");
 				BufferedReader buff = new BufferedReader(new FileReader(mapPath));
 				String line = null;
 				int i = 0;
@@ -35,6 +35,7 @@ public class Mapa {
 				buff.close();
 				this.fazParedes();
 				this.fazPastilhas();
+				this.fazPacman();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -46,7 +47,7 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
-					paredes.add(new Parede(j, i, "texturas\\terra.png", ID.Parede));
+					controle.objetos.add(new Parede(j, i, "texturas\\wall.png", ID.Parede,this));
 				}
 			}
 		}
@@ -56,7 +57,17 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
-					pastilhas.add(new Pastilha(j, i, "texturas\\pastilha.png", ID.Pastilha));
+					controle.objetos.add(new Pastilha(j, i, "texturas\\pastilha.png", ID.Pastilha,this));
+				}
+			}
+		}
+	}
+	
+	void fazPacman() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'c') {
+					controle.objetos.add(new Pacman(30*j, 21*i + 4, "chacacters\\pacman.png", ID.Pacman,this));
 				}
 			}
 		}

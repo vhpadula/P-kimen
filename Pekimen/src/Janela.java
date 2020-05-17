@@ -14,7 +14,7 @@ public class Janela extends Canvas{
 	BufferedImage imagem;
 	public Janela (int largura, int altura, String titulo, Jogo jogo) throws IOException {
 		frame = new JFrame(titulo);
-		String imagePath = SetPath.setPath("scenarios/selva.png");
+		String imagePath = SetPath.setPath("scenarios/fundo.jpg");
 
 		imagem = ImageIO.read(new File(imagePath));
 		frame.setPreferredSize(new Dimension(largura, altura));

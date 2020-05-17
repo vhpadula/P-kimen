@@ -21,15 +21,8 @@ public class Jogo extends Canvas implements Runnable {
 	public Jogo() throws IOException {
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 		controle = new Controle();
-		mapa = new Mapa(true);
-		for (int i = 0; i < mapa.paredes.size(); i++) {
-			controle.addObjeto(mapa.paredes.get(i));
-		}
-		mapa = new Mapa(true);
-		for (int i = 0; i < mapa.pastilhas.size(); i++) {
-			controle.addObjeto(mapa.pastilhas.get(i));
-		}
-		controle.addObjeto(new Pacman(20, 20 ,"texturas//terra.png", ID.Pacman));
+		mapa = new Mapa(true, controle);
+		
 		this.addKeyListener(new KeyInput(controle));
 	}
 
