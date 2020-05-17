@@ -22,7 +22,7 @@ public class Jogo extends Canvas implements Runnable {
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 		controle = new Controle();
 		mapa = new Mapa(true, controle);
-		
+
 		this.addKeyListener(new KeyInput(controle));
 	}
 
@@ -62,7 +62,7 @@ public class Jogo extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				//System.out.println("FPS: " + frames);
+				// System.out.println("FPS: " + frames);
 				janela.frame.setTitle("PacMan | " + frames + " fps"); // mostra o fps na janela
 				// atualiza o tamanho da janela
 				// janela.imagem=

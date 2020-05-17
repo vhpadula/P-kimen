@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Mapa {
 	public int rows;
 	public int cols;
@@ -10,7 +9,7 @@ public class Mapa {
 	Controle controle;
 
 	public Mapa(boolean load, Controle ctrl) {
-		this.controle=ctrl;
+		this.controle = ctrl;
 		if (load) {
 			try {
 				String mapPath = SetPath.setPath("maps\\classic.txt");
@@ -47,7 +46,7 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
-					controle.objetos.add(new Parede(j, i, "texturas\\wall.png", ID.Parede,this));
+					controle.objetos.add(new Parede(j, i, "texturas\\wall.png", ID.Parede, this, controle));
 				}
 			}
 		}
@@ -57,17 +56,17 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
-					controle.objetos.add(new Pastilha(j, i, "texturas\\pastilha.png", ID.Pastilha,this));
+					controle.objetos.add(new Pastilha(j, i, "texturas\\pastilha.png", ID.Pastilha, this, controle));
 				}
 			}
 		}
 	}
-	
+
 	void fazPacman() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
-					controle.objetos.add(new Pacman(30*j, 21*i + 4, "chacacters\\pacman.png", ID.Pacman,this));
+					controle.objetos.add(new Pacman(30 * j, 21 * i + 4, "chacacters\\pacman.png", ID.Pacman, this, controle));
 				}
 			}
 		}

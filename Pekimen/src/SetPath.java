@@ -1,6 +1,6 @@
 
 public class SetPath {
-	
+
 	public static String setPath(String imagePath) {
 		String path;
 		String sistemaOperacional = System.getProperty("os.name");

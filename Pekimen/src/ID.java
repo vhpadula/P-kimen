@@ -1,8 +1,7 @@
 
 public enum ID {
-	Pastilha(),
-	Mapa(),
-	Parede(),
+	Pastilha(), 
+	Mapa(), 
+	Parede(), 
 	Pacman()
-	
 }

@@ -1,14 +1,17 @@
 import java.awt.Graphics;
-
+import java.awt.Rectangle;
 import java.io.IOException;
 
-
 public class Parede extends ObjetoJogo {
-	
 
-	Parede(int x, int y, String imagePath, ID id,Mapa mapa) throws IOException {
-		super(x, y,imagePath, id,mapa);
-		
+	Parede(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle) throws IOException {
+		super(x, y, imagePath, id, mapa, controle);
+
+	}
+
+	@Override
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 30, 21);
 	}
 
 	@Override

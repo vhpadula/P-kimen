@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,34 +11,28 @@ public abstract class ObjetoJogo {
 	protected int y, Vy;
 	protected ID id;
 	Mapa mapa;
+	Controle controle;
 	protected BufferedImage textura;
 
-	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa) {
+	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle) {
 		this.x = x;
 		this.y = y;
-		this.id=id;
-		this.mapa= mapa;
+		this.id = id;
+		this.mapa = mapa;
+		this.controle = controle;
 		imagePath = SetPath.setPath(imagePath);
 		try {
-			this.textura= ImageIO.read(new File(imagePath));
-		}catch(IOException e) {
+			this.textura = ImageIO.read(new File(imagePath));
+		} catch (IOException e) {
 			System.out.println(e);
 		}
-		/*String sistemaOperacional = System.getProperty("os.name");
-		if (sistemaOperacional.contains("Windows")) {
-			imagePath = "src/"+ imagePath;
-		}
-		try {
-			this.textura= ImageIO.read(new File(imagePath));
-		}catch(IOException e) {
-			System.out.println(e);
-		}*/
-		
 	}
 
 	public abstract void tick();
 
 	public abstract void render(Graphics g);
+
+	public abstract Rectangle getBounds();
 
 	public void setX(int x) {
 		this.x = x;
@@ -53,5 +48,9 @@ public abstract class ObjetoJogo {
 
 	public void setVy(int Vy) {
 		this.Vy = Vy;
+	}
+	
+	public ID getID() {
+		return this.id;
 	}
 }
