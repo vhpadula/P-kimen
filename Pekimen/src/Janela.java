@@ -1,6 +1,7 @@
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class Janela extends Canvas{
 
 	private static final long serialVersionUID = 1L;
 	JFrame frame;//coloquei eles como atributo da classes para serem acessados quando o jogo tiver rodando
-	Image imagem;
+	BufferedImage imagem;
 	public Janela (int largura, int altura, String titulo, Jogo jogo) throws IOException {
 		frame = new JFrame(titulo);
 		String imagePath;
@@ -28,7 +29,7 @@ public class Janela extends Canvas{
 		frame.setMinimumSize(new Dimension(largura, altura));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
+		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.add(jogo);
 		frame.setVisible(true);

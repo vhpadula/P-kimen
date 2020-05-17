@@ -8,7 +8,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 640, HEIGHT = 480;
+	public static final int WIDTH = 640, HEIGHT = 680;
 
 	private Thread thread;
 
@@ -25,6 +25,12 @@ public class Jogo extends Canvas implements Runnable {
 		for (int i = 0; i < mapa.paredes.size(); i++) {
 			controle.addObjeto(mapa.paredes.get(i));
 		}
+		mapa = new Mapa(true);
+		for (int i = 0; i < mapa.pastilhas.size(); i++) {
+			controle.addObjeto(mapa.pastilhas.get(i));
+		}
+		controle.addObjeto(new Pacman(20, 20 ,"texturas//terra.png", ID.Pacman));
+		this.addKeyListener(new KeyInput(controle));
 	}
 
 	public synchronized void iniciar() {
@@ -63,7 +69,7 @@ public class Jogo extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				//System.out.println("FPS: " + frames);
 				janela.frame.setTitle("PacMan | " + frames + " fps"); // mostra o fps na janela
 				// atualiza o tamanho da janela
 				// janela.imagem=

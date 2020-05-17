@@ -8,13 +8,14 @@ public class Mapa{
 	private int cols;
 	private char[][] map;
 	ArrayList<Parede> paredes= new ArrayList<Parede>();
+	ArrayList<Pastilha> pastilhas= new ArrayList<Pastilha>();
 	public Mapa(boolean load) {
 		if (load) {
 			try {
 				BufferedReader buff = new BufferedReader(new FileReader("src\\map.txt"));
 				String line = null;
 				int i = 0;
-				char[][] maps = new char[100][100];
+				char[][] maps = new char[34][32];
 				do {
 					line = buff.readLine();
 					if (line == null) {
@@ -31,6 +32,7 @@ public class Mapa{
 				cols = maps[0].length;
 				buff.close();
 				this.fazParedes();
+				this.fazPastilhas();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -42,7 +44,18 @@ public class Mapa{
 		for (int i= 0; i<rows; i++) {
 			for (int j=0; j<cols; j++) {
 				if (map[i][j]== '|') {
-					paredes.add(new Parede (j,i));
+					paredes.add(new Parede (j,i,"texturas\\terra.png", ID.Parede));
+				}
+			}
+		}
+	}
+	
+	
+	void fazPastilhas() throws IOException {
+		for (int i= 0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				if (map[i][j]== 'o') {
+					pastilhas.add(new Pastilha (j,i,"texturas\\pastilha.png", ID.Pastilha));
 				}
 			}
 		}

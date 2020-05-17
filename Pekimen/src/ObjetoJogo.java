@@ -1,12 +1,30 @@
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public abstract class ObjetoJogo {
 	protected int x, Vx;
 	protected int y, Vy;
+	protected ID id;
+	protected BufferedImage textura;
 
-	ObjetoJogo(int x, int y) {
+	ObjetoJogo(int x, int y, String imagePath, ID id) {
 		this.x = x;
 		this.y = y;
+		this.id=id;
+		String sistemaOperacional = System.getProperty("os.name");
+		if (sistemaOperacional.contains("Windows")) {
+			imagePath = "src/"+ imagePath;
+		}
+		try {
+			this.textura= ImageIO.read(new File(imagePath));
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		
 	}
 
 	public abstract void tick();
