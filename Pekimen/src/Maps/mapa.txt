@@ -1,0 +1,33 @@
+
+
+||||||||||||||||||||||||||||
+|oooooooooooo||oooooooooooo|
+|o||||o|||||o||o|||||o||||o|
+|o||||o|||||o||o|||||o||||o|
+|o||||o|||||o||o|||||o||||o|
+|oooooooooooooooooooooooooo|
+|o||||o||o||||||||o||o||||o|
+|o||||o||o||||||||o||o||||o|
+|oooooo||oooo||oooo||oooooo|
+||||||o|||||o||o|||||o||||||
+     |o|||||o||o|||||o|
+     |o||          ||o|
+     |o|| |||__||| ||o|
+||||||o|| ||    || ||o||||||
+x     o   ||    ||   o     x
+||||||o|| ||    || ||o||||||
+     |o|| |||||||| ||o|
+     |o||          ||o|
+     |o|| |||||||| ||o|
+||||||o|| |||||||| ||o||||||
+|oooooooooooo||oooooooooooo|
+|o||||o|||||o||o|||||o||||o|
+|o||||o|||||o||o|||||o||||o|
+|ooo||oooooooooooooooo||ooo|
+|||o||o||o||||||||o||o||o|||
+|||o||o||o||||||||o||o||o|||
+|oooooo||oooo||oooo||oooooo|
+|o||||||||||o||o||||||||||o|
+|o||||||||||o||o||||||||||o|
+|oooooooooooooooooooooooooo|
+||||||||||||||||||||||||||||
