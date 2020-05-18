@@ -8,7 +8,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int WIDTH = 856, HEIGHT = 768;
+	public static final int WIDTH = 846, HEIGHT = 768;
 
 	private Thread thread;
 
@@ -17,15 +17,26 @@ public class Jogo extends Canvas implements Runnable {
 	private boolean running = false;
 
 	private Controle controle;
+	private HUD hud;
 
 	public Jogo() throws IOException {
-		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 		controle = new Controle();
+		hud = new HUD();
+		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 		mapa = new Mapa(true, controle);
 
 		this.addKeyListener(new KeyInput(controle));
 	}
-
+	
+	public static int teleporte (int var, int min, int max) {
+		if(var >= max)
+			return min;
+		else if(var <= min)
+			return max;
+		else
+			return var;		
+	}
+	
 	public synchronized void iniciar() {
 		thread = new Thread(this);
 		thread.start();
@@ -42,6 +53,7 @@ public class Jogo extends Canvas implements Runnable {
 	}
 
 	public void run() {
+		this.requestFocusInWindow();
 		long ultimaVez = System.nanoTime();
 		double quantidadeDeTicks = 60.0;
 		double ns = 1000000000 / quantidadeDeTicks;
@@ -64,11 +76,6 @@ public class Jogo extends Canvas implements Runnable {
 				timer += 1000;
 				// System.out.println("FPS: " + frames);
 				janela.frame.setTitle("PacMan | " + frames + " fps"); // mostra o fps na janela
-				// atualiza o tamanho da janela
-				// janela.imagem=
-				// janela.imagem.getScaledInstance(janela.frame.getWidth(),janela.frame.getHeight(),
-				// Image.SCALE_DEFAULT);
-				// janela.frame.setContentPane(new JLabel(new ImageIcon(janela.imagem)));
 				frames = 0;
 			}
 		}
@@ -77,6 +84,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private void tick() {
 		controle.tick();
+		hud.tick();
 	}
 
 	private void render() {
@@ -90,6 +98,7 @@ public class Jogo extends Canvas implements Runnable {
 
 		g.drawImage(janela.imagem, janela.getWidth(), janela.getHeight(), null);
 		controle.render(g);
+		hud.render(g);
 		g.dispose();
 		bs.show();
 	}
