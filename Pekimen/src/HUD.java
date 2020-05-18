@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class HUD {
-		public static int PONTOS = 0;
+		public static int PONTOS = 10;
 		Font pontosFont;
 		HUD(){
 			try {
