@@ -18,18 +18,22 @@ public class KeyInput extends KeyAdapter {
 				if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
 					temp.setVy(-2);
 					temp.setVx(0);
+					temp.setImage("characters/pacman_up.png");
 				}
 				if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN) {
 					temp.setVy(2);
 					temp.setVx(0);
+					temp.setImage("characters/pacman_down.png");
 				}
 				if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 					temp.setVx(-2);
 					temp.setVy(0);
+					temp.setImage("characters/pacman_left.png");
 				}
 				if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 					temp.setVx(2);
 					temp.setVy(0);
+					temp.setImage("characters/pacman_right.png");
 				}
 			}
 		}

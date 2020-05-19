@@ -53,4 +53,13 @@ public abstract class ObjetoJogo {
 	public ID getID() {
 		return this.id;
 	}
+	
+	public void setImage(String imagePath) {
+		imagePath = SetPath.setPath(imagePath);
+		try {
+			this.textura = ImageIO.read(new File(imagePath));
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+	}
 }
