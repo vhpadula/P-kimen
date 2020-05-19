@@ -66,7 +66,7 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
-					controle.objetos.add(new Pacman(30 * j, 21 * i , "chacacters/pacman.png", ID.Pacman, this, controle));
+					controle.objetos.add(new Pacman(25 * j, 16 * i + 4, "chacacters/pacman.png", ID.Pacman, this, controle));
 				}
 			}
 		}
