@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class HUD {
-		public static int PONTOS = 0;
+		private static int pontos = 0;
 		Font pontosFont;
 		HUD(){
 			try {
@@ -18,20 +18,16 @@ public class HUD {
 				System.out.println(e);
 			}
 		}
-		public void setPontos() {
-			
-		}
-		public void getPontos() {
-			
+		public static void setPontos(int x) {
+			pontos += x;
 		}
 		public void tick() {
-			
 		}
 		
 		public void render(Graphics g) {
 			g.setFont(pontosFont);
 			g.setColor(Color.white);
 			g.drawString("Pontos ", 0, 30);
-			g.drawString(Integer.toString(PONTOS), 140, 30);
+			g.drawString(Integer.toString(pontos), 140, 30);
 		}
 }

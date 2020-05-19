@@ -24,7 +24,7 @@ public class Jogo extends Canvas implements Runnable {
 		hud = new HUD();
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 		mapa = new Mapa(true, controle);
-
+		
 		this.addKeyListener(new KeyInput(controle));
 	}
 	

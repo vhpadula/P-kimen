@@ -11,7 +11,7 @@ public class Parede extends ObjetoJogo {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 30, 21);
+		return new Rectangle(30 * x, 21 * y, 30, 21);
 	}
 
 	@Override

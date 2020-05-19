@@ -9,7 +9,7 @@ public class Pastilha extends ObjetoJogo {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 3, 3);
+		return new Rectangle(30 * x + 15, 21 * y + 10, 3, 3);
 	}
 
 	@Override
