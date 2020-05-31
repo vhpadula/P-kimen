@@ -9,6 +9,8 @@ public class FantasmaAzul extends Fantasmas {
 	public void tick() {
 		setVx(1);
 		x += Vx;
+		super.colisao();
+		super.teleporte();
 	}
 
 }

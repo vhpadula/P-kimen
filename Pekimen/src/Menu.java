@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Menu extends MouseAdapter {
 
-	private Jogo jogo;
+	protected Jogo jogo;
 	private Controle controle;
 	Mapa mapa;
 
@@ -38,19 +38,36 @@ public class Menu extends MouseAdapter {
 			}
 		}
 
-		// botao Back para Settings
+		// botao Back
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 325, 500, 200, 70)) {
 				jogo.estadoJogo = ESTADO.Menu;
 			}
 		}
+
+		// botao Classic
+		if (jogo.estadoJogo == ESTADO.Settings) {
+			if (mouseOver(mx, my, 120, 230, 307, 70)) {
+				jogo.estadoJogo = ESTADO.Menu;
+			}
+		}
+
+		// botao Selva
+		if (jogo.estadoJogo == ESTADO.Settings) {
+			if (mouseOver(mx, my, 490, 230, 225, 70)) {
+				jogo.estadoJogo = ESTADO.Menu;
+			}
+		}
+
+		// botao Supermercado
+		if (jogo.estadoJogo == ESTADO.Settings) {
+			if (mouseOver(mx, my, 170, 350, 506, 70)) {
+				jogo.estadoJogo = ESTADO.Menu;
+			}
+		}
 	}
 
-	public void mouseReleased(MouseEvent e) {
-
-	}
-
-	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+	protected boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
 		if (mx > x && mx < (x + width)) {
 			if (my > y && my < (y + height)) {
 				return true;
@@ -95,8 +112,16 @@ public class Menu extends MouseAdapter {
 			g.setFont(fonte);
 			g.drawString("Settings", 225, 130);
 
-			// botao Back
 			g.setFont(fonteMenor);
+			g.drawRect(490, 230, 225, 70);
+			g.drawString("Selva", 500, 280);
+
+			g.drawRect(170, 350, 506, 70);
+			g.drawString("Supermercado", 180, 400);
+
+			g.drawRect(120, 230, 307, 70);
+			g.drawString("Classic", 130, 280);
+
 			g.drawRect(325, 500, 200, 70);
 			g.drawString("Back", 344, 550);
 		}

@@ -19,5 +19,22 @@ public abstract class Fantasmas extends ObjetoJogo {
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 20, 20);
 	}
+	
+	protected void colisao() {
+		for(int i = 0; i < controle.objetos.size(); i++) {
+			ObjetoJogo tempObject = controle.objetos.get(i);
+			if (tempObject.getID() == ID.Parede) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					x -= Vx;
+					y -= Vy;
+				}
+			}
+		}
+	}
+	
+	protected void teleporte() {
+		x = Jogo.teleporte(x, 0, 846);
+		y = Jogo.teleporte(y, 42, 680);
+	}
 
 }

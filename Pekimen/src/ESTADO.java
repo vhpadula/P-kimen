@@ -2,5 +2,6 @@
 public enum ESTADO {
 	Jogo,
 	Menu,
-	Settings
+	Settings,
+	ConfigFundo
 }
