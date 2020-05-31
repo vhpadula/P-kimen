@@ -3,5 +3,6 @@ public enum ID {
 	Pastilha(), 
 	Mapa(), 
 	Parede(), 
-	Pacman()
+	Pacman(),
+	Fantasma()
 }

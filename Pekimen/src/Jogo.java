@@ -1,4 +1,5 @@
 import java.awt.Canvas;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -18,25 +19,30 @@ public class Jogo extends Canvas implements Runnable {
 
 	private Controle controle;
 	private HUD hud;
+	private Menu menu;
+
+	public ESTADO estadoJogo = ESTADO.Menu;
 
 	public Jogo() throws IOException {
 		controle = new Controle();
 		hud = new HUD();
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
-		mapa = new Mapa(true, controle);
-		
+		mapa = new Mapa(true, controle, this);
+		menu = new Menu(this, controle, mapa);
+
+		this.addMouseListener(menu);
 		this.addKeyListener(new KeyInput(controle));
 	}
-	
-	public static int teleporte (int var, int min, int max) {
-		if(var >= max)
+
+	public static int teleporte(int var, int min, int max) {
+		if (var >= max)
 			return min;
-		else if(var <= min)
+		else if (var <= min)
 			return max;
 		else
-			return var;		
+			return var;
 	}
-	
+
 	public synchronized void iniciar() {
 		thread = new Thread(this);
 		thread.start();
@@ -69,7 +75,11 @@ public class Jogo extends Canvas implements Runnable {
 				delta--;
 			}
 			if (running)
-				render();
+				try {
+					render();
+				} catch (FontFormatException | IOException e) {
+					e.printStackTrace();
+				}
 			frames++;
 
 			if (System.currentTimeMillis() - timer > 1000) {
@@ -84,10 +94,14 @@ public class Jogo extends Canvas implements Runnable {
 
 	private void tick() {
 		controle.tick();
-		hud.tick();
+		if (estadoJogo == ESTADO.Jogo) {
+			hud.tick();
+		} else if (estadoJogo == ESTADO.Menu || estadoJogo == ESTADO.Settings) {
+			menu.tick();
+		}
 	}
 
-	private void render() {
+	private void render() throws FontFormatException, IOException {
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
 			this.createBufferStrategy(3);
@@ -98,7 +112,13 @@ public class Jogo extends Canvas implements Runnable {
 
 		g.drawImage(janela.imagem, janela.getWidth(), janela.getHeight(), null);
 		controle.render(g);
-		hud.render(g);
+
+		if (estadoJogo == ESTADO.Jogo) {
+			hud.render(g);
+		} else if (estadoJogo == ESTADO.Menu || estadoJogo == ESTADO.Settings) {
+			menu.render(g);
+		}
+
 		g.dispose();
 		bs.show();
 	}
