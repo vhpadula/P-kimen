@@ -37,6 +37,7 @@ public class Mapa {
 				this.fazParedes();
 				this.fazPastilhas();
 				this.fazPacman();
+				this.fazFantasma();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -74,6 +75,18 @@ public class Mapa {
 				if (map[i][j] == 'c') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new Pacman(30 * j, 21 * i , "characters/pacman_right.png", ID.Pacman, this, controle));
+					}
+				}
+			}
+		}
+	}
+	
+	void fazFantasma() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'a') {
+					if (jogo.estadoJogo == ESTADO.Jogo) {
+						controle.objetos.add(new FantasmaAzul(30 * j, 21 * i , "characters/fantasmaAzul.png", ID.Fantasma, this, controle));
 					}
 				}
 			}

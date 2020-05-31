@@ -45,6 +45,11 @@ public class Pacman extends ObjetoJogo {
 					HUD.setPontos(10);
 				}
 			}
+			if(tempObject.getID() == ID.Fantasma) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					HUD.setVidas(1);
+				}
+			}
 		}
 	}
 }
