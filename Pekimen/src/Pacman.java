@@ -12,7 +12,7 @@ public class Pacman extends ObjetoJogo {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 17, 12);
+		return new Rectangle(x, y, 30, 20);
 	}
 
 	@Override
@@ -20,14 +20,14 @@ public class Pacman extends ObjetoJogo {
 		x += Vx;
 		y += Vy;
 		//abrange os casos de teleporte
-		x = Jogo.teleporte(x, 0, 707);
+		x = Jogo.teleporte(x, 0, 846);
 		y = Jogo.teleporte(y, 42, 680); //teria que mudar o valor do teleporte tbm caso implemente a tela menor mesmo
 		colisao();
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, x, y, 17, 12, null);
+		g.drawImage(textura, x, y, 30, 20, null);
 	}
 
 	private void colisao() {

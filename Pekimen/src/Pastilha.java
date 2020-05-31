@@ -9,7 +9,7 @@ public class Pastilha extends ObjetoJogo {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(25 * x + 12, 16 * y + 8, 3, 3);
+		return new Rectangle(30 * x + 15, 21 * y + 10, 3, 3);
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class Pastilha extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, 25 * x + 12, 16 * y + 8, 3, 3, null);
+		g.drawImage(textura, 30 * x + 15, 21 * y + 10, 3, 3, null);
 
 	}
 
