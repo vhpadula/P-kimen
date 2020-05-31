@@ -13,3 +13,5 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 18/05: Foi implementado as colisões, possibilitando contar pontos e impedir que o personagem atravesse as paredes.
 
 19/05: Implementação de figuras diferentes para o Pacman, dependendo de qual direção ele está seguindo.
+
+31/05: Implementação de uma classe abstrata para determinar os diferentes fantasmas (cada um receberá a sua própria classe, entretanto criei apenas uma até agora, sem implementar um movimento de verdade). Há a contagem de vidas no topo da tela agora, e uma tela inicial com dois botões: "Start" e "Settings", este último para poder possibilitar a configuração do fundo de acordo com o tema selecionado, assim como a textura dos bloquinhos possivelmente.
