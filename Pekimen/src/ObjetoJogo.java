@@ -9,7 +9,9 @@ import javax.imageio.ImageIO;
 public abstract class ObjetoJogo {
 	protected int x, Vx;
 	protected int y, Vy;
+	protected int valorVAnterior = 0;
 	protected ID id;
+	protected String vAnterior = null;
 	Mapa mapa;
 	Controle controle;
 	protected BufferedImage textura;
@@ -48,6 +50,28 @@ public abstract class ObjetoJogo {
 
 	public void setVy(int Vy) {
 		this.Vy = Vy;
+	}
+
+	public void setVAnterior(){
+		boolean vHorizontal = false, vVertical = false;
+		if(Vx != 0){
+			vHorizontal = true;
+		}
+		else if(Vy != 0){
+			vVertical = true;
+		}
+
+		if(vHorizontal){
+			vAnterior = "H";
+			valorVAnterior = Vx;
+		}
+		else if(vVertical){
+			vAnterior = "V";
+			valorVAnterior = Vy;
+		}
+		else{
+			vAnterior = null;
+		}
 	}
 	
 	public ID getID() {

@@ -37,6 +37,39 @@ public class Pacman extends ObjetoJogo {
 				if(getBounds().intersects(tempObject.getBounds())) {
 					x -= Vx;
 					y -= Vy;
+
+					if(Vx != 0){
+						Vx = 0;
+						if(vAnterior == "H" || vAnterior == null){
+							Vy = 0;
+						}
+						else{
+							Vy = valorVAnterior;
+							vAnterior = "V";
+							if(Vy > 0){
+								setImage("characters/pacman_down.png");
+							}
+							else{
+								setImage("characters/pacman_up.png");
+							}
+						}
+					}
+					else{
+						Vy = 0;
+						if(vAnterior == "V" || vAnterior == null){
+							Vx = 0;
+						}
+						else{
+							Vx = valorVAnterior;
+							vAnterior = "H";
+							if(Vx > 0){
+								setImage("characters/pacman_right.png");
+							}
+							else{
+								setImage("characters/pacman_left.png");
+							}
+						}
+					}
 				}
 			}
 			if(tempObject.getID() == ID.Pastilha) {
