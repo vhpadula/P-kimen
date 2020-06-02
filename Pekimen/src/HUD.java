@@ -49,15 +49,13 @@ public class HUD {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-		if (vidas == 1) {
-			g.drawImage(textura, 740, 15, 25, 15, null);
-		} else if (vidas == 2) {
-			g.drawImage(textura, 770, 15, 25, 15, null);
-			g.drawImage(textura, 740, 15, 25, 15, null);
-		} else if (vidas == 3) {
-			g.drawImage(textura, 800, 15, 25, 15, null);
-			g.drawImage(textura, 770, 15, 25, 15, null);
-			g.drawImage(textura, 740, 15, 25, 15, null);
+		renderVidas(g, vidas);
+	}
+
+	public void renderVidas(Graphics g, int vidas){
+		int x = 710 + vidas*30;
+		for(int i = 1; i <= vidas; i++, x -=30){
+			g.drawImage(textura, x, 15, 25, 15, null);
 		}
 	}
 }

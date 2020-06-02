@@ -82,12 +82,11 @@ public class Menu extends MouseAdapter {
 	}
 
 	public void render(Graphics g) throws FontFormatException, IOException {
+		g.setColor(Color.white);
+		Font fonte, fonteMenor;
 		if (jogo.estadoJogo == ESTADO.Menu) {
-			g.setColor(Color.white);
-			Font fonte;
 			fonte = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
 					.deriveFont(60f);
-			Font fonteMenor;
 			fonteMenor = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
 					.deriveFont(32f);
 			g.setFont(fonte);
@@ -102,11 +101,8 @@ public class Menu extends MouseAdapter {
 			g.drawRect(263, 400, 320, 80);
 			g.drawString("Settings", 295, 455);
 		} else if (jogo.estadoJogo == ESTADO.Settings) {
-			g.setColor(Color.white);
-			Font fonte;
 			fonte = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
 					.deriveFont(50f);
-			Font fonteMenor;
 			fonteMenor = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
 					.deriveFont(40f);
 			g.setFont(fonte);
