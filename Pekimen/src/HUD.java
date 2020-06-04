@@ -30,7 +30,7 @@ public class HUD {
 	public static void setPontos(int x) {
 		pontos += x;
 	}
-	
+
 	public static void setVidas(int x) {
 		vidas -= x;
 	}
@@ -52,9 +52,9 @@ public class HUD {
 		renderVidas(g, vidas);
 	}
 
-	public void renderVidas(Graphics g, int vidas){
-		int x = 710 + vidas*30;
-		for(int i = 1; i <= vidas; i++, x -=30){
+	public void renderVidas(Graphics g, int vidas) {
+		int x = 710 + vidas * 30;
+		for (int i = 1; i <= vidas; i++, x -= 30) {
 			g.drawImage(textura, x, 15, 25, 15, null);
 		}
 	}
