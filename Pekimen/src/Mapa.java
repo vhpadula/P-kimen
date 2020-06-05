@@ -38,6 +38,7 @@ public class Mapa {
 				this.fazPastilhas();
 				this.fazPacman();
 				this.fazFantasma();
+				this.fazCruzamentos();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -45,12 +46,44 @@ public class Mapa {
 		}
 	}
 
+	String identificaCruzamentos(int i, int j) {
+		String cruzamento = "";
+		if (map[i][j] == 'o' || map[i][j] == ' ') {
+			if (i == 0) {
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ')
+					cruzamento += "D";
+			} else if (i == rows - 1) {
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ')
+					cruzamento += "U";
+			} else {
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ')
+					cruzamento += "D";
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ')
+					cruzamento += "U";
+			}
+
+			if (j == 0) {
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ')
+					cruzamento += "R";
+			} else if (j == cols - 1) {
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ')
+					cruzamento += "L";
+			} else {
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ')
+					cruzamento += "R";
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ')
+					cruzamento += "L";
+			}
+		}
+		return cruzamento;
+	}
+
 	void fazParedes() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Parede(j, i, "texturas/wall.png", ID.Parede, this, controle));
+						controle.objetos.add(new Parede(j, i, "texturas/wall.png", ID.Parede, this, controle, ""));
 					}
 				}
 			}
@@ -62,7 +95,8 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Pastilha(j, i, "texturas/pastilha.png", ID.Pastilha, this, controle));
+						controle.objetos
+								.add(new Pastilha(j, i, "texturas/pastilha.png", ID.Pastilha, this, controle, ""));
 					}
 				}
 			}
@@ -74,34 +108,53 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Pacman(30 * j, 21 * i , "characters/pacman_right.png", ID.Pacman, this, controle));
+						controle.objetos.add(new Pacman(30 * j, 21 * i, "characters/pacman_right.png", ID.Pacman, this,
+								controle, ""));
 					}
 				}
 			}
 		}
 	}
-	
+
 	void fazFantasma() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'a') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaAzul(30 * j + 4, 21 * i, "characters/fantasmaAzul.png", ID.Fantasma, this, controle));
+						controle.objetos.add(new FantasmaAzul(30 * j + 4, 21 * i, "characters/fantasmaAzul.png",
+								ID.Fantasma, this, controle, ""));
+					}
+				} else if (map[i][j] == 'v') {
+					if (jogo.estadoJogo == ESTADO.Jogo) {
+						controle.objetos.add(new FantasmaVermelho(30 * j + 4, 21 * i, "characters/fantasmaVermelho.png",
+								ID.Fantasma, this, controle, ""));
+					}
+				} else if (map[i][j] == 'l') {
+					if (jogo.estadoJogo == ESTADO.Jogo) {
+						controle.objetos.add(new FantasmaLaranja(30 * j + 4, 21 * i, "characters/fantasmaLaranja.png",
+								ID.Fantasma, this, controle, ""));
+					}
+				} else if (map[i][j] == 'r') {
+					if (jogo.estadoJogo == ESTADO.Jogo) {
+						controle.objetos.add(new FantasmaRosa(30 * j + 4, 21 * i, "characters/fantasmaRosa.png",
+								ID.Fantasma, this, controle, ""));
 					}
 				}
-				else if (map[i][j] == 'v') {
+			}
+		}
+	}
+
+	void fazCruzamentos() {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'o' || map[i][j] == ' ') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaVermelho(30 * j + 4, 21 * i, "characters/fantasmaVermelho.png", ID.Fantasma, this, controle));
-					}
-				}
-				else if (map[i][j] == 'l') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaLaranja(30 * j + 4, 21 * i, "characters/fantasmaLaranja.png", ID.Fantasma, this, controle));
-					}
-				}
-				else if (map[i][j] == 'r') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaRosa(30 * j + 4, 21 * i, "characters/fantasmaRosa.png", ID.Fantasma, this, controle));
+						String cruzamento = identificaCruzamentos(i, j);
+						if ((cruzamento.contains("U") || cruzamento.contains("D"))
+								&& (cruzamento.contains("L") || cruzamento.contains("R"))) {
+							controle.objetos.add(new Cruzamento(j, i, "", ID.Cruzamento, this,
+									controle, cruzamento));
+						}
 					}
 				}
 			}

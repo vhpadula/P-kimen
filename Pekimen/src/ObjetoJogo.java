@@ -11,17 +11,19 @@ public abstract class ObjetoJogo {
 	protected int y, Vy;
 	protected int valorVAnterior = 0;
 	protected ID id;
-	protected String vAnterior = null;
+	protected String vAnterior = null, movimentoDesejado = null;
+	protected String cruzamento;
 	Mapa mapa;
 	Controle controle;
 	protected BufferedImage textura;
 
-	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle) {
+	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
 		this.mapa = mapa;
 		this.controle = controle;
+		this.cruzamento = cruzamento;
 		imagePath = SetPath.setPath(imagePath);
 		try {
 			this.textura = ImageIO.read(new File(imagePath));

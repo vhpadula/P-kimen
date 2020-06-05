@@ -4,5 +4,6 @@ public enum ID {
 	Mapa(), 
 	Parede(), 
 	Pacman(),
-	Fantasma()
+	Fantasma(),
+	Cruzamento()
 }

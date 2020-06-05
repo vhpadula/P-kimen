@@ -15,33 +15,44 @@ public class KeyInput extends KeyAdapter {
 			ObjetoJogo temp = controle.objetos.get(i);
 			if (temp.getID() == ID.Pacman) {
 
+				temp.setVAnterior();
+
 				if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
-					temp.setVAnterior();
+					if (temp.Vy != -2) {
+						temp.movimentoDesejado = "U";
+					}
 					temp.setVy(-2);
 					temp.setVx(0);
 					temp.setImage("characters/pacman_up.png");
 				}
 				if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN) {
-					temp.setVAnterior();
+					if (temp.Vy != 2) {
+						temp.movimentoDesejado = "D";
+					}
 					temp.setVy(2);
 					temp.setVx(0);
 					temp.setImage("characters/pacman_down.png");
 				}
 				if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
-					temp.setVAnterior();
+					if (temp.Vx != -2) {
+						temp.movimentoDesejado = "L";
+					}
 					temp.setVx(-2);
 					temp.setVy(0);
 					temp.setImage("characters/pacman_left.png");
 				}
 				if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
-					temp.setVAnterior();
+					if (temp.Vx != 2) {
+						temp.movimentoDesejado = "R";
+					}
 					temp.setVx(2);
 					temp.setVy(0);
 					temp.setImage("characters/pacman_right.png");
 				}
 			}
 		}
-		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
+		if (key == KeyEvent.VK_ESCAPE)
+			System.exit(1);
 	}
 
 }
