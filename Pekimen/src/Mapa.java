@@ -135,22 +135,22 @@ public class Mapa {
 				if (map[i][j] == 'a') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new FantasmaAzul(30 * j + 4, 21 * i, "characters/fantasmaAzul.png",
-								ID.Fantasma, this, controle, ""));
+								ID.Fantasma, this, controle, "", 0, 0));
 					}
 				} else if (map[i][j] == 'v') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new FantasmaVermelho(30 * j + 4, 21 * i, "characters/fantasmaVermelho.png",
-								ID.Fantasma, this, controle, ""));
+								ID.Fantasma, this, controle, "", 2, 0));
 					}
 				} else if (map[i][j] == 'l') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new FantasmaLaranja(30 * j + 4, 21 * i, "characters/fantasmaLaranja.png",
-								ID.Fantasma, this, controle, ""));
+								ID.Fantasma, this, controle, "", 0, 0));
 					}
 				} else if (map[i][j] == 'r') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new FantasmaRosa(30 * j + 4, 21 * i, "characters/fantasmaRosa.png",
-								ID.Fantasma, this, controle, ""));
+								ID.Fantasma, this, controle, "", 0, 0));
 					}
 				}
 			}
