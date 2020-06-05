@@ -1,9 +1,13 @@
+package ClassesTabuleiro;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Pastilha extends ObjetoJogo {
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesGerais.ObjetoJogo;
 
-	Pastilha(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
+public class Cruzamento extends ObjetoJogo {
+	public Cruzamento(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento){
 		super(x, y, imagePath, id, mapa, controle, cruzamento);
 	}
 

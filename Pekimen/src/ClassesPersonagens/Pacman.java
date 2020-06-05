@@ -1,11 +1,19 @@
+package ClassesPersonagens;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesGerais.Jogo;
+import ClassesGerais.ObjetoJogo;
+import ClassesInterface.HUD;
+import ClassesTabuleiro.Mapa;
 
 public class Pacman extends ObjetoJogo {
 
 	Controle controle;
 
-	Pacman(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
+	public Pacman(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
 		super(x, y, imagePath, id, mapa, controle, cruzamento);
 		this.controle = controle;
 	}

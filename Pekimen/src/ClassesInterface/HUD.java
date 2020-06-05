@@ -1,3 +1,4 @@
+package ClassesInterface;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -9,6 +10,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import ClassesGerais.SetPath;
+
 public class HUD {
 	private static int pontos = 0;
 	public static int vidas = 2;
@@ -16,7 +19,7 @@ public class HUD {
 	String imagePath = SetPath.setPath("characters/pacman_right.png");
 	BufferedImage textura;
 
-	HUD() {
+	public HUD() {
 		try {
 			pontosFont = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
 					.deriveFont(20f);

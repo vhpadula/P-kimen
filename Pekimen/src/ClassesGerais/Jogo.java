@@ -1,9 +1,16 @@
+package ClassesGerais;
 import java.awt.Canvas;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import java.io.IOException;
+
+import ClassesInterface.ESTADO;
+import ClassesInterface.HUD;
+import ClassesInterface.Janela;
+import ClassesInterface.Menu;
+import ClassesTabuleiro.Mapa;
 
 public class Jogo extends Canvas implements Runnable {
 

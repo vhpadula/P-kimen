@@ -1,3 +1,4 @@
+package ClassesInterface;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -6,6 +7,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+
+import ClassesGerais.Controle;
+import ClassesGerais.Jogo;
+import ClassesGerais.SetPath;
+import ClassesTabuleiro.Mapa;
 
 public class Menu extends MouseAdapter {
 

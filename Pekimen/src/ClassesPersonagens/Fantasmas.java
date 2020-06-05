@@ -1,6 +1,13 @@
+package ClassesPersonagens;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesGerais.Jogo;
+import ClassesGerais.ObjetoJogo;
+import ClassesTabuleiro.Mapa;
 
 public abstract class Fantasmas extends ObjetoJogo {
 	int VxFantasma;

@@ -1,8 +1,9 @@
+package ClassesGerais;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Controle {
-	ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
+	public ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
 
 	public void tick() {
 		for (int i = 0; i < objetos.size(); i++) {

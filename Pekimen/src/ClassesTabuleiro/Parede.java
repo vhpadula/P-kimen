@@ -1,6 +1,11 @@
+package ClassesTabuleiro;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.IOException;
+
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesGerais.ObjetoJogo;
 
 public class Parede extends ObjetoJogo {
 

@@ -1,6 +1,18 @@
+package ClassesTabuleiro;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesGerais.Jogo;
+import ClassesGerais.SetPath;
+import ClassesInterface.ESTADO;
+import ClassesPersonagens.FantasmaAzul;
+import ClassesPersonagens.FantasmaLaranja;
+import ClassesPersonagens.FantasmaRosa;
+import ClassesPersonagens.FantasmaVermelho;
+import ClassesPersonagens.Pacman;
 
 public class Mapa {
 	public int rows;

@@ -1,7 +1,11 @@
+package ClassesPersonagens;
+import ClassesGerais.Controle;
+import ClassesGerais.ID;
+import ClassesTabuleiro.Mapa;
 
 public class FantasmaAzul extends Fantasmas {
 
-	FantasmaAzul(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento, int VxFantasma,
+	public FantasmaAzul(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
 		super(x, y, imagePath, id, mapa, controle, cruzamento, VxFantasma, VyFantasma);
 	}

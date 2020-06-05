@@ -1,3 +1,4 @@
+package ClassesPersonagens;
 import java.util.Random;
 
 public class MovimentacaoAleatoria implements MovimentacaoFantasma {

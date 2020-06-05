@@ -1,3 +1,4 @@
+package ClassesGerais;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -6,18 +7,20 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import ClassesTabuleiro.Mapa;
+
 public abstract class ObjetoJogo {
 	protected int x, Vx;
 	protected int y, Vy;
 	protected int valorVAnterior = 0;
 	protected ID id;
 	protected String vAnterior = null, movimentoDesejado = null;
-	protected String cruzamento;
+	public  String cruzamento;
 	Mapa mapa;
-	Controle controle;
+	public Controle controle;
 	protected BufferedImage textura;
 
-	ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
+	public ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
