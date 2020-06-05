@@ -35,6 +35,7 @@ public class Mapa {
 				cols = maps[0].length;
 				buff.close();
 				this.fazParedes();
+				this.fazPortao();
 				this.fazPastilhas();
 				this.fazPacman();
 				this.fazFantasma();
@@ -84,6 +85,18 @@ public class Mapa {
 				if (map[i][j] == '|') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						controle.objetos.add(new Parede(j, i, "texturas/wall.png", ID.Parede, this, controle, ""));
+					}
+				}
+			}
+		}
+	}
+
+	void fazPortao() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == '_') {
+					if (jogo.estadoJogo == ESTADO.Jogo) {
+						controle.objetos.add(new Portao(j, i, "texturas/gate.png", ID.Parede, this, controle, "U"));
 					}
 				}
 			}

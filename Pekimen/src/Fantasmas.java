@@ -12,12 +12,12 @@ public abstract class Fantasmas extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, x, y, 20, 20, null);
+		g.drawImage(textura, x, y, 30, 20, null);
 	}
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 20, 20);
+		return new Rectangle(x, y, 30, 20);
 	}
 	
 	protected void colisao() {

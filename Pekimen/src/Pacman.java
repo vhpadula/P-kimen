@@ -40,7 +40,7 @@ public class Pacman extends ObjetoJogo {
 		}
 	}
 
-	private void cruzamento(ObjetoJogo tempObject){
+	private void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
 			double yCruzamento = tempObject.getBounds().getCenterY();
@@ -76,33 +76,35 @@ public class Pacman extends ObjetoJogo {
 	private void colisao(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Parede) {
 			if (getBounds().intersects(tempObject.getBounds())) {
-				x -= Vx;
-				y -= Vy;
+				if (!(tempObject.cruzamento == "U" && Vy == -2)) {
+					x -= Vx;
+					y -= Vy;
 
-				if (Vx != 0) {
-					Vx = 0;
-					if (vAnterior == "H" || vAnterior == null) {
-						Vy = 0;
-					} else {
-						Vy = valorVAnterior;
-						vAnterior = "V";
-						if (Vy > 0) {
-							setImage("characters/pacman_down.png");
-						} else {
-							setImage("characters/pacman_up.png");
-						}
-					}
-				} else {
-					Vy = 0;
-					if (vAnterior == "V" || vAnterior == null) {
+					if (Vx != 0) {
 						Vx = 0;
-					} else {
-						Vx = valorVAnterior;
-						vAnterior = "H";
-						if (Vx > 0) {
-							setImage("characters/pacman_right.png");
+						if (vAnterior == "H" || vAnterior == null) {
+							Vy = 0;
 						} else {
-							setImage("characters/pacman_left.png");
+							Vy = valorVAnterior;
+							vAnterior = "V";
+							if (Vy > 0) {
+								setImage("characters/pacman_down.png");
+							} else {
+								setImage("characters/pacman_up.png");
+							}
+						}
+					} else {
+						Vy = 0;
+						if (vAnterior == "V" || vAnterior == null) {
+							Vx = 0;
+						} else {
+							Vx = valorVAnterior;
+							vAnterior = "H";
+							if (Vx > 0) {
+								setImage("characters/pacman_right.png");
+							} else {
+								setImage("characters/pacman_left.png");
+							}
 						}
 					}
 				}
