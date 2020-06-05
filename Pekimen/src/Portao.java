@@ -21,7 +21,7 @@ public class Portao extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, 30 * x, 22 * y, 30, -6, null);
+		g.drawImage(textura, 30 * x, 22 * y, 30, -8, null);
 	}
 
 }
