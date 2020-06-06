@@ -1,4 +1,5 @@
 package ClassesPersonagens;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -7,19 +8,18 @@ import ClassesGerais.ID;
 import ClassesGerais.Jogo;
 import ClassesGerais.ObjetoJogo;
 import ClassesInterface.HUD;
-import ClassesTabuleiro.Mapa;
 
 public abstract class Pacman extends ObjetoJogo {
 
 	Controle controle;
 	int xInicial;
 	int yInicial;
-	
-	public Pacman(int x, int y,  ID id,  Controle controle, String cruzamento) {
-		super(x, y,id,  controle, cruzamento);
+
+	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
+		super(x, y, id, controle, cruzamento);
 		this.controle = controle;
-		this.xInicial=x;
-		this.yInicial=y;
+		this.xInicial = x;
+		this.yInicial = y;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public abstract class Pacman extends ObjetoJogo {
 		y += Vy;
 		// abrange os casos de teleporte
 		x = Jogo.teleporte(x, 0, 846);
-		y = Jogo.teleporte(y, 42, 680); // teria que mudar o valor do teleporte tbm caso implemente a tela menor mesmo
+		y = Jogo.teleporte(y, 42, 680);
 		movimentacao();
 	}
 
@@ -131,8 +131,8 @@ public abstract class Pacman extends ObjetoJogo {
 				x = xInicial;
 				y = yInicial;
 				setImage(right);
-				Vx=0;
-				Vy=0;
+				Vx = 0;
+				Vy = 0;
 			}
 		}
 	}

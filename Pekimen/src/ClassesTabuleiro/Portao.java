@@ -1,4 +1,5 @@
 package ClassesTabuleiro;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import ClassesGerais.ObjetoJogo;
 
 public abstract class Portao extends ObjetoJogo {
 
-	public Portao(int x, int y,ID id, Controle controle, String cruzamento) throws IOException {
+	public Portao(int x, int y, ID id, Controle controle, String cruzamento) throws IOException {
 		super(x, y, id, controle, cruzamento);
 
 	}

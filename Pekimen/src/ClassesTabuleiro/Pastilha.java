@@ -1,4 +1,5 @@
 package ClassesTabuleiro;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -8,7 +9,7 @@ import ClassesGerais.ObjetoJogo;
 
 public abstract class Pastilha extends ObjetoJogo {
 
-	public Pastilha(int x, int y,  ID id, Controle controle, String cruzamento) {
+	public Pastilha(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 	}
 

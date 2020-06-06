@@ -2,7 +2,6 @@ package ClassesPersonagens;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesTabuleiro.Mapa;
 
 public abstract class FantasmaRosa extends Fantasmas {
 
@@ -14,7 +13,7 @@ public abstract class FantasmaRosa extends Fantasmas {
 	public void tick() {
 		x += VxFantasma;
 		y += VyFantasma;
-		if(gaiola)
+		if (gaiola)
 			super.sairGaiola(this);
 		super.movimentacao();
 		super.teleporte();

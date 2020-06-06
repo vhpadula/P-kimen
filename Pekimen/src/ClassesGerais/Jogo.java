@@ -1,4 +1,5 @@
 package ClassesGerais;
+
 import java.awt.Canvas;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
@@ -7,9 +8,11 @@ import java.awt.image.BufferStrategy;
 import java.io.IOException;
 
 import ClassesInterface.ESTADO;
+import ClassesInterface.GameOver;
 import ClassesInterface.HUD;
 import ClassesInterface.Janela;
 import ClassesInterface.Menu;
+import ClassesInterface.Settings;
 import ClassesTabuleiro.Mapa;
 
 public class Jogo extends Canvas implements Runnable {
@@ -27,6 +30,8 @@ public class Jogo extends Canvas implements Runnable {
 	private Controle controle;
 	private HUD hud;
 	private Menu menu;
+	private GameOver gameOver;
+	private Settings settings;
 	public Fabrica fabrica;
 	public ESTADO estadoJogo = ESTADO.Menu;
 
@@ -34,11 +39,13 @@ public class Jogo extends Canvas implements Runnable {
 		controle = new Controle();
 		hud = new HUD();
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
-		
-		fabrica= new FabricaClassica(controle);
-		
-		mapa = new Mapa(true, controle, this,fabrica);
-		menu = new Menu(this, controle, mapa);
+
+		fabrica = new FabricaClassica(controle);
+
+		mapa = new Mapa(true, controle, this, fabrica);
+		menu = new Menu(this, controle, mapa, hud);
+		gameOver = new GameOver(hud);
+		settings = new Settings();
 
 		this.addMouseListener(menu);
 		this.addKeyListener(new KeyInput(controle));
@@ -106,8 +113,15 @@ public class Jogo extends Canvas implements Runnable {
 		controle.tick();
 		if (estadoJogo == ESTADO.Jogo) {
 			hud.tick();
+			if (HUD.vidas == -1 || HUD.pontos == 2500) {
+				HUD.vidas = 2;
+				controle.objetos.clear();
+				estadoJogo = ESTADO.End;
+			}
 		} else if (estadoJogo == ESTADO.Menu || estadoJogo == ESTADO.Settings) {
 			menu.tick();
+		} else if (estadoJogo == ESTADO.End) {
+			gameOver.tick();
 		}
 	}
 
@@ -125,8 +139,13 @@ public class Jogo extends Canvas implements Runnable {
 
 		if (estadoJogo == ESTADO.Jogo) {
 			hud.render(g);
-		} else if (estadoJogo == ESTADO.Menu || estadoJogo == ESTADO.Settings) {
+		} else if (estadoJogo == ESTADO.Menu) {
 			menu.render(g);
+		} else if (estadoJogo == ESTADO.Settings) {
+			settings.render(g);
+		}
+		else if (estadoJogo == ESTADO.End) {
+			gameOver.render(g);
 		}
 
 		g.dispose();

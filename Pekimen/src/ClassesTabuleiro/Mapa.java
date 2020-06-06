@@ -1,4 +1,5 @@
 package ClassesTabuleiro;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,7 +9,6 @@ import ClassesGerais.ID;
 import ClassesGerais.Jogo;
 import ClassesGerais.SetPath;
 import ClassesInterface.ESTADO;
-
 
 public class Mapa {
 	public int rows;
@@ -20,7 +20,7 @@ public class Mapa {
 
 	public Mapa(boolean load, Controle ctrl, Jogo jogo, Fabrica fabrica) {
 		this.jogo = jogo;
-		this.fabrica=fabrica;
+		this.fabrica = fabrica;
 		this.controle = ctrl;
 		if (load) {
 			try {
@@ -50,20 +50,20 @@ public class Mapa {
 
 		}
 	}
-	
+
 	public void constroiTabuleiro() throws IOException {
 		if (jogo.estadoJogo == ESTADO.Jogo) {
-		
-		this.fazParedes();
-		this.fazPortao();
-		this.fazPastilhas();
-		this.fazPacman();
-		this.fazFantasma();
-		this.fazCruzamentos();
-		
+
+			this.fazParedes();
+			this.fazPortao();
+			this.fazPastilhas();
+			this.fazPacman();
+			this.fazFantasma();
+			this.fazCruzamentos();
+
 		}
 	}
-	
+
 	String identificaCruzamentos(int i, int j) {
 		String cruzamento = "";
 		if (map[i][j] == 'o' || map[i][j] == ' ') {
@@ -100,9 +100,9 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
-					
-					fabrica.fazParedes(j,i);
-					
+
+					fabrica.fazParedes(j, i);
+
 				}
 			}
 		}
@@ -112,9 +112,9 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '_') {
-					
-					fabrica.fazPortao(j,i);
-					
+
+					fabrica.fazPortao(j, i);
+
 				}
 			}
 		}
@@ -124,8 +124,8 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
-					fabrica.fazPastilhas(j,i);
-				
+					fabrica.fazPastilhas(j, i);
+
 				}
 			}
 		}
@@ -135,8 +135,8 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
-					fabrica.fazPacman(j,i);
-					
+					fabrica.fazPacman(j, i);
+
 				}
 			}
 		}
@@ -145,7 +145,7 @@ public class Mapa {
 	void fazFantasma() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				fabrica.fazFantasmas(j,i,map[i][j]);
+				fabrica.fazFantasmas(j, i, map[i][j]);
 			}
 		}
 	}
@@ -158,8 +158,7 @@ public class Mapa {
 						String cruzamento = identificaCruzamentos(i, j);
 						if ((cruzamento.contains("U") || cruzamento.contains("D"))
 								&& (cruzamento.contains("L") || cruzamento.contains("R"))) {
-							controle.objetos.add(new Cruzamento(j, i, ID.Cruzamento, 
-									controle, cruzamento));
+							controle.objetos.add(new Cruzamento(j, i, ID.Cruzamento, controle, cruzamento));
 						}
 					}
 				}

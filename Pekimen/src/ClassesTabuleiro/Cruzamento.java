@@ -1,4 +1,5 @@
 package ClassesTabuleiro;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -7,7 +8,7 @@ import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
 public class Cruzamento extends ObjetoJogo {
-	public Cruzamento(int x, int y,  ID id, Controle controle, String cruzamento){
+	public Cruzamento(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 	}
 

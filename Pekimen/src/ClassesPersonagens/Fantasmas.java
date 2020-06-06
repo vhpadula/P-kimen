@@ -9,7 +9,6 @@ import ClassesGerais.ID;
 import ClassesGerais.Jogo;
 import ClassesGerais.ObjetoJogo;
 import ClassesInterface.HUD;
-import ClassesTabuleiro.Mapa;
 
 public abstract class Fantasmas extends ObjetoJogo {
 	int VxFantasma;

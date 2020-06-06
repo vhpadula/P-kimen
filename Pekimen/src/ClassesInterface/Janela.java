@@ -1,4 +1,5 @@
 package ClassesInterface;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
@@ -11,8 +12,7 @@ import javax.swing.JFrame;
 public class Janela extends Canvas {
 
 	private static final long serialVersionUID = 1L;
-	public JFrame frame;// coloquei eles como atributo da classes para serem acessados quando o jogo
-					// tiver rodando
+	public JFrame frame;
 	public BufferedImage imagem;
 
 	public Janela(int largura, int altura, String titulo, Jogo jogo) throws IOException {
@@ -31,5 +31,10 @@ public class Janela extends Canvas {
 		frame.setVisible(true);
 		jogo.iniciar();
 
+	}
+
+	public void setImage(String path) throws IOException {
+		String imagePath = ClassesGerais.SetPath.setPath(path);
+		imagem = ImageIO.read(new File(imagePath));
 	}
 }

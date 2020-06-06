@@ -1,4 +1,5 @@
 package ClassesInterface;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -20,11 +21,13 @@ public class Menu extends MouseAdapter {
 	protected Jogo jogo;
 	private Controle controle;
 	Mapa mapa;
+	HUD hud;
 
-	public Menu(Jogo jogo, Controle controle, Mapa mapa) {
+	public Menu(Jogo jogo, Controle controle, Mapa mapa, HUD hud) {
 		this.jogo = jogo;
 		this.controle = controle;
 		this.mapa = mapa;
+		this.hud = hud;
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -38,8 +41,8 @@ public class Menu extends MouseAdapter {
 				mapa = new Mapa(true, controle, jogo, jogo.fabrica);
 				try {
 					mapa.constroiTabuleiro();
-				}catch (IOException ex) {
-					
+				} catch (IOException ex) {
+
 				}
 			}
 		}
@@ -62,7 +65,7 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 120, 230, 307, 70)) {
 				jogo.estadoJogo = ESTADO.Menu;
-				jogo.fabrica= new FabricaClassica(controle);
+				jogo.fabrica = new FabricaClassica(controle);
 			}
 		}
 
@@ -77,7 +80,15 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 170, 350, 506, 70)) {
 				jogo.estadoJogo = ESTADO.Menu;
-				jogo.fabrica= new FabricaSupermercado(controle);
+				jogo.fabrica = new FabricaSupermercado(controle);
+			}
+		}
+
+		// botao Restart
+		if (jogo.estadoJogo == ESTADO.End) {
+			if (mouseOver(mx, my, 270, 400, 306, 70)) {
+				jogo.estadoJogo = ESTADO.Menu;
+				HUD.pontos = 0;
 			}
 		}
 	}
@@ -115,26 +126,6 @@ public class Menu extends MouseAdapter {
 			// botao Settings
 			g.drawRect(263, 400, 320, 80);
 			g.drawString("Settings", 295, 455);
-		} else if (jogo.estadoJogo == ESTADO.Settings) {
-			fonte = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
-					.deriveFont(50f);
-			fonteMenor = Font.createFont(Font.TRUETYPE_FONT, new File(SetPath.setPath("fonts/PixelFont.ttf")))
-					.deriveFont(40f);
-			g.setFont(fonte);
-			g.drawString("Settings", 225, 130);
-
-			g.setFont(fonteMenor);
-			g.drawRect(490, 230, 225, 70);
-			g.drawString("Selva", 500, 280);
-
-			g.drawRect(170, 350, 506, 70);
-			g.drawString("Supermercado", 180, 400);
-
-			g.drawRect(120, 230, 307, 70);
-			g.drawString("Classic", 130, 280);
-
-			g.drawRect(325, 500, 200, 70);
-			g.drawString("Back", 344, 550);
 		}
 	}
 
