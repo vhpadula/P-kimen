@@ -13,9 +13,9 @@ public abstract class Fantasmas extends ObjetoJogo {
 	int VxFantasma;
 	int VyFantasma;
 
-	Fantasmas(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento, int VxFantasma,
+	Fantasmas(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+		super(x, y, id, controle, cruzamento);
 		this.VxFantasma = VxFantasma;
 		this.VyFantasma = VyFantasma;
 	}

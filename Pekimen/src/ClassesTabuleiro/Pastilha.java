@@ -6,10 +6,10 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
-public class Pastilha extends ObjetoJogo {
+public abstract class Pastilha extends ObjetoJogo {
 
-	Pastilha(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+	public Pastilha(int x, int y,  ID id, Controle controle, String cruzamento) {
+		super(x, y, id, controle, cruzamento);
 	}
 
 	@Override

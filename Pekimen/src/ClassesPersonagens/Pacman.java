@@ -9,13 +9,17 @@ import ClassesGerais.ObjetoJogo;
 import ClassesInterface.HUD;
 import ClassesTabuleiro.Mapa;
 
-public class Pacman extends ObjetoJogo {
+public abstract class Pacman extends ObjetoJogo {
 
 	Controle controle;
-
-	public Pacman(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+	int xInicial;
+	int yInicial;
+	
+	public Pacman(int x, int y,  ID id,  Controle controle, String cruzamento) {
+		super(x, y,id,  controle, cruzamento);
 		this.controle = controle;
+		this.xInicial=x;
+		this.yInicial=y;
 	}
 
 	@Override
@@ -59,22 +63,22 @@ public class Pacman extends ObjetoJogo {
 				if (movimentoDesejado == "U" && tempObject.cruzamento.contains("U")) {
 					Vx = 0;
 					Vy = -2;
-					setImage("characters/pacman_up.png");
+					setImage(up);
 					vAnterior = "V";
 				} else if (movimentoDesejado == "D" && tempObject.cruzamento.contains("D")) {
 					Vx = 0;
 					Vy = 2;
-					setImage("characters/pacman_down.png");
+					setImage(down);
 					vAnterior = "V";
 				} else if (movimentoDesejado == "R" && tempObject.cruzamento.contains("R")) {
 					Vx = 2;
 					Vy = 0;
-					setImage("characters/pacman_right.png");
+					setImage(right);
 					vAnterior = "H";
 				} else if (movimentoDesejado == "L" && tempObject.cruzamento.contains("L")) {
 					Vx = -2;
 					Vy = 0;
-					setImage("characters/pacman_left.png");
+					setImage(left);
 					vAnterior = "H";
 				}
 			}
@@ -96,9 +100,9 @@ public class Pacman extends ObjetoJogo {
 							Vy = valorVAnterior;
 							vAnterior = "V";
 							if (Vy > 0) {
-								setImage("characters/pacman_down.png");
+								setImage(down);
 							} else {
-								setImage("characters/pacman_up.png");
+								setImage(up);
 							}
 						}
 					} else {
@@ -109,9 +113,9 @@ public class Pacman extends ObjetoJogo {
 							Vx = valorVAnterior;
 							vAnterior = "H";
 							if (Vx > 0) {
-								setImage("characters/pacman_right.png");
+								setImage(right);
 							} else {
-								setImage("characters/pacman_left.png");
+								setImage(left);
 							}
 						}
 					}
@@ -124,6 +128,11 @@ public class Pacman extends ObjetoJogo {
 		if (tempObject.getID() == ID.Fantasma) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				HUD.setVidas(1);
+				x = xInicial;
+				y = yInicial;
+				setImage(right);
+				Vx=0;
+				Vy=0;
 			}
 		}
 	}

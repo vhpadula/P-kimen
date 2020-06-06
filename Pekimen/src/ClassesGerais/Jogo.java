@@ -27,14 +27,17 @@ public class Jogo extends Canvas implements Runnable {
 	private Controle controle;
 	private HUD hud;
 	private Menu menu;
-
+	public Fabrica fabrica;
 	public ESTADO estadoJogo = ESTADO.Menu;
 
 	public Jogo() throws IOException {
 		controle = new Controle();
 		hud = new HUD();
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
-		mapa = new Mapa(true, controle, this);
+		
+		fabrica= new FabricaClassica(controle);
+		
+		mapa = new Mapa(true, controle, this,fabrica);
 		menu = new Menu(this, controle, mapa);
 
 		this.addMouseListener(menu);

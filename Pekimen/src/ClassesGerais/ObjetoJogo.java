@@ -16,17 +16,22 @@ public abstract class ObjetoJogo {
 	protected ID id;
 	protected String vAnterior = null, movimentoDesejado = null;
 	public  String cruzamento;
-	Mapa mapa;
 	public Controle controle;
 	protected BufferedImage textura;
-
-	public ObjetoJogo(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) {
+	public String imagePath;
+	public String up;
+	public String down;
+	public String left;
+	public String right;
+	public ObjetoJogo(int x, int y, ID id, Controle controle, String cruzamento) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
-		this.mapa = mapa;
 		this.controle = controle;
 		this.cruzamento = cruzamento;
+	}
+	
+	public void ajustaTextura() {
 		imagePath = SetPath.setPath(imagePath);
 		try {
 			this.textura = ImageIO.read(new File(imagePath));
@@ -34,7 +39,6 @@ public abstract class ObjetoJogo {
 			System.out.println(e);
 		}
 	}
-
 	public abstract void tick();
 
 	public abstract void render(Graphics g);

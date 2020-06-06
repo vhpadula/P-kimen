@@ -3,11 +3,11 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesTabuleiro.Mapa;
 
-public class FantasmaVermelho extends Fantasmas {
+public abstract class FantasmaVermelho extends Fantasmas {
 
-	public FantasmaVermelho(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento,
+	public FantasmaVermelho(int x, int y, ID id,  Controle controle, String cruzamento,
 			int VxFantasma, int VyFantasma) {
-		super(x, y, imagePath, id, mapa, controle, cruzamento, VxFantasma, VyFantasma);
+		super(x, y, id,  controle, cruzamento, VxFantasma, VyFantasma);
 	}
 
 	@Override

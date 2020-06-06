@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 import ClassesGerais.Controle;
+import ClassesGerais.FabricaClassica;
+import ClassesGerais.FabricaSupermercado;
 import ClassesGerais.Jogo;
 import ClassesGerais.SetPath;
 import ClassesTabuleiro.Mapa;
@@ -33,7 +35,12 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Menu) {
 			if (mouseOver(mx, my, 263, 260, 320, 80)) {
 				jogo.estadoJogo = ESTADO.Jogo;
-				mapa = new Mapa(true, controle, jogo);
+				mapa = new Mapa(true, controle, jogo, jogo.fabrica);
+				try {
+					mapa.constroiTabuleiro();
+				}catch (IOException ex) {
+					
+				}
 			}
 		}
 
@@ -55,6 +62,7 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 120, 230, 307, 70)) {
 				jogo.estadoJogo = ESTADO.Menu;
+				jogo.fabrica= new FabricaClassica(controle);
 			}
 		}
 
@@ -69,6 +77,7 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 170, 350, 506, 70)) {
 				jogo.estadoJogo = ESTADO.Menu;
+				jogo.fabrica= new FabricaSupermercado(controle);
 			}
 		}
 	}

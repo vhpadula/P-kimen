@@ -7,10 +7,10 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
-public class Portao extends ObjetoJogo {
+public abstract class Portao extends ObjetoJogo {
 
-	Portao(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) throws IOException {
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+	public Portao(int x, int y,ID id, Controle controle, String cruzamento) throws IOException {
+		super(x, y, id, controle, cruzamento);
 
 	}
 

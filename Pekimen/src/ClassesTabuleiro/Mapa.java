@@ -2,17 +2,13 @@ package ClassesTabuleiro;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+import ClassesGerais.Fabrica;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;
 import ClassesGerais.SetPath;
 import ClassesInterface.ESTADO;
-import ClassesPersonagens.FantasmaAzul;
-import ClassesPersonagens.FantasmaLaranja;
-import ClassesPersonagens.FantasmaRosa;
-import ClassesPersonagens.FantasmaVermelho;
-import ClassesPersonagens.Pacman;
+
 
 public class Mapa {
 	public int rows;
@@ -20,9 +16,11 @@ public class Mapa {
 	public char[][] map;
 	Controle controle;
 	Jogo jogo;
+	Fabrica fabrica;
 
-	public Mapa(boolean load, Controle ctrl, Jogo jogo) {
+	public Mapa(boolean load, Controle ctrl, Jogo jogo, Fabrica fabrica) {
 		this.jogo = jogo;
+		this.fabrica=fabrica;
 		this.controle = ctrl;
 		if (load) {
 			try {
@@ -46,19 +44,26 @@ public class Mapa {
 				rows = maps.length;
 				cols = maps[0].length;
 				buff.close();
-				this.fazParedes();
-				this.fazPortao();
-				this.fazPastilhas();
-				this.fazPacman();
-				this.fazFantasma();
-				this.fazCruzamentos();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
 		}
 	}
-
+	
+	public void constroiTabuleiro() throws IOException {
+		if (jogo.estadoJogo == ESTADO.Jogo) {
+		
+		this.fazParedes();
+		this.fazPortao();
+		this.fazPastilhas();
+		this.fazPacman();
+		this.fazFantasma();
+		this.fazCruzamentos();
+		
+		}
+	}
+	
 	String identificaCruzamentos(int i, int j) {
 		String cruzamento = "";
 		if (map[i][j] == 'o' || map[i][j] == ' ') {
@@ -95,9 +100,9 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Parede(j, i, "texturas/wall.png", ID.Parede, this, controle, ""));
-					}
+					
+					fabrica.fazParedes(j,i);
+					
 				}
 			}
 		}
@@ -107,9 +112,9 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '_') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Portao(j, i, "texturas/gate.png", ID.Parede, this, controle, "U"));
-					}
+					
+					fabrica.fazPortao(j,i);
+					
 				}
 			}
 		}
@@ -119,10 +124,8 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos
-								.add(new Pastilha(j, i, "texturas/pastilha.png", ID.Pastilha, this, controle, ""));
-					}
+					fabrica.fazPastilhas(j,i);
+				
 				}
 			}
 		}
@@ -132,10 +135,8 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new Pacman(30 * j, 21 * i, "characters/pacman_right.png", ID.Pacman, this,
-								controle, ""));
-					}
+					fabrica.fazPacman(j,i);
+					
 				}
 			}
 		}
@@ -144,27 +145,7 @@ public class Mapa {
 	void fazFantasma() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				if (map[i][j] == 'a') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaAzul(30 * j + 4, 21 * i, "characters/fantasmaAzul.png",
-								ID.Fantasma, this, controle, "", 0, 0));
-					}
-				} else if (map[i][j] == 'v') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaVermelho(30 * j + 4, 21 * i, "characters/fantasmaVermelho.png",
-								ID.Fantasma, this, controle, "", 2, 0));
-					}
-				} else if (map[i][j] == 'l') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaLaranja(30 * j + 4, 21 * i, "characters/fantasmaLaranja.png",
-								ID.Fantasma, this, controle, "", 0, 0));
-					}
-				} else if (map[i][j] == 'r') {
-					if (jogo.estadoJogo == ESTADO.Jogo) {
-						controle.objetos.add(new FantasmaRosa(30 * j + 4, 21 * i, "characters/fantasmaRosa.png",
-								ID.Fantasma, this, controle, "", 0, 0));
-					}
-				}
+				fabrica.fazFantasmas(j,i,map[i][j]);
 			}
 		}
 	}
@@ -177,7 +158,7 @@ public class Mapa {
 						String cruzamento = identificaCruzamentos(i, j);
 						if ((cruzamento.contains("U") || cruzamento.contains("D"))
 								&& (cruzamento.contains("L") || cruzamento.contains("R"))) {
-							controle.objetos.add(new Cruzamento(j, i, "", ID.Cruzamento, this,
+							controle.objetos.add(new Cruzamento(j, i, ID.Cruzamento, 
 									controle, cruzamento));
 						}
 					}

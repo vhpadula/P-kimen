@@ -7,10 +7,10 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
-public class Parede extends ObjetoJogo {
+public abstract class Parede extends ObjetoJogo {
 
-	Parede(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento) throws IOException {
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+	public Parede(int x, int y,  ID id, Controle controle, String cruzamento) throws IOException {
+		super(x, y,  id, controle, cruzamento);
 
 	}
 

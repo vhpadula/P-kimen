@@ -24,7 +24,7 @@ public class KeyInput extends KeyAdapter {
 					}
 					temp.setVy(-2);
 					temp.setVx(0);
-					temp.setImage("characters/pacman_up.png");
+					temp.setImage(temp.up);
 				}
 				if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN) {
 					if (temp.Vy != 2) {
@@ -32,7 +32,7 @@ public class KeyInput extends KeyAdapter {
 					}
 					temp.setVy(2);
 					temp.setVx(0);
-					temp.setImage("characters/pacman_down.png");
+					temp.setImage(temp.down);
 				}
 				if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 					if (temp.Vx != -2) {
@@ -40,7 +40,7 @@ public class KeyInput extends KeyAdapter {
 					}
 					temp.setVx(-2);
 					temp.setVy(0);
-					temp.setImage("characters/pacman_left.png");
+					temp.setImage(temp.left);
 				}
 				if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 					if (temp.Vx != 2) {
@@ -48,7 +48,7 @@ public class KeyInput extends KeyAdapter {
 					}
 					temp.setVx(2);
 					temp.setVy(0);
-					temp.setImage("characters/pacman_right.png");
+					temp.setImage(temp.right);
 				}
 			}
 		}

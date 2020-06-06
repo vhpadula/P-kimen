@@ -7,8 +7,8 @@ import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
 public class Cruzamento extends ObjetoJogo {
-	public Cruzamento(int x, int y, String imagePath, ID id, Mapa mapa, Controle controle, String cruzamento){
-		super(x, y, imagePath, id, mapa, controle, cruzamento);
+	public Cruzamento(int x, int y,  ID id, Controle controle, String cruzamento){
+		super(x, y, id, controle, cruzamento);
 	}
 
 	@Override
