@@ -20,8 +20,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 		this.VyFantasma = VyFantasma;
 	}
 
-	int xInicial = x;
-	int yInicial = y;
+	int xInicial = x, yInicial = y;
 	boolean gaiola = true;
 	int pontosIniciais = HUD.pontos;
 
@@ -36,6 +35,11 @@ public abstract class Fantasmas extends ObjetoJogo {
 	@Override
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 30, 20);
+	}
+
+	double getDistanciaPacman(int x, int y) {
+		double distancia = Math.sqrt(Math.pow(controle.xPacman - x, 2) + Math.pow(controle.yPacman - y, 2));
+		return distancia;
 	}
 
 	protected void teleporte() {
@@ -122,6 +126,66 @@ public abstract class Fantasmas extends ObjetoJogo {
 		return direcao;
 	}
 
+	protected void aletorio(ObjetoJogo tempObject) {
+		char direcao = sorteiaDirecao(tempObject);
+		if (VxFantasma > 0) {
+			while (direcao == 'L')
+				direcao = sorteiaDirecao(tempObject);
+		} else if (VxFantasma < 0) {
+			while (direcao == 'R')
+				direcao = sorteiaDirecao(tempObject);
+		} else if (Vy > 0) {
+			while (direcao == 'D')
+				direcao = sorteiaDirecao(tempObject);
+		} else {
+			while (direcao == 'U')
+				direcao = sorteiaDirecao(tempObject);
+		}
+		if (direcao == 'U') {
+			VxFantasma = 0;
+			VyFantasma = -2;
+			vAnterior = "V";
+		} else if (direcao == 'D') {
+			VxFantasma = 0;
+			VyFantasma = 2;
+			vAnterior = "V";
+		} else if (direcao == 'R') {
+			VxFantasma = 2;
+			VyFantasma = 0;
+			vAnterior = "H";
+		} else if (direcao == 'L') {
+			VxFantasma = -2;
+			VyFantasma = 0;
+			vAnterior = "H";
+		}
+	}
+
+	protected char seguir(ObjetoJogo tempObject) {
+		double distanciaD = 10000000;
+		double distanciaU = 10000000;
+		double distanciaL = 10000000;
+		double distanciaR = 10000000;
+
+		if (tempObject.cruzamento.toString().contains("D") && !(VyFantasma < 0))
+			distanciaD = getDistanciaPacman(x, y + 1);
+		if (tempObject.cruzamento.toString().contains("U") && !(VyFantasma > 0))
+			distanciaU = getDistanciaPacman(x, y - 1);
+		if (tempObject.cruzamento.toString().contains("L") && !(VxFantasma > 0))
+			distanciaL = getDistanciaPacman(x - 1, y);
+		if (tempObject.cruzamento.toString().contains("R") && !(VxFantasma < 0))
+			distanciaR = getDistanciaPacman(x + 1, y);
+
+		if (distanciaD < distanciaU && distanciaD < distanciaL && distanciaD < distanciaR)
+			return 'D';
+		else if (distanciaU < distanciaD && distanciaU < distanciaL && distanciaU < distanciaR)
+			return 'U';
+		else if (distanciaL < distanciaU && distanciaL < distanciaD && distanciaL < distanciaR)
+			return 'L';
+		else
+			return 'R';
+
+	}
+
 	protected void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
@@ -130,21 +194,8 @@ public abstract class Fantasmas extends ObjetoJogo {
 			double yFantasma = getBounds().getCenterY();
 			if ((xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 1.5)
 					|| (xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 0.5)) {
+				char direcao = seguir(tempObject);
 
-				char direcao = sorteiaDirecao(tempObject);
-				if(VxFantasma > 0){
-					while (direcao == 'L')
-						direcao = sorteiaDirecao(tempObject);
-				} else if (VxFantasma < 0){
-					while (direcao == 'R')
-						direcao = sorteiaDirecao(tempObject);
-				} else if(Vy > 0){
-					while (direcao == 'D')
-						direcao = sorteiaDirecao(tempObject);
-				} else {
-					while(direcao == 'U')
-						direcao = sorteiaDirecao(tempObject);
-				}
 				if (direcao == 'U') {
 					VxFantasma = 0;
 					VyFantasma = -2;

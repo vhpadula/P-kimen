@@ -35,6 +35,8 @@ public abstract class Pacman extends ObjetoJogo {
 		x = Jogo.teleporte(x, 0, 846);
 		y = Jogo.teleporte(y, 42, 680);
 		movimentacao();
+		controle.xPacman = x;
+		controle.yPacman = y;
 	}
 
 	@Override

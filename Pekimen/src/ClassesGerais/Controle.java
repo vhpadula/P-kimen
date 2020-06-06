@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Controle {
 	public ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
+	public double xPacman, yPacman;
 
 	public void tick() {
 		for (int i = 0; i < objetos.size(); i++) {
@@ -26,5 +27,10 @@ public class Controle {
 
 	public void removeObjeto(ObjetoJogo o) {
 		this.objetos.remove(o);
+	}
+
+	public void setPosicaoPacman(double x, double y){
+		xPacman = x;
+		yPacman = y;
 	}
 }
