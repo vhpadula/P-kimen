@@ -1,5 +1,5 @@
-package ClassesGerais;
 import java.io.IOException;
+import ClassesGerais.Jogo;
 
 public class Main {
 
