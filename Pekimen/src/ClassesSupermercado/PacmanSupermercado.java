@@ -12,7 +12,7 @@ public class PacmanSupermercado extends Pacman {
 		this.up = "Supermercado/pacman_up.png";
 		this.down = "Supermercado/pacman_down.png";
 		this.left = "Supermercado/pacman_left.png";
-		this.right= "Supermercado/pacman_right";
+		this.right= "Supermercado/pacman_right.png";
 		this.ajustaTextura();
 	}
 
