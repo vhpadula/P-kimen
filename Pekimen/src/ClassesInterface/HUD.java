@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import ClassesGerais.SetPath;
 
 public class HUD {
-	private static int pontos = 0;
+	public static int pontos = 0;
 	public static int vidas = 2;
 	Font pontosFont;
 	String imagePath = SetPath.setPath("characters/pacman_right.png");

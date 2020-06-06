@@ -44,13 +44,13 @@ public class FabricaSupermercado extends Fabrica {
 	public void fazFantasmas(int x, int y, char c) {
 		if (c=='a')
 			controle.objetos.add(new FantasmaAzulSupermercado(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 0, 0));
+					ID.Fantasma,  controle, "", 0, 1));
 		if (c=='v')
 			controle.objetos.add(new FantasmaVermelhoSupermercado(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 2, 0));
+					ID.Fantasma,  controle, "", 0, 0));
 		if (c=='l')
 			controle.objetos.add(new FantasmaLaranjaSupermercado(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 0, 0));
+					ID.Fantasma,  controle, "", 0, -1));
 		if (c=='r')
 			controle.objetos.add(new FantasmaRosaSupermercado(30 * x + 4, 21 * y,
 					ID.Fantasma,  controle, "", 0, 0));

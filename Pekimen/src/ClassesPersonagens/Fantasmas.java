@@ -1,4 +1,5 @@
 package ClassesPersonagens;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
@@ -7,18 +8,23 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;
 import ClassesGerais.ObjetoJogo;
+import ClassesInterface.HUD;
 import ClassesTabuleiro.Mapa;
 
 public abstract class Fantasmas extends ObjetoJogo {
 	int VxFantasma;
 	int VyFantasma;
 
-	Fantasmas(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
-			int VyFantasma) {
+	Fantasmas(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma, int VyFantasma) {
 		super(x, y, id, controle, cruzamento);
 		this.VxFantasma = VxFantasma;
 		this.VyFantasma = VyFantasma;
 	}
+
+	int xInicial = x;
+	int yInicial = y;
+	boolean gaiola = true;
+	int pontosIniciais = HUD.pontos;
 
 	@Override
 	public abstract void tick();
@@ -46,6 +52,67 @@ public abstract class Fantasmas extends ObjetoJogo {
 		}
 	}
 
+	protected void movimentacaoGaiola() {
+		for (int i = 0; i < controle.objetos.size(); i++) {
+			ObjetoJogo tempObject = controle.objetos.get(i);
+			if (tempObject.getID() == ID.Parede) {
+				if (getBounds().intersects(tempObject.getBounds())) {
+					x -= VxFantasma;
+					y -= VyFantasma;
+
+					VyFantasma *= -1;
+				}
+			}
+		}
+	}
+
+	protected void sairGaiola(Fantasmas fantasma) {
+		if (fantasma.getClass().toString().contains("Rosa")) {
+			VyFantasma = -1;
+			if (fantasma.getY() == this.yInicial - 63) {
+				gaiola = false;
+				fantasma.VxFantasma = setVInicial();
+				fantasma.VyFantasma = 0;
+			}
+		} else if (fantasma.getClass().toString().contains("Azul")) {
+			fantasma.VxFantasma = 1;
+			fantasma.VyFantasma = 0;
+			if (fantasma.getX() == this.xInicial + 30) {
+				fantasma.VxFantasma = 0;
+				fantasma.VyFantasma = -1;
+			}
+			if (fantasma.getY() == this.yInicial - 63) {
+				gaiola = false;
+				fantasma.VxFantasma = setVInicial();
+				fantasma.VyFantasma = 0;
+			}
+		} else if (fantasma.getClass().toString().contains("Laranja")) {
+			fantasma.VxFantasma = -1;
+			fantasma.VyFantasma = 0;
+			if (fantasma.getX() == this.xInicial - 30) {
+				fantasma.VxFantasma = 0;
+				fantasma.VyFantasma = -1;
+			}
+			if (fantasma.getY() == this.yInicial - 63) {
+				gaiola = false;
+				fantasma.VxFantasma = setVInicial();
+				fantasma.VyFantasma = 0;
+			}
+		} else {
+			gaiola = false;
+			fantasma.VxFantasma = setVInicial();
+		}
+	}
+
+	protected int setVInicial() {
+		Random rand = new Random();
+		int aleatorio = rand.nextInt();
+		if (aleatorio % 2 == 1)
+			return -2;
+		else
+			return 2;
+	}
+
 	protected void cruzamento(ObjetoJogo tempObject) {
 		Random rand = new Random();
 		if (tempObject.getID() == ID.Cruzamento) {
@@ -57,11 +124,11 @@ public abstract class Fantasmas extends ObjetoJogo {
 					|| (xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 0.5)) {
 
 				int aleatorio = rand.nextInt();
-				if(aleatorio < 0){
+				if (aleatorio < 0) {
 					aleatorio *= -1;
 				}
 				char direcao = tempObject.cruzamento.toCharArray()[aleatorio % tempObject.cruzamento.length()];
-				
+
 				if (direcao == 'U') {
 					VxFantasma = 0;
 					VyFantasma = -2;
@@ -86,7 +153,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 	protected void colisao(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Parede) {
 			if (getBounds().intersects(tempObject.getBounds())) {
-				if (!(tempObject.cruzamento == "U" && VyFantasma == -2)) {
+				if (!(tempObject.cruzamento == "U" && VyFantasma < 0)) {
 					x -= VxFantasma;
 					y -= VyFantasma;
 

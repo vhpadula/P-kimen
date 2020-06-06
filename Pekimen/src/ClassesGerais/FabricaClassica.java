@@ -45,13 +45,13 @@ public class FabricaClassica extends Fabrica {
 	public void fazFantasmas(int x, int y, char c) {
 		if (c=='a')
 			controle.objetos.add(new FantasmaAzulClassico(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 0, 0));
+					ID.Fantasma,  controle, "", 0, 1));
 		if (c=='v')
 			controle.objetos.add(new FantasmaVermelhoClassico(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 2, 0));
+					ID.Fantasma,  controle, "", 0, 0));
 		if (c=='l')
 			controle.objetos.add(new FantasmaLaranjaClassico(30 * x + 4, 21 * y,
-					ID.Fantasma,  controle, "", 0, 0));
+					ID.Fantasma,  controle, "", 0, -1));
 		if (c=='r')
 			controle.objetos.add(new FantasmaRosaClassico(30 * x + 4, 21 * y,
 					ID.Fantasma,  controle, "", 0, 0));

@@ -1,6 +1,7 @@
 package ClassesPersonagens;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
+import ClassesInterface.HUD;
 import ClassesTabuleiro.Mapa;
 
 public abstract class FantasmaAzul extends Fantasmas {
@@ -12,9 +13,13 @@ public abstract class FantasmaAzul extends Fantasmas {
 
 	@Override
 	public void tick() {
-		// setVx(1);
-		// x += Vx;
-		super.colisao(this);
+		x += VxFantasma;
+		y += VyFantasma;
+		if(gaiola && HUD.pontos >= pontosIniciais+300)
+			super.sairGaiola(this);
+		else
+			movimentacaoGaiola();
+		super.movimentacao();
 		super.teleporte();
 	}
 

@@ -14,6 +14,8 @@ public abstract class FantasmaVermelho extends Fantasmas {
 	public void tick() {
 		x += VxFantasma;
 		y += VyFantasma;
+		if(gaiola)
+			sairGaiola(this);
 		super.movimentacao();
 		super.teleporte();
 	}

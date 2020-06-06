@@ -2,9 +2,9 @@ package ClassesClassico;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesPersonagens.FantasmaRosa;
+import ClassesPersonagens.FantasmaLaranja;
 
-public class FantasmaLaranjaClassico extends FantasmaRosa {
+public class FantasmaLaranjaClassico extends FantasmaLaranja {
 
 	public FantasmaLaranjaClassico(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
