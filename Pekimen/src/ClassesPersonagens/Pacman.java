@@ -37,6 +37,15 @@ public abstract class Pacman extends ObjetoJogo {
 		movimentacao();
 		controle.xPacman = x;
 		controle.yPacman = y;
+		if (Vy > 0) {
+			controle.direcaoPacman = 'D';
+		} else if (Vy < 0) {
+			controle.direcaoPacman = 'U';
+		} else if (Vx < 0) {
+			controle.direcaoPacman = 'L';
+		} else if (Vx > 0) {
+			controle.direcaoPacman = 'R';
+		}
 	}
 
 	@Override

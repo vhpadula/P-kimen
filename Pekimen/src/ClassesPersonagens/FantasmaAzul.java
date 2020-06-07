@@ -18,7 +18,7 @@ public abstract class FantasmaAzul extends Fantasmas {
 			super.sairGaiola(this);
 		else
 			movimentacaoGaiola();
-		super.movimentacao();
+		super.movimentacaoVermelho(); // Falta implementar a movimentação do azul
 		super.teleporte();
 	}
 

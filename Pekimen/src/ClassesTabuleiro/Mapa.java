@@ -68,28 +68,28 @@ public class Mapa {
 		String cruzamento = "";
 		if (map[i][j] == 'o' || map[i][j] == ' ') {
 			if (i == 0) {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
 			} else if (i == rows - 1) {
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			} else {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			}
 
 			if (j == 0) {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
 			} else if (j == cols - 1) {
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			} else {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			}
 		}

@@ -15,7 +15,7 @@ public abstract class FantasmaVermelho extends Fantasmas {
 		y += VyFantasma;
 		if (gaiola)
 			sairGaiola(this);
-		super.movimentacao();
+		super.movimentacaoVermelho();
 		super.teleporte();
 	}
 }

@@ -18,7 +18,7 @@ public abstract class FantasmaLaranja extends Fantasmas {
 			super.sairGaiola(this);
 		else
 			movimentacaoGaiola();
-		super.movimentacao();
+		super.movimentacaoVermelho(); // Falta implementar a movimentação do Laranja
 		super.teleporte();
 	}
 }
