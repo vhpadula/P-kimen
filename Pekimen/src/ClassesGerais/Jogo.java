@@ -40,7 +40,7 @@ public class Jogo extends Canvas implements Runnable {
 		hud = new HUD();
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 
-		fabrica = new FabricaClassica(controle);
+		fabrica = new FabricaClassica(controle,this);
 
 		mapa = new Mapa(true, controle, this, fabrica);
 		menu = new Menu(this, controle, mapa, hud);
@@ -111,6 +111,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private void tick() {
 		controle.tick();
+		
 		if (estadoJogo == ESTADO.Jogo) {
 			hud.tick();
 			if (HUD.vidas == -1 || HUD.pontos == 2500) {

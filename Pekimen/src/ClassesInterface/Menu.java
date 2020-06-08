@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import ClassesGerais.Controle;
 import ClassesGerais.FabricaClassica;
+import ClassesGerais.FabricaSelva;
 import ClassesGerais.FabricaSupermercado;
 import ClassesGerais.Jogo;
 import ClassesGerais.SetPath;
@@ -64,23 +65,43 @@ public class Menu extends MouseAdapter {
 		// botao Classic
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 120, 230, 307, 70)) {
+				jogo.fabrica = new FabricaClassica(controle,jogo);
+				try {
+					jogo.fabrica.atualizaFundo();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				jogo.estadoJogo = ESTADO.Menu;
-				jogo.fabrica = new FabricaClassica(controle);
+				
 			}
 		}
 
 		// botao Selva
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 490, 230, 225, 70)) {
-				jogo.estadoJogo = ESTADO.Menu;
+				jogo.fabrica = new FabricaSelva(controle,jogo);
+				try {
+					jogo.fabrica.atualizaFundo();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 
 		// botao Supermercado
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 170, 350, 506, 70)) {
+				jogo.fabrica = new FabricaSupermercado(controle,jogo);
+				try {
+					jogo.fabrica.atualizaFundo();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				jogo.estadoJogo = ESTADO.Menu;
-				jogo.fabrica = new FabricaSupermercado(controle);
+				
 			}
 		}
 

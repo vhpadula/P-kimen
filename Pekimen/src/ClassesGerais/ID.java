@@ -6,5 +6,6 @@ public enum ID {
 	Parede(), 
 	Pacman(),
 	Fantasma(),
-	Cruzamento()
+	Cruzamento(),
+	Fundo()
 }

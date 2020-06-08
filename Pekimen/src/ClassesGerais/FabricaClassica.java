@@ -6,6 +6,7 @@ import ClassesClassico.FantasmaAzulClassico;
 import ClassesClassico.FantasmaLaranjaClassico;
 import ClassesClassico.FantasmaRosaClassico;
 import ClassesClassico.FantasmaVermelhoClassico;
+
 import ClassesClassico.PacmanClassico;
 import ClassesClassico.ParedeClassica;
 import ClassesClassico.PastilhaClassica;
@@ -13,8 +14,8 @@ import ClassesClassico.PortaoClassico;
 
 public class FabricaClassica extends Fabrica {
 
-	public FabricaClassica(Controle controle) {
-		super(controle);
+	public FabricaClassica(Controle controle, Jogo jogo) {
+		super(controle, jogo);
 
 	}
 
@@ -49,5 +50,11 @@ public class FabricaClassica extends Fabrica {
 			controle.objetos.add(new FantasmaLaranjaClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, -1));
 		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
+	}
+
+	@Override
+	public void atualizaFundo() throws IOException  {
+		jogo.janela.setImage("Classic/fundo.png");
+		
 	}
 }

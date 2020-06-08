@@ -13,8 +13,8 @@ import ClassesSupermercado.PortaoSupermercado;
 
 public class FabricaSupermercado extends Fabrica {
 
-	public FabricaSupermercado(Controle controle) {
-		super(controle);
+	public FabricaSupermercado(Controle controle,Jogo jogo) {
+		super(controle,jogo);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class FabricaSupermercado extends Fabrica {
 			controle.objetos.add(new FantasmaLaranjaSupermercado(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, -1));
 		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaSupermercado(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
+	}
+
+	@Override
+	public void atualizaFundo() throws IOException {
+		jogo.janela.setImage("Supermercado/fundo.png");
+		
 	}
 
 }

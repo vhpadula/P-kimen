@@ -10,7 +10,7 @@ public class MovimentacaoAleatoria implements MovimentacaoFantasma {
 
 	@Override
 	public void movimentar() {
-
+		
 	}
 
 }

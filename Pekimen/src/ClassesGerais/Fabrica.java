@@ -4,9 +4,10 @@ import java.io.IOException;
 
 public abstract class Fabrica {
 	Controle controle;
-
-	public Fabrica(Controle controle) {
+	Jogo jogo;
+	public Fabrica(Controle controle, Jogo jogo) {
 		this.controle = controle;
+		this.jogo=jogo;
 	}
 
 	abstract public void fazParedes(int x, int y) throws IOException;
@@ -18,5 +19,7 @@ public abstract class Fabrica {
 	abstract public void fazPacman(int x, int y) throws IOException;
 
 	abstract public void fazFantasmas(int x, int y, char c) throws IOException;
+	
+	abstract public void atualizaFundo() throws IOException;
 	
 }
