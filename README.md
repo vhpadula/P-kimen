@@ -21,3 +21,7 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 05/06: Realizada a organização das classes em diferentes pacotes, dado o número crescente de classes necessárias. Além disso, foi implementado o padrão fábrica abstrata para os "looks-and-feels", falta apenas implementar o plano de fundo para cada aparência e o caso da selva. Foi gerada a movimentação aleatória para um dos fantasmas.
 
 06/06: Todos os fantasmas agora realizam movimento aleatório, e saem da "gaiola" de acordo com o número de pastilhas comidas pelo Pacman (seguindo o jogo original). Implementada tela de Game Over para quando o Pacman morre definitivamente (perde todas as vidas) e para quando o Pacman come todas as pastilhas do jogo. Quando selecionado o botão Restart o jogo volta para o menu.
+
+07/06: Implementado movimento não aleatório para os fantasmas. Foram criados os movimentos específicos para os fantasmas rosa e vermelho.
+
+08/06: Criada a classe da selva e a sua respectiva fábrica. Agora as imagens de fundo mudam também com a seleção no "Settings".
