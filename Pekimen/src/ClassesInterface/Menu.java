@@ -69,11 +69,8 @@ public class Menu extends MouseAdapter {
 				try {
 					jogo.fabrica.atualizaFundo();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				jogo.estadoJogo = ESTADO.Menu;
-				
 			}
 		}
 
@@ -84,7 +81,6 @@ public class Menu extends MouseAdapter {
 				try {
 					jogo.fabrica.atualizaFundo();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -97,11 +93,8 @@ public class Menu extends MouseAdapter {
 				try {
 					jogo.fabrica.atualizaFundo();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				jogo.estadoJogo = ESTADO.Menu;
-				
 			}
 		}
 
