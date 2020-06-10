@@ -43,7 +43,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 		y = Jogo.teleporte(y, 42, 680);
 	}
 
-	protected void movimentacaoGaiola() {
+	/*protected void movimentacaoGaiola() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
 			if (tempObject.getID() == ID.Parede) {
@@ -55,9 +55,9 @@ public abstract class Fantasmas extends ObjetoJogo {
 				}
 			}
 		}
-	}
+	}*/
 
-	protected void sairGaiola(Fantasmas fantasma) {
+	/*protected void sairGaiola(Fantasmas fantasma) {
 		if (fantasma.getClass().toString().contains("Rosa")) {
 			VyFantasma = -1;
 			if (fantasma.getY() == this.yInicial - 63) {
@@ -93,7 +93,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 			gaiola = false;
 			fantasma.VxFantasma = setVInicial();
 		}
-	}
+	}*/
 
 	protected int setVInicial() {
 		Random rand = new Random();
@@ -134,7 +134,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 	}
 
 	// Funções da movimentação aleatória
-	protected char sorteiaDirecao(ObjetoJogo tempObject) {
+	/*protected char sorteiaDirecao(ObjetoJogo tempObject) {
 		Random rand = new Random();
 		int aleatorio = rand.nextInt();
 		if (aleatorio < 0) {
@@ -330,5 +330,5 @@ public abstract class Fantasmas extends ObjetoJogo {
 				}
 			}
 		}
-	}
+	}*/
 }

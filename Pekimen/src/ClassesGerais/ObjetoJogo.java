@@ -9,11 +9,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class ObjetoJogo {
-	protected int x, Vx;
-	protected int y, Vy;
-	protected int valorVAnterior = 0;
+	public int x, Vx;
+	public int y, Vy;
+	public int valorVAnterior = 0;
 	protected ID id;
-	protected String vAnterior = null, movimentoDesejado = null;
+	public String vAnterior = null;
+	protected String movimentoDesejado = null;
 	public String cruzamento;
 	public Controle controle;
 	protected BufferedImage textura;
