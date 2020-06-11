@@ -4,12 +4,12 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
-public class MovimentacaoVermelho implements MovimentacaoFantasma {
+public class ChaseAmbush implements MovimentacaoFantasma {
 	
 	Controle controle;
 	Fantasmas fantasma;
 	
-	public MovimentacaoVermelho(Controle controle, Fantasmas fantasma) {
+	public ChaseAmbush(Controle controle, Fantasmas fantasma) {
 		this.controle = controle;
 		this.fantasma = fantasma;
 	}
@@ -17,43 +17,56 @@ public class MovimentacaoVermelho implements MovimentacaoFantasma {
 	public void movimentar() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
-			cruzamentoVermelho(tempObject);
-			fantasma.colisao(tempObject);
+			cruzamento(tempObject);
 		}
 	}
 
-	double getTargetVermelho(int x, int y) {
-		double distancia = Math.sqrt(Math.pow(controle.xPacman - x, 2) + Math.pow(controle.yPacman - y, 2));
+	private double getTarget(int x, int y) {
+		double targetX = controle.xPacman, targetY = controle.yPacman;
+		if (controle.direcaoPacman == 'R') {
+			targetX += 120;
+		} else if (controle.direcaoPacman == 'L') {
+			targetX -= 120;
+		} else if (controle.direcaoPacman == 'D') {
+			targetY += 84;
+		} else if (controle.direcaoPacman == 'U') {
+			targetX -= 120;
+			targetY -= 84;
+		}
+
+		double distancia = Math.sqrt(Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
 		return distancia;
 	}
 
-	public char vermelhoChaseMode(ObjetoJogo tempObject) {
+	char chaseMode(ObjetoJogo tempObject) {
 		double distanciaD = 10000000;
 		double distanciaU = 10000000;
 		double distanciaL = 10000000;
 		double distanciaR = 10000000;
+		char direcao = 'N';
 
 		if (tempObject.cruzamento.toString().contains("D") && !(fantasma.VyFantasma < 0))
-			distanciaD = getTargetVermelho(fantasma.x, fantasma.y + 1);
+			distanciaD = getTarget(fantasma.x, fantasma.y + 3);
 		if (tempObject.cruzamento.toString().contains("U") && !(fantasma.VyFantasma > 0))
-			distanciaU = getTargetVermelho(fantasma.x, fantasma.y - 1);
+			distanciaU = getTarget(fantasma.x, fantasma.y - 3);
 		if (tempObject.cruzamento.toString().contains("L") && !(fantasma.VxFantasma > 0))
-			distanciaL = getTargetVermelho(fantasma.x - 1, fantasma.y);
+			distanciaL = getTarget(fantasma.x - 3, fantasma.y);
 		if (tempObject.cruzamento.toString().contains("R") && !(fantasma.VxFantasma < 0))
-			distanciaR = getTargetVermelho(fantasma.x + 1, fantasma.y);
+			distanciaR = getTarget(fantasma.x + 3, fantasma.y);
 
-		if (distanciaD < distanciaU && distanciaD < distanciaL && distanciaD < distanciaR)
-			return 'D';
-		else if (distanciaU < distanciaD && distanciaU < distanciaL && distanciaU < distanciaR)
-			return 'U';
-		else if (distanciaL < distanciaU && distanciaL < distanciaD && distanciaL < distanciaR)
-			return 'L';
-		else
-			return 'R';
+		if (distanciaD < distanciaU && distanciaD < distanciaL && distanciaD < distanciaR && !(fantasma.VyFantasma > 0))
+			direcao = 'D';
+		else if (distanciaU < distanciaD && distanciaU < distanciaL && distanciaU < distanciaR && !(fantasma.VyFantasma < 0))
+			direcao = 'U';
+		else if (distanciaL < distanciaU && distanciaL < distanciaD && distanciaL < distanciaR && !(fantasma.VxFantasma > 0))
+			direcao = 'L';
+		else if (distanciaR < distanciaD && distanciaR < distanciaU && distanciaR < distanciaL && !(fantasma.VxFantasma < 0))
+			direcao = 'R';
 
+		return direcao;
 	}
 
-	protected void cruzamentoVermelho(ObjetoJogo tempObject) {
+	private void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
 			double yCruzamento = tempObject.getBounds().getCenterY();
@@ -61,7 +74,7 @@ public class MovimentacaoVermelho implements MovimentacaoFantasma {
 			double yFantasma = fantasma.getBounds().getCenterY();
 			if ((xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 1.5)
 					|| (xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 0.5)) {
-				char direcao = vermelhoChaseMode(tempObject);
+				char direcao = chaseMode(tempObject);
 				if (direcao == 'U') {
 					fantasma.VxFantasma = 0;
 					fantasma.VyFantasma = -2;

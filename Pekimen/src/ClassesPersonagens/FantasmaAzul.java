@@ -10,7 +10,7 @@ public abstract class FantasmaAzul extends Fantasmas {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
 	}
 	
-	MovimentacaoVermelho movimentacao = new MovimentacaoVermelho(super.controle, this);
+	ChaseAgressive chase = new ChaseAgressive(super.controle, this);
 	MovimentacaoGeral geral = new MovimentacaoGeral(super.controle, this);
 
 	@Override
@@ -21,7 +21,8 @@ public abstract class FantasmaAzul extends Fantasmas {
 			geral.sairGaiola(this);
 		else
 			geral.movimentacaoGaiola();
-		movimentacao.movimentar(); // Falta implementar a movimentação do azul
-		super.teleporte();
+		chase.movimentar(); // Falta implementar a movimentacao do azul
+		geral.teleporte();
+		geral.movimentar();
 	}
 }
