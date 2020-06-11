@@ -5,6 +5,7 @@ Para iniciar o projeto, basta executar a classe Main, onde se encontra a main do
 Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esquerda), "S" (baixo), "D" (direita) e "W" (cima), quanto as setas do teclado. Para fechar a janela, pode ser pressionada a tecla "ESC" ou selecionando o "X" no canto superior direito. Não é necessário clicar na tela para poder se movimentar.
 
 **Padrão Fábrica Abstrata:** As fábricas de cada "look-and-feel" encontra-se no pacote ClassesGerais, sendo criado um pacote para cada configuração da aparência do jogo.
+
 **Padrão Strategy:** Encontra-se no pacote ClassesPersonagens, com a interface "MovimentacaoFantasma" implementada em "ChaseAgressive", "ChaseAmbush", "ChaseRandom" e "MovimentacaoGeral", definindo diferentes formas para os fantasminhas se movimentarem.
 
 14/05: Criada a classe para criar janela do jogo, e configurada para mostrar imagem de fundo. Também foram criadas classes para configurar os objetos do jogo, entretanto nada foi implementado ainda. Foi utilizado como base o vídeo disponibilizado pelo professor na proposta do trabalho e outros sites para incluir a imagem.
