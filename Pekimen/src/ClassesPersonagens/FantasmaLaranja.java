@@ -11,7 +11,8 @@ public abstract class FantasmaLaranja extends Fantasmas {
 	}
 	
 	MovimentacaoGeral geral = new MovimentacaoGeral(super.controle, this);
-	ChaseRandom aleatorio = new ChaseRandom(super.controle, this);
+	Scatter scatter = new Scatter(super.controle, this, 0, 700);
+	ChaseOrange chase = new ChaseOrange(super.controle, this);
 
 	@Override
 	public void tick() {
@@ -21,7 +22,7 @@ public abstract class FantasmaLaranja extends Fantasmas {
 			geral.sairGaiola(this);
 		else
 			geral.movimentacaoGaiola();
-		aleatorio.movimentar();
+		chase.movimentar();
 		geral.teleporte();
 		geral.movimentar();
 	}

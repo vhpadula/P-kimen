@@ -10,6 +10,7 @@ public abstract class FantasmaVermelho extends Fantasmas {
 	}
 	
 	ChaseAgressive chase = new ChaseAgressive(super.controle, this);
+	Scatter scatter = new Scatter (super.controle, this, 700, 0);
 	MovimentacaoGeral geral = new MovimentacaoGeral(super.controle, this);
 
 	@Override
