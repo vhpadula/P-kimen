@@ -4,16 +4,16 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
-public class ChaseAgressive implements MovimentacaoFantasma {
-	
+public class ChaseBlue implements MovimentacaoFantasma {
+
 	Controle controle;
 	Fantasmas fantasma;
-	
-	public ChaseAgressive(Controle controle, Fantasmas fantasma) {
+
+	public ChaseBlue(Controle controle, Fantasmas fantasma) {
 		this.controle = controle;
 		this.fantasma = fantasma;
 	}
-	
+
 	public void movimentar() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
@@ -21,38 +21,61 @@ public class ChaseAgressive implements MovimentacaoFantasma {
 		}
 	}
 
-	private double getTargetVermelho(int x, int y) {
-		double distancia = Math.sqrt(Math.pow(controle.xPacman - x, 2) + Math.pow(controle.yPacman - y, 2));
+	private double mirrorPoint(double pontoReflexao, double posicaoVermelho) {
+		double target = pontoReflexao;
+		target += pontoReflexao - posicaoVermelho;
+
+		return target;
+	}
+
+	private double getTarget(int x, int y) {
+		double pontoReflexaoX = controle.xPacman, pontoReflexaoY = controle.yPacman;
+		double targetX, targetY;
+		if (controle.direcaoPacman == 'R') {
+			pontoReflexaoX += 60;
+		} else if (controle.direcaoPacman == 'L') {
+			pontoReflexaoX -= 60;
+		} else if (controle.direcaoPacman == 'D') {
+			pontoReflexaoY += 42;
+		} else if (controle.direcaoPacman == 'U') {
+			pontoReflexaoX -= 60;
+			pontoReflexaoY -= 42;
+		}
+
+		targetX = mirrorPoint(pontoReflexaoX, controle.xRedGhost);
+		targetY = mirrorPoint(pontoReflexaoY, controle.yRedGhost);
+
+		double distancia = Math.sqrt(Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
 		return distancia;
 	}
 
 	char chaseMode(ObjetoJogo tempObject) {
-		double distanciaD = 10000000;
-		double distanciaU = 10000000;
-		double distanciaL = 10000000;
+		double distanciaU = 10000003;
+		double distanciaL = 10000002;
+		double distanciaD = 10000001;
 		double distanciaR = 10000000;
 
 		if (tempObject.cruzamento.toString().contains("D") && !(fantasma.VyFantasma < 0))
-			distanciaD = getTargetVermelho(fantasma.x, fantasma.y + 1);
+			distanciaD = getTarget(fantasma.x, fantasma.y + 3);
 		if (tempObject.cruzamento.toString().contains("U") && !(fantasma.VyFantasma > 0))
-			distanciaU = getTargetVermelho(fantasma.x, fantasma.y - 1);
+			distanciaU = getTarget(fantasma.x, fantasma.y - 3);
 		if (tempObject.cruzamento.toString().contains("L") && !(fantasma.VxFantasma > 0))
-			distanciaL = getTargetVermelho(fantasma.x - 1, fantasma.y);
+			distanciaL = getTarget(fantasma.x - 3, fantasma.y);
 		if (tempObject.cruzamento.toString().contains("R") && !(fantasma.VxFantasma < 0))
-			distanciaR = getTargetVermelho(fantasma.x + 1, fantasma.y);
+			distanciaR = getTarget(fantasma.x + 3, fantasma.y);
 
-		if (distanciaD < distanciaU && distanciaD < distanciaL && distanciaD < distanciaR)
-			return 'D';
-		else if (distanciaU < distanciaD && distanciaU < distanciaL && distanciaU < distanciaR)
+		if (distanciaU <= distanciaD && distanciaU <= distanciaL && distanciaU <= distanciaR)
 			return 'U';
-		else if (distanciaL < distanciaU && distanciaL < distanciaD && distanciaL < distanciaR)
+		else if (distanciaL <= distanciaD && distanciaL <= distanciaU && distanciaL <= distanciaR)
 			return 'L';
+		else if (distanciaD <= distanciaU && distanciaD <= distanciaL && distanciaD <= distanciaR)
+			return 'D';
 		else
 			return 'R';
 
 	}
 
-	protected void cruzamento(ObjetoJogo tempObject) {
+	private void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
 			double yCruzamento = tempObject.getBounds().getCenterY();

@@ -9,7 +9,7 @@ public abstract class FantasmaRosa extends Fantasmas {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
 	}
 
-	ChaseAmbush chase = new ChaseAmbush(super.controle, this);
+	ChasePink chase = new ChasePink(super.controle, this);
 	Scatter scatter = new Scatter(super.controle, this, 0, 0);
 	MovimentacaoGeral geral = new MovimentacaoGeral(super.controle, this);
 

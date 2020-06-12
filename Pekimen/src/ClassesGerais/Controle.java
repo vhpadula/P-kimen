@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Controle {
 	public ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
 	public double xPacman, yPacman;
+	public double xRedGhost, yRedGhost;
 	public char direcaoPacman = 'R';
 
 	public void tick() {

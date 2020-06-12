@@ -9,7 +9,7 @@ public abstract class FantasmaVermelho extends Fantasmas {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
 	}
 	
-	ChaseAgressive chase = new ChaseAgressive(super.controle, this);
+	ChaseRed chase = new ChaseRed(super.controle, this);
 	Scatter scatter = new Scatter (super.controle, this, 700, 0);
 	MovimentacaoGeral geral = new MovimentacaoGeral(super.controle, this);
 
@@ -17,6 +17,8 @@ public abstract class FantasmaVermelho extends Fantasmas {
 	public void tick() {
 		x += VxFantasma;
 		y += VyFantasma;
+		controle.xRedGhost = x;
+		controle.yRedGhost = y;
 		if (gaiola)
 			geral.sairGaiola(this);
 		chase.movimentar();

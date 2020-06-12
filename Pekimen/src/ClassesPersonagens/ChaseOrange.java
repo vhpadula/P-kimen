@@ -27,10 +27,10 @@ public class ChaseOrange implements MovimentacaoFantasma {
     }
 
     char chaseMode(ObjetoJogo tempObject) {
-        double distanciaD = 10000000;
-        double distanciaU = 10000000;
-        double distanciaL = 10000000;
-        double distanciaR = 10000000;
+        double distanciaU = 10000003;
+		double distanciaL = 10000002;
+		double distanciaD = 10000001;
+		double distanciaR = 10000000;
 
         double distanciaPacman = getTargetVermelho(fantasma.x, fantasma.y, controle.xPacman, controle.yPacman);
 
@@ -54,14 +54,14 @@ public class ChaseOrange implements MovimentacaoFantasma {
                 distanciaR = getTargetVermelho(fantasma.x + 1, fantasma.y, 0, 700);
         }
 
-        if (distanciaD < distanciaU && distanciaD < distanciaL && distanciaD < distanciaR)
-            return 'D';
-        else if (distanciaU < distanciaD && distanciaU < distanciaL && distanciaU < distanciaR)
-            return 'U';
-        else if (distanciaL < distanciaU && distanciaL < distanciaD && distanciaL < distanciaR)
-            return 'L';
-        else
-            return 'R';
+        if (distanciaU <= distanciaD && distanciaU <= distanciaL && distanciaU <= distanciaR)
+			return 'U';
+		else if (distanciaL <= distanciaD && distanciaL <= distanciaU && distanciaL <= distanciaR)
+			return 'L';
+		else if (distanciaD <= distanciaU && distanciaD <= distanciaL && distanciaD <= distanciaR)
+			return 'D';
+		else  
+			return 'R';
 
     }
 
