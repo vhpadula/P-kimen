@@ -4,7 +4,7 @@ Para iniciar o projeto, basta executar a classe Main, onde se encontra a main do
 
 Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esquerda), "S" (baixo), "D" (direita) e "W" (cima), quanto as setas do teclado. Para fechar a janela, pode ser pressionada a tecla "ESC" ou selecionando o "X" no canto superior direito. Não é necessário clicar na tela para poder se movimentar.
 
-**Padrão Fábrica Abstrata:** As fábricas de cada "look-and-feel" encontra-se no pacote ClassesGerais, sendo criado um pacote para cada configuração da aparência do jogo.
+**Padrão Fábrica Abstrata:** As fábricas de cada "look-and-feel" encontra-se no pacote ClassesGerais, sendo criado um pacote para cada configuração da aparência do jogo. As fábricas são chamadas dentro da classe Menu, que está dentro do pacote ClassesInterface, onde cada botão dentro de Settings determina as aparências do jogo.
 
 **Padrão Strategy:** Encontra-se no pacote ClassesPersonagens, com a interface "MovimentacaoFantasma" implementada em "ChaseAgressive", "ChaseAmbush", "ChaseRandom" e "MovimentacaoGeral", definindo diferentes formas para os fantasminhas se movimentarem.
 
@@ -29,3 +29,5 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 07/06: Implementado movimento não aleatório para os fantasmas. Foram criados os movimentos específicos para os fantasmas rosa e vermelho.
 
 08/06: Criada a classe da selva e a sua respectiva fábrica. Agora as imagens de fundo mudam também com a seleção no "Settings".
+
+12/06: Determinados movimentos particulares para cada fantasma de acordo com o padrão Strategy.
