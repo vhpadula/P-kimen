@@ -2,11 +2,14 @@ package ClassesGerais;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import ClassesClassico.FantasmaAzulClassico;
 import ClassesClassico.FantasmaLaranjaClassico;
 import ClassesClassico.FantasmaRosaClassico;
 import ClassesClassico.FantasmaVermelhoClassico;
-
+import ClassesClassico.MusicaClassica;
 import ClassesClassico.PacmanClassico;
 import ClassesClassico.ParedeClassica;
 import ClassesClassico.PastilhaClassica;
@@ -55,6 +58,12 @@ public class FabricaClassica extends Fabrica {
 	@Override
 	public void atualizaFundo() throws IOException  {
 		jogo.janela.setImage("Classic/fundo.png");
+		
+	}
+
+	@Override
+	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+		jogo.musica = new MusicaClassica();
 		
 	}
 }

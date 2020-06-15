@@ -2,11 +2,14 @@ package ClassesGerais;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import ClassesSelva.FantasmaAzulSelva;
 import ClassesSelva.FantasmaLaranjaSelva;
 import ClassesSelva.FantasmaRosaSelva;
 import ClassesSelva.FantasmaVermelhoSelva;
+import ClassesSelva.MusicaSelva;
 import ClassesSelva.PacmanSelva;
 import ClassesSelva.ParedeSelva;
 import ClassesSelva.PastilhaSelva;
@@ -55,6 +58,12 @@ public class FabricaSelva extends Fabrica {
 	@Override
 	public void atualizaFundo() throws IOException  {
 		jogo.janela.setImage("Selva/selva.png");
+		
+	}
+
+	@Override
+	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+		jogo.musica = new MusicaSelva();
 		
 	}
 

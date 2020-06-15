@@ -9,6 +9,9 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import ClassesGerais.Controle;
 import ClassesGerais.FabricaClassica;
 import ClassesGerais.FabricaSelva;
@@ -39,9 +42,24 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Menu) {
 			if (mouseOver(mx, my, 263, 260, 320, 80)) {
 				jogo.estadoJogo = ESTADO.Jogo;
+				
 				mapa = new Mapa(true, controle, jogo, jogo.fabrica);
 				try {
 					mapa.constroiTabuleiro();
+					try {
+						jogo.fabrica.fazMusica();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
 				} catch (IOException ex) {
 
 				}

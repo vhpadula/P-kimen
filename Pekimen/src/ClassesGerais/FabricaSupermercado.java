@@ -2,6 +2,9 @@ package ClassesGerais;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import ClassesSupermercado.FantasmaAzulSupermercado;
 import ClassesSupermercado.FantasmaLaranjaSupermercado;
 import ClassesSupermercado.FantasmaRosaSupermercado;
@@ -53,6 +56,12 @@ public class FabricaSupermercado extends Fabrica {
 	@Override
 	public void atualizaFundo() throws IOException {
 		jogo.janela.setImage("Supermercado/fundo.png");
+		
+	}
+
+	@Override
+	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+		// TODO Auto-generated method stub
 		
 	}
 
