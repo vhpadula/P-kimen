@@ -25,6 +25,7 @@ public class Controle {
 			if (temp.id == ID.Pacman) {
 				if (temp.numeroPastilhas == 0) {
 					HUD.nivel++;
+					objetos.clear();
 					mapa = new Mapa(true, this, jogo, jogo.fabrica);
 					try {
 						mapa.constroiTabuleiro();
