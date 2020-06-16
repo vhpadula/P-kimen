@@ -34,6 +34,15 @@ public abstract class Fantasmas extends ObjetoJogo {
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 30, 20);
 	}
+	
+	public void SetTexture(int Vy, int Vx) {
+		if(Vx > 0) setImage(right);
+		else if(Vx < 0) setImage(left);
+		else if(Vy < 0) setImage(up);
+		else if(Vy > 0) setImage(down);
+		
+		
+	}
 
 	// Funções da movimentação aleatória
 	/*protected char sorteiaDirecao(ObjetoJogo tempObject) {

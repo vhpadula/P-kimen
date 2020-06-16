@@ -25,5 +25,6 @@ public abstract class FantasmaAzul extends Fantasmas {
 		chase.movimentar(); 
 		geral.teleporte();
 		geral.movimentar();
+		SetTexture(VyFantasma, VxFantasma);
 	}
 }

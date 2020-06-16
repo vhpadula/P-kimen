@@ -22,5 +22,6 @@ public abstract class FantasmaRosa extends Fantasmas {
 		chase.movimentar();
 		geral.teleporte();
 		geral.movimentar();
+		SetTexture(VyFantasma, VxFantasma);
 	}
 }
