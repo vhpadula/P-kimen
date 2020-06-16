@@ -16,6 +16,7 @@ import ClassesGerais.SetPath;
 public class HUD {
 	public static int pontos = 0;
 	public static int vidas = 2;
+	public static int nivel = 1;
 	Font pontosFont;
 	String imagePath = SetPath.setPath("characters/pacman_right.png");
 	BufferedImage textura;
@@ -40,6 +41,7 @@ public class HUD {
 	}
 
 	public void tick() {
+		
 	}
 
 	public void render(Graphics g) {
@@ -48,6 +50,8 @@ public class HUD {
 		g.drawString("Pontos ", 0, 30);
 		g.drawString(Integer.toString(pontos), 140, 30);
 		g.drawString("Vidas", 620, 30);
+		g.drawString("Nivel ", 0, 740);
+		g.drawString(Integer.toString(nivel), 400, 30);
 		try {
 			textura = ImageIO.read(new File(imagePath));
 		} catch (IOException e) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesSupermercado.CerejaSupermercado;
 import ClassesSupermercado.FantasmaAzulSupermercado;
 import ClassesSupermercado.FantasmaLaranjaSupermercado;
 import ClassesSupermercado.FantasmaRosaSupermercado;
@@ -12,6 +13,7 @@ import ClassesSupermercado.FantasmaVermelhoSupermercado;
 import ClassesSupermercado.PacmanSupermercado;
 import ClassesSupermercado.ParedeSupermercado;
 import ClassesSupermercado.PastilhaSupermercado;
+import ClassesSupermercado.PilulaSupermercado;
 import ClassesSupermercado.PortaoSupermercado;
 
 public class FabricaSupermercado extends Fabrica {
@@ -33,6 +35,16 @@ public class FabricaSupermercado extends Fabrica {
 	@Override
 	public void fazPastilhas(int x, int y) throws IOException {
 		controle.objetos.add(new PastilhaSupermercado(x, y, ID.Pastilha, controle, ""));
+	}
+	
+	@Override
+	public void fazCerejas(int x, int y) throws IOException {
+		controle.objetos.add(new CerejaSupermercado(x, y, ID.Cereja, controle, ""));
+	}
+	
+	@Override
+	public void fazPilulas(int x, int y) throws IOException {
+		controle.objetos.add(new PilulaSupermercado(x, y, ID.Pilula, controle, ""));
 	}
 
 	@Override
@@ -61,7 +73,6 @@ public class FabricaSupermercado extends Fabrica {
 
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-		// TODO Auto-generated method stub
 		
 	}
 

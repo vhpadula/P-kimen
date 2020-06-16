@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesClassico.CerejaClassico;
 import ClassesClassico.FantasmaAzulClassico;
 import ClassesClassico.FantasmaLaranjaClassico;
 import ClassesClassico.FantasmaRosaClassico;
@@ -13,6 +14,7 @@ import ClassesClassico.MusicaClassica;
 import ClassesClassico.PacmanClassico;
 import ClassesClassico.ParedeClassica;
 import ClassesClassico.PastilhaClassica;
+import ClassesClassico.PilulaClassica;
 import ClassesClassico.PortaoClassico;
 
 public class FabricaClassica extends Fabrica {
@@ -35,6 +37,16 @@ public class FabricaClassica extends Fabrica {
 	@Override
 	public void fazPastilhas(int x, int y) throws IOException {
 		controle.objetos.add(new PastilhaClassica(x, y, ID.Pastilha, controle, ""));
+	}
+	
+	@Override
+	public void fazCerejas(int x, int y) throws IOException {
+		controle.objetos.add(new CerejaClassico(x, y, ID.Cereja, controle, ""));
+	}
+	
+	@Override
+	public void fazPilulas(int x, int y) throws IOException {
+		controle.objetos.add(new PilulaClassica(x, y, ID.Pilula, controle, ""));
 	}
 
 	@Override

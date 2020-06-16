@@ -3,7 +3,7 @@
 ||||||||||||||||||||||||||||
 |oooooooooooo||oooooooooooo|
 |o||||o|||||o||o|||||o||||o|
-|o||||o|||||o||o|||||o||||o|
+|o||||o|||||o||o|||||o||||O|
 |o||||o|||||o||o|||||o||||o|
 |oooooooooooooooooooooooooo|
 |o||||o||o||||||||o||o||||o|
@@ -14,7 +14,7 @@
      |o||     v    ||o|
      |o|| |||__||| ||o|
 ||||||o|| ||    || ||o||||||
-x     o   ||arl ||   o     x
+xxxxx o   ||arl ||   o xxxxx
 ||||||o|| ||    || ||o||||||
      |o|| |||||||| ||o|
      |o||     c    ||o|
@@ -25,7 +25,7 @@ x     o   ||arl ||   o     x
 |o||||o|||||o||o|||||o||||o|
 |ooo||oooooooooooooooo||ooo|
 |||o||o||o||||||||o||o||o|||
-|||o||o||o||||||||o||o||o|||
+|||C||o||o||||||||o||o||o|||
 |oooooo||oooo||oooo||oooooo|
 |o||||||||||o||o||||||||||o|
 |o||||||||||o||o||||||||||o|

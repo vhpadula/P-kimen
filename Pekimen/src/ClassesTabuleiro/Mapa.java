@@ -60,36 +60,38 @@ public class Mapa {
 			this.fazPacman();
 			this.fazFantasma();
 			this.fazCruzamentos();
+			this.fazCerejas();
+			this.fazPilulas();
 
 		}
 	}
 
 	String identificaCruzamentos(int i, int j) {
 		String cruzamento = "";
-		if (map[i][j] == 'o' || map[i][j] == ' ') {
+		if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'O' || map[i][j] == ' ') {
 			if (i == 0) {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'O' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
 			} else if (i == rows - 1) {
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'O' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			} else {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'O' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'O' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			}
 
 			if (j == 0) {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'O' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
 			} else if (j == cols - 1) {
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'O' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			} else {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'O' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'O' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			}
 		}
@@ -130,6 +132,27 @@ public class Mapa {
 			}
 		}
 	}
+	
+	void fazCerejas() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'C') {
+					fabrica.fazCerejas(j, i);
+
+				}
+			}
+		}
+	}
+	
+	void fazPilulas() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'O') {
+					fabrica.fazPilulas(j, i);
+				}
+			}
+		}
+	}
 
 	void fazPacman() throws IOException {
 		for (int i = 0; i < rows; i++) {
@@ -153,7 +176,7 @@ public class Mapa {
 	void fazCruzamentos() {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				if (map[i][j] == 'o' || map[i][j] == ' ') {
+				if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'O' || map[i][j] == ' ') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						String cruzamento = identificaCruzamentos(i, j);
 						if ((cruzamento.contains("U") || cruzamento.contains("D"))

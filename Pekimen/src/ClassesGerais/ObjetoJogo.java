@@ -9,8 +9,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class ObjetoJogo {
+	int numeroPastilhas = 249;
 	public int x, Vx;
 	public int y, Vy;
+	public int velocidade = 2;
 	public int valorVAnterior = 0;
 	protected ID id;
 	public String vAnterior = null;
@@ -46,6 +48,10 @@ public abstract class ObjetoJogo {
 	public abstract void render(Graphics g);
 
 	public abstract Rectangle getBounds();
+	
+	public void setNumeroPastilhas() {
+		numeroPastilhas--;
+	}
 
 	public void setX(int x) {
 		this.x = x;
@@ -69,6 +75,10 @@ public abstract class ObjetoJogo {
 
 	public void setVy(int Vy) {
 		this.Vy = Vy;
+	}
+	
+	public void setVel(int v) {
+		this.velocidade = v;
 	}
 
 	public void setVAnterior() {

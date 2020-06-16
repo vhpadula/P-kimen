@@ -18,6 +18,10 @@ public abstract class Fabrica {
 	abstract public void fazPortao(int x, int y) throws IOException;
 
 	abstract public void fazPastilhas(int x, int y) throws IOException;
+	
+	abstract public void fazCerejas(int x, int y) throws IOException;
+	
+	abstract public void fazPilulas(int x, int y) throws IOException;
 
 	abstract public void fazPacman(int x, int y) throws IOException;
 

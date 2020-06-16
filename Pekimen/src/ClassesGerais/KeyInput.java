@@ -20,34 +20,34 @@ public class KeyInput extends KeyAdapter {
 				temp.setVAnterior();
 
 				if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
-					if (temp.Vy != -2) {
+					if (temp.Vy != -(temp.velocidade)) {
 						temp.movimentoDesejado = "U";
 					}
-					temp.setVy(-2);
+					temp.setVy(-(temp.velocidade));
 					temp.setVx(0);
 					temp.setImage(temp.up);
 				}
 				if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN) {
-					if (temp.Vy != 2) {
+					if (temp.Vy != temp.velocidade) {
 						temp.movimentoDesejado = "D";
 					}
-					temp.setVy(2);
+					temp.setVy(temp.velocidade);
 					temp.setVx(0);
 					temp.setImage(temp.down);
 				}
 				if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
-					if (temp.Vx != -2) {
+					if (temp.Vx != -temp.velocidade) {
 						temp.movimentoDesejado = "L";
 					}
-					temp.setVx(-2);
+					temp.setVx(-(temp.velocidade));
 					temp.setVy(0);
 					temp.setImage(temp.left);
 				}
 				if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
-					if (temp.Vx != 2) {
+					if (temp.Vx != temp.velocidade) {
 						temp.movimentoDesejado = "R";
 					}
-					temp.setVx(2);
+					temp.setVx(temp.velocidade);
 					temp.setVy(0);
 					temp.setImage(temp.right);
 				}

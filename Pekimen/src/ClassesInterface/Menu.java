@@ -49,13 +49,10 @@ public class Menu extends MouseAdapter {
 					try {
 						jogo.fabrica.fazMusica();
 					} catch (LineUnavailableException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					

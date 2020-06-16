@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesSelva.CerejaSelva;
 import ClassesSelva.FantasmaAzulSelva;
 import ClassesSelva.FantasmaLaranjaSelva;
 import ClassesSelva.FantasmaRosaSelva;
@@ -13,6 +14,7 @@ import ClassesSelva.MusicaSelva;
 import ClassesSelva.PacmanSelva;
 import ClassesSelva.ParedeSelva;
 import ClassesSelva.PastilhaSelva;
+import ClassesSelva.PilulaSelva;
 import ClassesSelva.PortaoSelva;
 
 public class FabricaSelva extends Fabrica {
@@ -35,6 +37,16 @@ public class FabricaSelva extends Fabrica {
 	@Override
 	public void fazPastilhas(int x, int y) throws IOException {
 		controle.objetos.add(new PastilhaSelva(x, y, ID.Pastilha, controle, ""));
+	}
+	
+	@Override
+	public void fazCerejas(int x, int y) throws IOException {
+		controle.objetos.add(new CerejaSelva(x, y, ID.Cereja, controle, ""));
+	}
+	
+	@Override
+	public void fazPilulas(int x, int y) throws IOException {
+		controle.objetos.add(new PilulaSelva(x, y, ID.Pilula, controle, ""));
 	}
 
 	@Override

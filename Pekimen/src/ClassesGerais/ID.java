@@ -7,5 +7,7 @@ public enum ID {
 	Pacman(),
 	Fantasma(),
 	Cruzamento(),
-	Fundo()
+	Fundo(),
+	Cereja(),
+	Pilula(),
 }

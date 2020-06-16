@@ -3,6 +3,9 @@ package ClassesPersonagens;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;
@@ -14,6 +17,13 @@ public abstract class Pacman extends ObjetoJogo {
 	Controle controle;
 	int xInicial;
 	int yInicial;
+	int secondsPassed = 0;
+	Timer timer = new Timer();
+	TimerTask task = new TimerTask() {
+		public void run() {
+			secondsPassed++;
+		}
+	};
 
 	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
@@ -46,6 +56,9 @@ public abstract class Pacman extends ObjetoJogo {
 		} else if (Vx > 0) {
 			controle.direcaoPacman = 'R';
 		}
+		if (secondsPassed == 3) {
+			this.setVel(2);
+		}
 	}
 
 	@Override
@@ -60,6 +73,8 @@ public abstract class Pacman extends ObjetoJogo {
 			colisao(tempObject);
 			comePastilha(tempObject, i);
 			colisaoFantasma(tempObject);
+			comeCereja(tempObject, i);
+			comePilula(tempObject, i);
 		}
 	}
 
@@ -73,21 +88,21 @@ public abstract class Pacman extends ObjetoJogo {
 					|| (xPacman == xCruzamento - 1.5 && yPacman == yCruzamento - 0.5)) {
 				if (movimentoDesejado == "U" && tempObject.cruzamento.contains("U")) {
 					Vx = 0;
-					Vy = -2;
+					Vy = -(this.velocidade);
 					setImage(up);
 					vAnterior = "V";
 				} else if (movimentoDesejado == "D" && tempObject.cruzamento.contains("D")) {
 					Vx = 0;
-					Vy = 2;
+					Vy = this.velocidade;
 					setImage(down);
 					vAnterior = "V";
 				} else if (movimentoDesejado == "R" && tempObject.cruzamento.contains("R")) {
-					Vx = 2;
+					Vx = this.velocidade;
 					Vy = 0;
 					setImage(right);
 					vAnterior = "H";
 				} else if (movimentoDesejado == "L" && tempObject.cruzamento.contains("L")) {
-					Vx = -2;
+					Vx = -(this.velocidade);
 					Vy = 0;
 					setImage(left);
 					vAnterior = "H";
@@ -153,6 +168,28 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(10);
+				super.setNumeroPastilhas();
+			}
+		}
+	}
+
+	private void comeCereja(ObjetoJogo tempObject, int i) {
+		if (tempObject.getID() == ID.Cereja) {
+			if (getBounds().intersects(tempObject.getBounds())) {
+				controle.objetos.remove(i);
+				HUD.setPontos(20);
+				timer.scheduleAtFixedRate(task, 1000, 1000);
+				DecoratorSpeedUp speed = new DecoratorSpeedUp(0, 0, ID.Cereja, this.controle, "");
+				speed.setVel(this);
+			}
+		}
+	}
+	
+	private void comePilula(ObjetoJogo tempObject, int i) {
+		if (tempObject.getID() == ID.Pilula) {
+			if (getBounds().intersects(tempObject.getBounds())) {
+				controle.objetos.remove(i);
+				HUD.setPontos(50);
 			}
 		}
 	}

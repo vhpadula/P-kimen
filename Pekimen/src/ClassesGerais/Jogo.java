@@ -36,8 +36,8 @@ public class Jogo extends Canvas implements Runnable {
 	public ESTADO estadoJogo = ESTADO.Menu;
 
 	public Jogo() throws IOException {
-		controle = new Controle();
 		hud = new HUD();
+		controle = new Controle(this);
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 
 		fabrica = new FabricaClassica(controle,this);
@@ -114,7 +114,7 @@ public class Jogo extends Canvas implements Runnable {
 		
 		if (estadoJogo == ESTADO.Jogo) {
 			hud.tick();
-			if (HUD.vidas == -1 || HUD.pontos == 2500) {
+			if (HUD.vidas == -1) {
 				HUD.vidas = 2;
 				controle.objetos.clear();
 				estadoJogo = ESTADO.End;
