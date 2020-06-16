@@ -9,8 +9,11 @@ public class FantasmaAzulSelva extends FantasmaAzul {
 	public FantasmaAzulSelva(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
-		this.imagePath = "Classic/fantasmaAzul.png";
-		this.ajustaTextura();
+		this.up = "Classic/fantasmaAzulU.png";
+		this.down = "Classic/fantasmaAzulD.png";
+		this.left = "Classic/fantasmaAzulL.png";
+		this.right = "Classic/fantasmaAzulR.png";
+		this.setImage("Classic/fantasmaAzulR.png");
 	}
 
 }

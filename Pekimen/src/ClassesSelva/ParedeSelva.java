@@ -10,8 +10,7 @@ public class ParedeSelva extends Parede {
 
 	public ParedeSelva(int x, int y, ID id, Controle controle, String cruzamento) throws IOException {
 		super(x, y, id, controle, cruzamento);
-		this.imagePath = "Selva/terra.png";
-		this.ajustaTextura();
+		this.setImage("Selva/terra.png");
 	}
 
 }

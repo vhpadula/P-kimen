@@ -8,8 +8,7 @@ public class PastilhaClassica extends Pastilha {
 
 	public PastilhaClassica(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
-		this.imagePath = "Classic/pirula.png";
-		this.ajustaTextura();
+		this.setImage("Classic/pirula.png");
 	}
 
 }

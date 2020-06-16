@@ -10,8 +10,7 @@ public class PortaoSelva extends Portao {
 
 	public PortaoSelva(int x, int y, ID id, Controle controle, String cruzamento) throws IOException {
 		super(x, y, id, controle, cruzamento);
-		this.imagePath = "Selva/gate.png";
-		this.ajustaTextura();
+		this.setImage("Selva/gate.png");
 	}
 
 }

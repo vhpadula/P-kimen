@@ -34,15 +34,6 @@ public abstract class ObjetoJogo {
 		this.cruzamento = cruzamento;
 	}
 
-	public void ajustaTextura() {
-		imagePath = SetPath.setPath(imagePath);
-		try {
-			this.textura = ImageIO.read(new File(imagePath));
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-	}
-
 	public abstract void tick();
 
 	public abstract void render(Graphics g);

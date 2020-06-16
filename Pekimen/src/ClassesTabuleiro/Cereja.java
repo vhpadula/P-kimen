@@ -15,7 +15,7 @@ public abstract class Cereja extends ObjetoJogo {
 	
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(30 * x + 5, 21 * y + 5, 20, 20);
+		return new Rectangle(30 * x + 5, 21 * y + 5, 15, 15);
 	}
 
 	@Override
