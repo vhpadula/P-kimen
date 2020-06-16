@@ -45,18 +45,7 @@ public class Menu extends MouseAdapter {
 				
 				mapa = new Mapa(true, controle, jogo, jogo.fabrica);
 				try {
-					mapa.constroiTabuleiro();
-					try {
-						jogo.fabrica.fazMusica();
-					} catch (LineUnavailableException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					} catch (UnsupportedAudioFileException e1) {
-						e1.printStackTrace();
-					}
-					
-					
+					mapa.constroiTabuleiro();			
 				} catch (IOException ex) {
 
 				}
@@ -83,7 +72,9 @@ public class Menu extends MouseAdapter {
 				jogo.fabrica = new FabricaClassica(controle,jogo);
 				try {
 					jogo.fabrica.atualizaFundo();
-				} catch (IOException e1) {
+					jogo.musica.para();
+					jogo.fabrica.fazMusica();
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 					e1.printStackTrace();
 				}
 			}
@@ -94,8 +85,10 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 490, 230, 225, 70)) {
 				jogo.fabrica = new FabricaSelva(controle,jogo);
 				try {
+					jogo.musica.para();
 					jogo.fabrica.atualizaFundo();
-				} catch (IOException e1) {
+					jogo.fabrica.fazMusica();
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 					e1.printStackTrace();
 				}
 			}

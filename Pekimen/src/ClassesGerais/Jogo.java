@@ -7,6 +7,9 @@ import java.awt.image.BufferStrategy;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import ClassesInterface.ESTADO;
 import ClassesInterface.GameOver;
 import ClassesInterface.HUD;
@@ -49,6 +52,12 @@ public class Jogo extends Canvas implements Runnable {
 
 		this.addMouseListener(menu);
 		this.addKeyListener(new KeyInput(controle));
+		
+		try {
+			this.fabrica.fazMusica();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+			e1.printStackTrace();
+		}		
 	}
 
 	public static int teleporte(int var, int min, int max) {
