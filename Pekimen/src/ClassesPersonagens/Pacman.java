@@ -18,12 +18,6 @@ public abstract class Pacman extends ObjetoJogo {
 	int xInicial;
 	int yInicial;
 	int secondsPassed = 0;
-	Timer timer = new Timer();
-	TimerTask task = new TimerTask() {
-		public void run() {
-			secondsPassed++;
-		}
-	};
 
 	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
@@ -178,6 +172,12 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(20);
+				Timer timer = new Timer();
+				TimerTask task = new TimerTask() {
+					public void run() {
+						secondsPassed++;
+					}
+				};
 				timer.scheduleAtFixedRate(task, 1000, 1000);
 				DecoratorSpeedUp speed = new DecoratorSpeedUp(0, 0, ID.Cereja, this.controle, "");
 				speed.setVel(this);
