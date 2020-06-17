@@ -31,3 +31,9 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 08/06: Criada a classe da selva e a sua respectiva fábrica. Agora as imagens de fundo mudam também com a seleção no "Settings".
 
 12/06: Determinados movimentos particulares para cada fantasma de acordo com o padrão Strategy.
+
+14/06: Implementação de música no jogo.
+
+15/06: Criamos o poder da "Cereja", que deixa o pacman momentaneamente mais rápido. Ajustes na música e criada a contagem de níveis.
+
+16/06: Adaptação do poder "cereja" para se encaixar como decorator, assim como a criação do poder ímã, entretanto, ainda não é possível ter os dois poderes ao mesmo tempo.
