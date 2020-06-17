@@ -8,15 +8,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public abstract class ObjetoJogo {
-	int numeroPastilhas = 248;
+public abstract class ObjetoJogo implements Cloneable {
+	public int numeroPastilhas = 248;
 	public int x, Vx;
 	public int y, Vy;
 	public int velocidade = 2;
 	public int valorVAnterior = 0;
 	protected ID id;
 	public String vAnterior = null;
-	protected String movimentoDesejado = null;
+	public String movimentoDesejado = null;
 	public String cruzamento;
 	public Controle controle;
 	protected BufferedImage textura;

@@ -2,9 +2,10 @@ package ClassesClassico;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesPersonagens.Pacman;
+import ClassesPersonagens.PacmanBasico;
 
-public class PacmanClassico extends Pacman {
+
+public class PacmanClassico extends PacmanBasico {
 
 	public PacmanClassico(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);

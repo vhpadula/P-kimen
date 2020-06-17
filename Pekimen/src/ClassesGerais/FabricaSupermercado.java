@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesClassico.ImaClassico;
 import ClassesSupermercado.CerejaSupermercado;
 import ClassesSupermercado.FantasmaAzulSupermercado;
 import ClassesSupermercado.FantasmaLaranjaSupermercado;
@@ -73,6 +74,12 @@ public class FabricaSupermercado extends Fabrica {
 
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+		
+	}
+
+	@Override
+	public void fazImas(int x, int y) throws IOException {
+		controle.objetos.add(new ImaClassico(x,y,ID.Ima, controle, ""));
 		
 	}
 

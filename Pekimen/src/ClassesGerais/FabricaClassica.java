@@ -10,6 +10,7 @@ import ClassesClassico.FantasmaAzulClassico;
 import ClassesClassico.FantasmaLaranjaClassico;
 import ClassesClassico.FantasmaRosaClassico;
 import ClassesClassico.FantasmaVermelhoClassico;
+import ClassesClassico.ImaClassico;
 import ClassesClassico.MusicaClassica;
 import ClassesClassico.PacmanClassico;
 import ClassesClassico.ParedeClassica;
@@ -76,6 +77,12 @@ public class FabricaClassica extends Fabrica {
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		jogo.musica = new MusicaClassica();
+		
+	}
+
+	@Override
+	public void fazImas(int x, int y) throws IOException {
+		controle.objetos.add(new ImaClassico(x,y,ID.Ima, controle, "" ));
 		
 	}
 }

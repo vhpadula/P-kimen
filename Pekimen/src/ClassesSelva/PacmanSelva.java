@@ -2,9 +2,10 @@ package ClassesSelva;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesPersonagens.Pacman;
+import ClassesPersonagens.PacmanBasico;
 
-public class PacmanSelva extends Pacman{
+
+public class PacmanSelva extends PacmanBasico{
 
 	public PacmanSelva(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);

@@ -10,4 +10,5 @@ public enum ID {
 	Fundo(),
 	Cereja(),
 	Pilula(),
+	Ima(),
 }

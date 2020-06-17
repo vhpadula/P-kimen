@@ -62,6 +62,7 @@ public class Mapa {
 			this.fazCruzamentos();
 			this.fazCerejas();
 			this.fazPilulas();
+			this.fazImas();
 
 		}
 	}
@@ -138,6 +139,17 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'C') {
 					fabrica.fazCerejas(j, i);
+
+				}
+			}
+		}
+	}
+	
+	void fazImas() throws IOException {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (map[i][j] == 'I') {
+					fabrica.fazImas(j, i);
 
 				}
 			}

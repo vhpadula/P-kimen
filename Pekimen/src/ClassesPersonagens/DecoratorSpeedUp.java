@@ -12,7 +12,7 @@ public class DecoratorSpeedUp extends ObjetoJogoDecorator {
 		super(x, y, id, controle, cruzamento);
 	}
 
-	public void setVel(Pacman pacman) {
+	public void setVel(PacmanBasico pacman) {
 		pacman.setVel(3);
 	}
 

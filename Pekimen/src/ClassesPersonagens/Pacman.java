@@ -17,13 +17,17 @@ public abstract class Pacman extends ObjetoJogo {
 	Controle controle;
 	int xInicial;
 	int yInicial;
-	int secondsPassed = 0;
+	int tempoRapido=3;
+	int tempoColetor=3;
+	int segundosRapido = 0;
+	int segundosColetor=0;
 
 	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 		this.controle = controle;
 		this.xInicial = x;
 		this.yInicial = y;
+		
 	}
 
 	@Override
@@ -33,6 +37,7 @@ public abstract class Pacman extends ObjetoJogo {
 
 	@Override
 	public void tick() {
+		
 		x += Vx;
 		y += Vy;
 		// abrange os casos de teleporte
@@ -50,9 +55,7 @@ public abstract class Pacman extends ObjetoJogo {
 		} else if (Vx > 0) {
 			controle.direcaoPacman = 'R';
 		}
-		if (secondsPassed == 3) {
-			this.setVel(2);
-		}
+		
 	}
 
 	@Override
@@ -60,7 +63,7 @@ public abstract class Pacman extends ObjetoJogo {
 		g.drawImage(textura, x, y, 30, 20, null);
 	}
 
-	private void movimentacao() {
+	void movimentacao() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
 			cruzamento(tempObject);
@@ -69,10 +72,11 @@ public abstract class Pacman extends ObjetoJogo {
 			colisaoFantasma(tempObject);
 			comeCereja(tempObject, i);
 			comePilula(tempObject, i);
+			comeIma(tempObject,i);
 		}
 	}
 
-	private void cruzamento(ObjetoJogo tempObject) {
+	void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
 			double yCruzamento = tempObject.getBounds().getCenterY();
@@ -105,10 +109,10 @@ public abstract class Pacman extends ObjetoJogo {
 		}
 	}
 
-	private void colisao(ObjetoJogo tempObject) {
+	void colisao(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Parede) {
 			if (getBounds().intersects(tempObject.getBounds())) {
-				if (!(tempObject.cruzamento == "U" && Vy == -2)) {
+				if (!(tempObject.cruzamento == "U" && Vy <0)) {
 					x -= Vx;
 					y -= Vy;
 
@@ -144,7 +148,7 @@ public abstract class Pacman extends ObjetoJogo {
 		}
 	}
 
-	private void colisaoFantasma(ObjetoJogo tempObject) {
+	void colisaoFantasma(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Fantasma) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				HUD.setVidas(1);
@@ -157,7 +161,7 @@ public abstract class Pacman extends ObjetoJogo {
 		}
 	}
 
-	private void comePastilha(ObjetoJogo tempObject, int i) {
+	void comePastilha(ObjetoJogo tempObject, int i) {
 		if (tempObject.getID() == ID.Pastilha) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
@@ -167,12 +171,15 @@ public abstract class Pacman extends ObjetoJogo {
 		}
 	}
 
-	private void comeCereja(ObjetoJogo tempObject, int i) {
+	void comeCereja(ObjetoJogo tempObject, int i) {
 		if (tempObject.getID() == ID.Cereja) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
+				System.out.println("comicereja");
 				HUD.setPontos(20);
-				Timer timer = new Timer();
+				
+				
+				/*Timer timer = new Timer();
 				TimerTask task = new TimerTask() {
 					public void run() {
 						secondsPassed++;
@@ -180,12 +187,36 @@ public abstract class Pacman extends ObjetoJogo {
 				};
 				timer.scheduleAtFixedRate(task, 1000, 1000);
 				DecoratorSpeedUp speed = new DecoratorSpeedUp(0, 0, ID.Cereja, this.controle, "");
-				speed.setVel(this);
+				speed.setVel(this);*/
+				
+				for (int j =0 ; j<controle.objetos.size();j++) {
+					if (controle.objetos.get(j).getID()== ID.Pacman) {
+						Pacman temp= (Pacman) controle.objetos.get(j);
+						
+						controle.objetos.set(j,new Rapido(this.x,this.y, ID.Pacman, this.controle,this.cruzamento,temp) );
+						
+					}
+				}
 			}
 		}
 	}
 	
-	private void comePilula(ObjetoJogo tempObject, int i) {
+	void comeIma(ObjetoJogo tempObject,int i) {
+		if(tempObject.getID()==ID.Ima) {
+			if (getBounds().intersects(tempObject.getBounds())) {
+				controle.objetos.remove(i);
+				HUD.setPontos(20);
+				for (int j =0 ; j<controle.objetos.size();j++) {
+					if (controle.objetos.get(j).getID()== ID.Pacman) {
+						Pacman temp= (Pacman) controle.objetos.get(j);
+						controle.objetos.set(j,new Coletor(this.x,this.y, ID.Pacman, this.controle,this.cruzamento,temp));
+						
+					}
+				}
+			}
+		}
+	}
+	void comePilula(ObjetoJogo tempObject, int i) {
 		if (tempObject.getID() == ID.Pilula) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);

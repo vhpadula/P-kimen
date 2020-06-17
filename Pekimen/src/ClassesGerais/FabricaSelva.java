@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesClassico.ImaClassico;
 import ClassesSelva.CerejaSelva;
 import ClassesSelva.FantasmaAzulSelva;
 import ClassesSelva.FantasmaLaranjaSelva;
@@ -76,6 +77,12 @@ public class FabricaSelva extends Fabrica {
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		jogo.musica = new MusicaSelva();
+		
+	}
+
+	@Override
+	public void fazImas(int x, int y) throws IOException {
+		controle.objetos.add(new ImaClassico(x,y,ID.Ima, controle, ""));
 		
 	}
 
