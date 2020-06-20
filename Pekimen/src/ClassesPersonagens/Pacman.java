@@ -3,9 +3,6 @@ package ClassesPersonagens;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;

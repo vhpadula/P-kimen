@@ -5,9 +5,7 @@ import java.awt.Rectangle;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesGerais.Jogo;
 import ClassesGerais.ObjetoJogo;
-import ClassesInterface.HUD;
 
 public abstract class DecoratorPacman extends Pacman {
 	
@@ -55,7 +53,7 @@ public abstract class DecoratorPacman extends Pacman {
 	public void tick() {
 		super.tick();
 		if (segundosRapido == 3) {
-			this.velocidade=2;
+			this.velocidade=pacDecorado.velocidade;
 	
 			
 		}

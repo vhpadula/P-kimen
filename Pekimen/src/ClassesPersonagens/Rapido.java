@@ -6,8 +6,6 @@ import java.util.TimerTask;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Nivel;
-import ClassesGerais.ObjetoJogo;
-import ClassesInterface.HUD;
 
 
 public class Rapido extends DecoratorPacman {

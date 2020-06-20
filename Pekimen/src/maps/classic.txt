@@ -5,7 +5,7 @@
 |o||||o|||||o||o|||||o||||o|
 |o||||o|||||o||o|||||o||||o|
 |o||||o|||||o||o|||||o||||o|
-|oooooooooooooooooooooooooo|
+|ooooooIooooooooooooooooooo|
 |o||||o||o||||||||o||o||||o|
 |o||||o||o||||||||o||o||||o|
 |oooooo||oooo||oooo||oooooo|
