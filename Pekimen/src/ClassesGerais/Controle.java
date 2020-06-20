@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import ClassesInterface.HUD;
 import ClassesTabuleiro.Mapa;
 
+
 public class Controle {
 	public ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
 	public double xPacman, yPacman;
@@ -13,7 +14,6 @@ public class Controle {
 	public char direcaoPacman = 'R';
 	Mapa mapa;
 	Jogo jogo;
-	
 	public Controle (Jogo jogo) {
 		this.jogo = jogo;
 	}

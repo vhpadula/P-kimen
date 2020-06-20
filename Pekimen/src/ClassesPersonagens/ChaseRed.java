@@ -63,18 +63,18 @@ public class ChaseRed implements MovimentacaoFantasma {
 				char direcao = chaseMode(tempObject);
 				if (direcao == 'U') {
 					fantasma.VxFantasma = 0;
-					fantasma.VyFantasma = -2;
+					fantasma.VyFantasma = -1 * fantasma.velocidade;
 					fantasma.vAnterior = "V";
 				} else if (direcao == 'D') {
 					fantasma.VxFantasma = 0;
-					fantasma.VyFantasma = 2;
+					fantasma.VyFantasma = fantasma.velocidade;
 					fantasma.vAnterior = "V";
 				} else if (direcao == 'R') {
-					fantasma.VxFantasma = 2;
+					fantasma.VxFantasma = fantasma.velocidade;
 					fantasma.VyFantasma = 0;
 					fantasma.vAnterior = "H";
 				} else if (direcao == 'L') {
-					fantasma.VxFantasma = -2;
+					fantasma.VxFantasma = -1 * fantasma.velocidade;
 					fantasma.VyFantasma = 0;
 					fantasma.vAnterior = "H";
 				}

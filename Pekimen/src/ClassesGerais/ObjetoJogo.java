@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public abstract class ObjetoJogo implements Cloneable {
+public abstract class ObjetoJogo{
 	public int numeroPastilhas = 248;
 	public int x, Vx;
 	public int y, Vy;

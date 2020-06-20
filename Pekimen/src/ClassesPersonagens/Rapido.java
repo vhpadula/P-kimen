@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
+import ClassesGerais.Nivel;
 import ClassesGerais.ObjetoJogo;
 import ClassesInterface.HUD;
 
@@ -22,13 +23,12 @@ public class Rapido extends DecoratorPacman {
 			}
 		};
 		timerr.scheduleAtFixedRate(task, 1000, 1000);
-		if (pacDecorado.velocidade==2) {
+		if (pacDecorado.velocidade==Nivel.vPacman)  {
 			this.velocidade=pacDecorado.velocidade+1;
 		}
 		
 		
 	}
-	
 	
 	@Override
 	public void tick() {

@@ -69,7 +69,7 @@ public abstract class Pacman extends ObjetoJogo {
 			cruzamento(tempObject);
 			colisao(tempObject);
 			comePastilha(tempObject, i);
-			colisaoFantasma(tempObject);
+			//colisaoFantasma(tempObject);
 			comeCereja(tempObject, i);
 			comePilula(tempObject, i);
 			comeIma(tempObject,i);
@@ -175,7 +175,7 @@ public abstract class Pacman extends ObjetoJogo {
 		if (tempObject.getID() == ID.Cereja) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
-				System.out.println("comicereja");
+				
 				HUD.setPontos(20);
 				
 				

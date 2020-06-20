@@ -7,8 +7,13 @@ import ClassesGerais.Fabrica;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;
+import ClassesGerais.Nivel;
 import ClassesGerais.SetPath;
 import ClassesInterface.ESTADO;
+import ClassesInterface.HUD;
+import Niveis.Nivel5pMais;
+import Niveis.NivelDoisAQuatro;
+import Niveis.NivelUm;
 
 public class Mapa {
 	public int rows;
@@ -17,7 +22,7 @@ public class Mapa {
 	Controle controle;
 	Jogo jogo;
 	Fabrica fabrica;
-
+	Nivel nivel;
 	public Mapa(boolean load, Controle ctrl, Jogo jogo, Fabrica fabrica) {
 		this.jogo = jogo;
 		this.fabrica = fabrica;
@@ -63,7 +68,19 @@ public class Mapa {
 			this.fazCerejas();
 			this.fazPilulas();
 			this.fazImas();
-
+			//if (HUD.nivel == 1) {
+				this.nivel= new NivelUm(controle);
+			//}
+			
+			//if(HUD.nivel>=2 && HUD.nivel<=4 ) {
+				this.nivel= new NivelDoisAQuatro(controle);
+			//}
+		
+			if(HUD.nivel>=1 ) {
+				this.nivel= new Nivel5pMais(controle);
+			}
+			
+			this.atualizaNivel();
 		}
 	}
 
@@ -199,5 +216,12 @@ public class Mapa {
 				}
 			}
 		}
+		
 	}
+	
+	void atualizaNivel() {
+		nivel.handle();
+	}
+	
+	
 }
