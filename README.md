@@ -8,6 +8,10 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 
 **Padrão Strategy:** Encontra-se no pacote ClassesPersonagens, com a interface "MovimentacaoFantasma" implementada em "ChaseAgressive", "ChaseAmbush", "ChaseRandom" e "MovimentacaoGeral", definindo diferentes formas para os fantasminhas se movimentarem.
 
+**Padrão State:** Representado no pacote de "Niveis", onde separamos as caracteristicas dos diferentes estados de acordo com os niveis, ou seja, o nível 1 tem um estado, os níveis 2 a 4 têm outro e os níveis de 5 para cima têm outro. Muda-se a velocidade dos fantasmas, do pacman e a quantidade de "poderes" apresentados no mapa.
+
+**Padrão Decorator:** Utilizado, como instruído, quando o Pacman obtém poderes. Eles estão dentro do pacote de "ClassesPersonagens", e são representados pelo ímã (PacmanColetor; maior alcance de pastilhas), pela cereja (PacmanRapido; maior velocidade) e pela pílula (FantasmasComestíveis; Pacman capaz de "comer" fantasmas).
+
 14/05: Criada a classe para criar janela do jogo, e configurada para mostrar imagem de fundo. Também foram criadas classes para configurar os objetos do jogo, entretanto nada foi implementado ainda. Foi utilizado como base o vídeo disponibilizado pelo professor na proposta do trabalho e outros sites para incluir a imagem.
 
 15/05: Foi adaptada a geração da janela com imagens de forma a atender requisitos de diferentes sistemas operacionais. Além disso, o programa já é capaz de gerar o labirinto, posicionando cubos para formar as paredes de acordo com um arquivo .txt, o qual também será útil para posicionar os outros itens do mapa e para detectar lugares onde o Pacman não poderá se movimentar. E possibilitamos a mudança de tamanho da janela, entretanto ainda há problemas a serem resolvidos quanto a isso.
@@ -36,4 +40,8 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 
 15/06: Criamos o poder da "Cereja", que deixa o pacman momentaneamente mais rápido. Ajustes na música e criada a contagem de níveis.
 
-16/06: Adaptação do poder "cereja" para se encaixar como decorator, assim como a criação do poder ímã, entretanto, ainda não é possível ter os dois poderes ao mesmo tempo.
+16/06: Adaptação do poder "Cereja" para se encaixar como decorator, assim como a criação do poder ímã.
+
+20/06: Implementação do padrão State, determinando diferenças entre o nível 1, níveis 2 a 4 e níveis de 5 para cima. Então são modificadas as velocidades do Pacman e dos fantasmas.
+
+21/06: Mudança de fases também modifica o mapa do nível.
