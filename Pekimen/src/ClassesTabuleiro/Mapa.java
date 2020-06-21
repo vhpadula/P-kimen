@@ -20,7 +20,7 @@ public class Mapa {
 	public char[][] map;
 	Controle controle;
 	Jogo jogo;
-	Fabrica fabrica;
+	public Fabrica fabrica;
 	Niveis.Nivel nivel;
 	public int numeroPastilhas = 0;
 

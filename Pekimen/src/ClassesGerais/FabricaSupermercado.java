@@ -5,6 +5,10 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesClassico.FantasmaAzulClassico;
+import ClassesClassico.FantasmaLaranjaClassico;
+import ClassesClassico.FantasmaRosaClassico;
+import ClassesClassico.FantasmaVermelhoClassico;
 import ClassesClassico.ImaClassico;
 import ClassesSupermercado.CerejaSupermercado;
 import ClassesSupermercado.FantasmaAzulSupermercado;
@@ -65,7 +69,27 @@ public class FabricaSupermercado extends Fabrica {
 		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaSupermercado(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
 	}
-
+	
+	public void fazFantasmaAzul (int x, int y, char c, int i) {
+		if (c == 'a')
+			controle.objetos.set(i,new FantasmaAzulSupermercado( x,  y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaVermelho (int x, int y, char c, int i) {
+		if (c == 'v')
+			controle.objetos.set(i,new FantasmaVermelhoSupermercado( x, y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaLaranja (int x, int y, char c, int i) {
+		if (c == 'l')
+			controle.objetos.set(i,new FantasmaLaranjaSupermercado( x  , y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaRosa (int x, int y, char c, int i) {
+		if (c == 'r')
+			controle.objetos.set(i,new FantasmaRosaSupermercado(x,  y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
 	@Override
 	public void atualizaFundo() throws IOException {
 		jogo.janela.setImage("Supermercado/fundo.png");

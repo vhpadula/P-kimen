@@ -67,7 +67,28 @@ public class FabricaClassica extends Fabrica {
 		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
 	}
-
+	
+	public void fazFantasmaAzul (int x, int y, char c, int i ) {
+		if (c == 'a')
+			controle.objetos.set(i,new FantasmaAzulClassico(x, y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaVermelho (int x, int y, char c, int i) {
+		if (c == 'v')
+			controle.objetos.set(i,new FantasmaVermelhoClassico(x ,  y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaLaranja (int x, int y, char c, int i) {
+		if (c == 'l')
+			controle.objetos.set(i,new FantasmaLaranjaClassico( x,  y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	public void fazFantasmaRosa (int x, int y, char c, int i) {
+		if (c == 'r')
+			controle.objetos.set(i,new FantasmaRosaClassico( x, y, ID.Fantasma, controle, "", 0, 1));
+	}
+	
+	
 	@Override
 	public void atualizaFundo() throws IOException  {
 		jogo.janela.setImage("Classic/fundo.png");

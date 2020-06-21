@@ -5,6 +5,11 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import ClassesClassico.FantasmaAzulClassico;
+import ClassesClassico.FantasmaLaranjaClassico;
+import ClassesClassico.FantasmaRosaClassico;
+import ClassesClassico.FantasmaVermelhoClassico;
+
 public abstract class Fabrica {
 	Controle controle;
 	Jogo jogo;
@@ -28,6 +33,11 @@ public abstract class Fabrica {
 	abstract public void fazPacman(int x, int y) throws IOException;
 
 	abstract public void fazFantasmas(int x, int y, char c) throws IOException;
+	
+	abstract public void fazFantasmaAzul (int x, int y, char c, int i);
+	abstract public void fazFantasmaVermelho (int x, int y, char c, int i); 
+	abstract public void fazFantasmaLaranja (int x, int y, char c, int i);
+	abstract public void fazFantasmaRosa (int x, int y, char c, int i);
 	
 	abstract public void atualizaFundo() throws IOException;
 	

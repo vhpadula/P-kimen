@@ -12,10 +12,11 @@ public class Controle {
 	public double xPacman, yPacman;
 	public double xRedGhost, yRedGhost;
 	public char direcaoPacman = 'R';
-	Mapa mapa;
-	Jogo jogo;
+	public Mapa mapa;
+	public Jogo jogo;
 	public Controle (Jogo jogo) {
 		this.jogo = jogo;
+		this.mapa=jogo.mapa;
 	}
 
 	public void tick() {

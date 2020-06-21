@@ -11,20 +11,42 @@ import ClassesInterface.HUD;
 public abstract class Fantasmas extends ObjetoJogo {
 	int VxFantasma;
 	int VyFantasma;
-
+	
+	
 	Fantasmas(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma, int VyFantasma) {
 		super(x, y, id, controle, cruzamento);
 		this.VxFantasma = VxFantasma;
 		this.VyFantasma = VyFantasma;
+		this.xInicial=x;
+		this.yInicial=y;
 	}
 
-	int xInicial = x, yInicial = y;
-	boolean gaiola = true;
+	int xInicial, yInicial;
+	boolean gaiola;
 	int pontosIniciais = HUD.pontos;
-
+	int pontosNecessarios;
+	
+	boolean comestivel;
+	boolean comido;
+	
+	MovimentacaoGeral geral;
+	Scatter scatter;
+	MovimentacaoFantasma chase;
+	
 	@Override
-	public abstract void tick();
-
+	public void tick() {
+		x += VxFantasma;
+		y += VyFantasma;
+		if (gaiola && HUD.pontos >= pontosIniciais + pontosNecessarios)
+			geral.sairGaiola(this);
+		else
+			geral.movimentacaoGaiola();
+		chase.movimentar();
+		geral.teleporte();
+		geral.movimentar();
+		SetTexture(VyFantasma, VxFantasma);
+	}
+	
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(textura, x, y, 30, 20, null);
@@ -43,6 +65,8 @@ public abstract class Fantasmas extends ObjetoJogo {
 		
 		
 	}
+	
+	
 
 	// Funções da movimentação aleatória
 	/*protected char sorteiaDirecao(ObjetoJogo tempObject) {

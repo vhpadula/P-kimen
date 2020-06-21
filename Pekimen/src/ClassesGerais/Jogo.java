@@ -27,7 +27,7 @@ public class Jogo extends Canvas implements Runnable {
 	private Thread thread;
 
 	Janela janela;
-	Mapa mapa;
+	public Mapa mapa;
 	private boolean running = false;
 	public  Musica musica;
 	private Controle controle;

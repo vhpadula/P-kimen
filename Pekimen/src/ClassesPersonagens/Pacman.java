@@ -66,10 +66,11 @@ public abstract class Pacman extends ObjetoJogo {
 			cruzamento(tempObject);
 			colisao(tempObject);
 			comePastilha(tempObject, i);
-			// colisaoFantasma(tempObject);
+			colisaoFantasma(tempObject);
 			comeCereja(tempObject, i);
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
+			comeFantasma(tempObject, i);
 		}
 	}
 
@@ -147,13 +148,17 @@ public abstract class Pacman extends ObjetoJogo {
 
 	void colisaoFantasma(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Fantasma) {
-			if (getBounds().intersects(tempObject.getBounds())) {
-				HUD.setVidas(1);
-				x = xInicial;
-				y = yInicial;
-				setImage(right);
-				Vx = 0;
-				Vy = 0;
+			Fantasmas temp = (Fantasmas) tempObject;
+			if (!temp.comestivel) {
+				if (getBounds().intersects(tempObject.getBounds())) {
+					HUD.setVidas(1);
+					x = xInicial;
+					y = yInicial;
+					setImage(right);
+					Vx = 0;
+					Vy = 0;
+				}
+				
 			}
 		}
 	}
@@ -217,7 +222,63 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(50);
+				for(int j=0; j<controle.objetos.size(); j++) {
+					
+					if(controle.objetos.get(j).getID()==ID.Fantasma) {
+						Fantasmas temp= (Fantasmas) controle.objetos.get(j);
+						controle.objetos.set(j, new FantasmaAssustado (temp.x,temp.y,temp.getID(),temp.controle,temp.cruzamento,
+								temp.Vx, temp.Vy, temp, j));
+					}
+				}
 			}
+			
+			
+		}
+	}
+	
+	void comeFantasma(ObjetoJogo tempObject, int k) {
+		if (tempObject.getID() == ID.Fantasma) {
+			Fantasmas temp = (Fantasmas) tempObject;
+				if (getBounds().intersects(tempObject.getBounds())) {
+					
+					if(temp.comestivel) {
+						
+					FantasmaAssustado tempA=  (FantasmaAssustado) temp;
+					
+					HUD.setPontos(200);
+					
+					
+					if (tempA.fantaDecorado instanceof FantasmaAzul) {
+					
+						controle.jogo.mapa.fabrica.fazFantasmaAzul(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'a', k);
+	
+						
+					}
+					
+					if (tempA.fantaDecorado instanceof FantasmaVermelho) {
+						
+						controle.jogo.mapa.fabrica.fazFantasmaVermelho(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'v', k);
+						
+					
+					}
+					
+					if (tempA.fantaDecorado instanceof FantasmaLaranja) {
+						
+						controle.jogo.mapa.fabrica.fazFantasmaLaranja(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'l', k);
+						
+						
+					}
+					
+					if (tempA.fantaDecorado instanceof FantasmaRosa) {
+						
+						controle.jogo.mapa.fabrica.fazFantasmaRosa(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'r', k);
+						
+						
+					}
+				}
+				}
+			
+			
 		}
 	}
 }
