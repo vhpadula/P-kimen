@@ -11,7 +11,6 @@ public class Ima extends ObjetoJogo {
 
 	public Ima(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
-		// TODO Auto-generated constructor stub
 	}
 
 	

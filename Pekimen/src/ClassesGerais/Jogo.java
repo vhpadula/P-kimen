@@ -110,7 +110,6 @@ public class Jogo extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				// System.out.println("FPS: " + frames);
 				janela.frame.setTitle("PacMan | " + frames + " fps"); // mostra o fps na janela
 				frames = 0;
 			}

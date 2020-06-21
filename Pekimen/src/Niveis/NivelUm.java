@@ -2,21 +2,12 @@ package Niveis;
 
 import ClassesGerais.Controle;
 
-import ClassesGerais.Nivel;
-
 public class NivelUm extends Nivel {
-	
-	public NivelUm(Controle ctrl){
+
+	public NivelUm(Controle ctrl) {
 		super(ctrl);
-		vFantasma=1;
-		vPacman=2;
+		vFantasma = 1;
+		vPacman = 2;
+		mapa = "maps/classic.txt";
 	}
-	
-	
-	
-
-	
-	
-	
-
 }

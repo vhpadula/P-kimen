@@ -7,7 +7,6 @@ import ClassesGerais.Fabrica;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesGerais.Jogo;
-import ClassesGerais.Nivel;
 import ClassesGerais.SetPath;
 import ClassesInterface.ESTADO;
 import ClassesInterface.HUD;
@@ -22,14 +21,23 @@ public class Mapa {
 	Controle controle;
 	Jogo jogo;
 	Fabrica fabrica;
-	Nivel nivel;
+	Niveis.Nivel nivel;
+	public int numeroPastilhas = 0;
+
 	public Mapa(boolean load, Controle ctrl, Jogo jogo, Fabrica fabrica) {
 		this.jogo = jogo;
 		this.fabrica = fabrica;
 		this.controle = ctrl;
 		if (load) {
 			try {
-				String mapPath = SetPath.setPath("maps/classic.txt");
+				if (HUD.nivel == 1) {
+					nivel = new NivelUm(controle);
+				} else if (HUD.nivel >= 2 && HUD.nivel <= 4) {
+					nivel = new NivelDoisAQuatro(controle);
+				} else {
+					nivel = new Nivel5pMais(controle);
+				}
+				String mapPath = SetPath.setPath(nivel.mapa);
 				BufferedReader buff = new BufferedReader(new FileReader(mapPath));
 				String line = null;
 				int i = 0;
@@ -68,48 +76,52 @@ public class Mapa {
 			this.fazCerejas();
 			this.fazPilulas();
 			this.fazImas();
-			//if (HUD.nivel == 1) {
-				this.nivel= new NivelUm(controle);
-			//}
-			
-			//if(HUD.nivel>=2 && HUD.nivel<=4 ) {
-				this.nivel= new NivelDoisAQuatro(controle);
-			//}
-		
-			if(HUD.nivel>=1 ) {
-				this.nivel= new Nivel5pMais(controle);
+			if (HUD.nivel == 1) {
+				nivel = new NivelUm(controle);
+			} else if (HUD.nivel >= 2 && HUD.nivel <= 4) {
+				nivel = new NivelDoisAQuatro(controle);
+			} else {
+				nivel = new Nivel5pMais(controle);
 			}
-			
+
 			this.atualizaNivel();
 		}
 	}
 
 	String identificaCruzamentos(int i, int j) {
 		String cruzamento = "";
-		if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'O' || map[i][j] == ' ') {
+		if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'I' || map[i][j] == 'O' || map[i][j] == ' ') {
 			if (i == 0) {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'O' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'I' || map[i + 1][j] == 'O'
+						|| map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
 			} else if (i == rows - 1) {
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'O' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'I' || map[i - 1][j] == 'O'
+						|| map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			} else {
-				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'O' || map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
+				if (map[i + 1][j] == 'o' || map[i + 1][j] == 'C' || map[i + 1][j] == 'I' || map[i + 1][j] == 'O'
+						|| map[i + 1][j] == ' ' || map[i + 1][j] == 'v')
 					cruzamento += "D";
-				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'O' || map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
+				if (map[i - 1][j] == 'o' || map[i - 1][j] == 'C' || map[i - 1][j] == 'I' || map[i - 1][j] == 'O'
+						|| map[i - 1][j] == ' ' || map[i - 1][j] == 'v')
 					cruzamento += "U";
 			}
 
 			if (j == 0) {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'O' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'I' || map[i][j + 1] == 'O'
+						|| map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
 			} else if (j == cols - 1) {
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'O' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'I' || map[i][j - 1] == 'O'
+						|| map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			} else {
-				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'O' || map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
+				if (map[i][j + 1] == 'o' || map[i][j + 1] == 'C' || map[i][j + 1] == 'I' || map[i][j + 1] == 'O'
+						|| map[i][j + 1] == ' ' || map[i][j + 1] == 'v')
 					cruzamento += "R";
-				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'O' || map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
+				if (map[i][j - 1] == 'o' || map[i][j - 1] == 'C' || map[i][j - 1] == 'I' || map[i][j - 1] == 'O'
+						|| map[i][j - 1] == ' ' || map[i][j - 1] == 'v')
 					cruzamento += "L";
 			}
 		}
@@ -145,12 +157,12 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
 					fabrica.fazPastilhas(j, i);
-
+					numeroPastilhas++;
 				}
 			}
 		}
 	}
-	
+
 	void fazCerejas() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
@@ -161,7 +173,7 @@ public class Mapa {
 			}
 		}
 	}
-	
+
 	void fazImas() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
@@ -172,7 +184,7 @@ public class Mapa {
 			}
 		}
 	}
-	
+
 	void fazPilulas() throws IOException {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
@@ -205,7 +217,7 @@ public class Mapa {
 	void fazCruzamentos() {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'O' || map[i][j] == ' ') {
+				if (map[i][j] == 'o' || map[i][j] == 'C' || map[i][j] == 'I' || map[i][j] == 'O' || map[i][j] == ' ') {
 					if (jogo.estadoJogo == ESTADO.Jogo) {
 						String cruzamento = identificaCruzamentos(i, j);
 						if ((cruzamento.contains("U") || cruzamento.contains("D"))
@@ -216,12 +228,11 @@ public class Mapa {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	void atualizaNivel() {
 		nivel.handle();
 	}
-	
-	
+
 }

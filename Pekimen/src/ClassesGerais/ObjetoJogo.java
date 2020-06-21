@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class ObjetoJogo{
-	public int numeroPastilhas = 248;
+	public int numeroPastilhas = 240; //tem que mudar
 	public int x, Vx;
 	public int y, Vy;
 	public int velocidade = 2;

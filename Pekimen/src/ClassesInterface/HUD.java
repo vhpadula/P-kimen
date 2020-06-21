@@ -18,7 +18,7 @@ public class HUD {
 	public static int vidas = 2;
 	public static int nivel = 1;
 	Font pontosFont;
-	String imagePath = SetPath.setPath("characters/pacman_right.png");
+	String imagePath = SetPath.setPath("Classic/pacman_right.png");
 	BufferedImage textura;
 
 	public HUD() {
