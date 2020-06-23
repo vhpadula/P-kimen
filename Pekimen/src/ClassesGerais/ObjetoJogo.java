@@ -25,6 +25,8 @@ public abstract class ObjetoJogo{
 	public String down;
 	public String left;
 	public String right;
+	public String assustado1;
+	public String assustado2;
 
 	public ObjetoJogo(int x, int y, ID id, Controle controle, String cruzamento) {
 		this.x = x;

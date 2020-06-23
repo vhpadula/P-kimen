@@ -47,7 +47,7 @@ public abstract class DecoratorFantasma extends Fantasmas {
 		
 
 		
-		
+		this.assustado1 = "Classic/Assustado1.png";
 		this.comestivel=fantaDecorado.comestivel;
 		
 	}

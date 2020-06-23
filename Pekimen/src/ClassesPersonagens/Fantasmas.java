@@ -44,7 +44,8 @@ public abstract class Fantasmas extends ObjetoJogo {
 		chase.movimentar();
 		geral.teleporte();
 		geral.movimentar();
-		SetTexture(VyFantasma, VxFantasma);
+		if(comestivel) setImage(assustado1); 
+		else SetTexture(VyFantasma, VxFantasma);
 	}
 	
 	@Override
