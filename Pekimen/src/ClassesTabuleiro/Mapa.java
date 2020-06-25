@@ -156,7 +156,7 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'o') {
 					fabrica.fazPastilhas(j, i);
-					numeroPastilhas++;
+					controle.numeroPastilhas++;
 				}
 			}
 		}

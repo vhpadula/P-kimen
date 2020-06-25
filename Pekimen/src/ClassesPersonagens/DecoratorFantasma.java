@@ -22,7 +22,6 @@ public abstract class DecoratorFantasma extends Fantasmas {
 		this.vAnterior = fantaDecorado.vAnterior;
 		this.valorVAnterior=fantaDecorado.valorVAnterior;
 		this.movimentoDesejado = fantaDecorado.movimentoDesejado;
-		this.numeroPastilhas=fantaDecorado.numeroPastilhas;
 		this.xInicial=fantaDecorado.xInicial;
 		this.yInicial=fantaDecorado.yInicial;
 		this.velocidade=fantaDecorado.velocidade;

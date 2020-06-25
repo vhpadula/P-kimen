@@ -32,7 +32,6 @@ public abstract class DecoratorPacman extends Pacman {
 		this.vAnterior = pacDecorado.vAnterior;
 		this.valorVAnterior=pacDecorado.valorVAnterior;
 		this.movimentoDesejado = pacDecorado.movimentoDesejado;
-		this.numeroPastilhas=pacDecorado.numeroPastilhas;
 		this.xInicial=pacDecorado.xInicial;
 		this.yInicial=pacDecorado.yInicial;
 		this.velocidade=pacDecorado.velocidade;

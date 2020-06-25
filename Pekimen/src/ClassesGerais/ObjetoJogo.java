@@ -9,7 +9,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class ObjetoJogo{
-	public int numeroPastilhas = 240; //tem que mudar
 	public int x, Vx;
 	public int y, Vy;
 	public int velocidade = 1;
@@ -41,10 +40,6 @@ public abstract class ObjetoJogo{
 	public abstract void render(Graphics g);
 
 	public abstract Rectangle getBounds();
-	
-	public void setNumeroPastilhas() {
-		numeroPastilhas--;
-	}
 
 	public void setX(int x) {
 		this.x = x;

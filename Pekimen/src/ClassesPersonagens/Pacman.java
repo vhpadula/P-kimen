@@ -176,7 +176,7 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(10);
-				super.setNumeroPastilhas();
+				controle.numeroPastilhas--;
 			}
 		}
 	}

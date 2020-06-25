@@ -43,6 +43,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 			geral.movimentacaoGaiola();
 		if (!comestivel) {
 			chase.movimentar();
+			/* nao rola usar isso por causa das fabricas diferentes, tem que ver como mudar as imagens de volta */
 			if (this.getClass().toString().contains("Rosa")) {
 			this.up = "Classic/pacman_up.png";
 			this.down = "Classic/pacman_down.png";

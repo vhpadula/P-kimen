@@ -14,6 +14,8 @@ public class Controle {
 	public char direcaoPacman = 'R';
 	public Mapa mapa;
 	public Jogo jogo;
+	public int numeroPastilhas = 0;
+
 	public Controle (Jogo jogo) {
 		this.jogo = jogo;
 		this.mapa=jogo.mapa;
@@ -24,7 +26,7 @@ public class Controle {
 			ObjetoJogo temp = objetos.get(i);
 			temp.tick();
 			if (temp.id == ID.Pacman) {
-				if (temp.numeroPastilhas == 0) {
+				if (numeroPastilhas == 0) {
 					HUD.nivel++;
 					objetos.clear();
 					mapa = new Mapa(true, this, jogo, jogo.fabrica);
