@@ -10,7 +10,7 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 
 **Padrão State:** Representado no pacote de "Niveis", onde separamos as caracteristicas dos diferentes estados de acordo com os niveis, ou seja, o nível 1 tem um estado, os níveis 2 a 4 têm outro e os níveis de 5 para cima têm outro. Muda-se a velocidade dos fantasmas, do pacman e a quantidade de "poderes" apresentados no mapa.
 
-**Padrão Decorator:** Utilizado, como instruído, quando o Pacman obtém poderes. Eles estão dentro do pacote de "ClassesPersonagens", e são representados pelo ímã (PacmanColetor; maior alcance de pastilhas), pela cereja (PacmanRapido; maior velocidade) e pela pílula (FantasmasComestíveis; Pacman capaz de "comer" fantasmas).
+**Padrão Decorator:** Utilizado, como instruído, quando o Pacman obtém poderes. Eles estão dentro do pacote de "ClassesPersonagens", e são representados pelo ímã (PacmanColetor; maior alcance de pastilhas) e pela cereja (PacmanRapido; maior velocidade). Para a pílula, como as modificações não ocorrem no Pacman, mais sim nos fantasmas, não é utilizado o padrão Decorator.
 
 14/05: Criada a classe para criar janela do jogo, e configurada para mostrar imagem de fundo. Também foram criadas classes para configurar os objetos do jogo, entretanto nada foi implementado ainda. Foi utilizado como base o vídeo disponibilizado pelo professor na proposta do trabalho e outros sites para incluir a imagem.
 
@@ -44,4 +44,8 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 
 20/06: Implementação do padrão State, determinando diferenças entre o nível 1, níveis 2 a 4 e níveis de 5 para cima. Então são modificadas as velocidades do Pacman e dos fantasmas.
 
-21/06: Mudança de fases também modifica o mapa do nível.
+21/06: Mudança de fases também modifica o mapa do nível. Início da implementação de fantasmas "comestíveis" quando o Pacman come a pílula, porém movimentação falha.
+
+23/06: Colocada skin para os fantasmas assustados.
+
+25/06: Adaptação dos fantasmas comestíveis para implementar tempo e movimentação aleatória para quando o fantasma fica assustado.
