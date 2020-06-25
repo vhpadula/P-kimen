@@ -247,19 +247,19 @@ public abstract class Pacman extends ObjetoJogo {
 				if (temp.comestivel) {
 					HUD.setPontos(200);
 					if (temp instanceof FantasmaAzul) {
-						controle.jogo.mapa.fabrica.fazFantasmaAzul(temp.xInicial, temp.yInicial, 'a', k);
+						controle.jogo.fabrica.fazFantasmaAzul(temp.xInicial, temp.yInicial, 'a', k);
 					}
 
 					if (temp instanceof FantasmaVermelho) {
-						controle.jogo.mapa.fabrica.fazFantasmaVermelho(temp.xInicial, temp.yInicial, 'v', k);
+						controle.jogo.fabrica.fazFantasmaVermelho(temp.xInicial, temp.yInicial, 'v', k);
 					}
 
 					if (temp instanceof FantasmaLaranja) {
-						controle.jogo.mapa.fabrica.fazFantasmaLaranja(temp.xInicial, temp.yInicial, 'l', k);
+						controle.jogo.fabrica.fazFantasmaLaranja(temp.xInicial, temp.yInicial, 'l', k);
 					}
 
 					if (temp instanceof FantasmaRosa) {
-						controle.jogo.mapa.fabrica.fazFantasmaRosa(temp.xInicial, temp.yInicial, 'r', k);
+						controle.jogo.fabrica.fazFantasmaRosa(temp.xInicial, temp.yInicial, 'r', k);
 					}
 				}
 			}
