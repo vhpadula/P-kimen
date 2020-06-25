@@ -29,7 +29,7 @@ public class Jogo extends Canvas implements Runnable {
 	Janela janela;
 	public Mapa mapa;
 	private boolean running = false;
-	public  Musica musica;
+	public Musica musica;
 	private Controle controle;
 	private HUD hud;
 	private Menu menu;
@@ -43,7 +43,7 @@ public class Jogo extends Canvas implements Runnable {
 		controle = new Controle(this);
 		janela = new Janela(WIDTH, HEIGHT, "PacMan", this);
 
-		fabrica = new FabricaClassica(controle,this);
+		fabrica = new FabricaClassica(controle, this);
 
 		mapa = new Mapa(true, controle, this, fabrica);
 		menu = new Menu(this, controle, mapa, hud);
@@ -52,12 +52,12 @@ public class Jogo extends Canvas implements Runnable {
 
 		this.addMouseListener(menu);
 		this.addKeyListener(new KeyInput(controle));
-		
+
 		try {
 			this.fabrica.fazMusica();
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 			e1.printStackTrace();
-		}		
+		}
 	}
 
 	public static int teleporte(int var, int min, int max) {
@@ -119,7 +119,7 @@ public class Jogo extends Canvas implements Runnable {
 
 	private void tick() {
 		controle.tick();
-		
+
 		if (estadoJogo == ESTADO.Jogo) {
 			hud.tick();
 			if (HUD.vidas == -1) {
@@ -152,8 +152,7 @@ public class Jogo extends Canvas implements Runnable {
 			menu.render(g);
 		} else if (estadoJogo == ESTADO.Settings) {
 			settings.render(g);
-		}
-		else if (estadoJogo == ESTADO.End) {
+		} else if (estadoJogo == ESTADO.End) {
 			gameOver.render(g);
 		}
 

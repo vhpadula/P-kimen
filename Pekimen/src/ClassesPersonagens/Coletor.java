@@ -14,7 +14,7 @@ public class Coletor extends DecoratorPacman {
 
 	public Coletor(int x, int y, ID id, Controle controle, String cruzamento, Pacman pacDecorado) {
 		super(x, y, id, controle, cruzamento, pacDecorado);
-		this.segundosColetor=0;
+		this.segundosColetor = 0;
 		Timer timerc = new Timer();
 		TimerTask taskc = new TimerTask() {
 			public void run() {
@@ -24,31 +24,27 @@ public class Coletor extends DecoratorPacman {
 		};
 		timerc.scheduleAtFixedRate(taskc, 1000, 1000);
 	}
-	
+
 	Rectangle boundsIma() {
 		if (segundosColetor > tempoColetor) {
 			return getBounds();
 		}
-		return new Rectangle(x-75, y-75, 150, 150);
-
+		return new Rectangle(x - 75, y - 75, 150, 150);
 	}
-	
+
 	@Override
 	public void render(Graphics g) {
 		super.render(g);
 		if (segundosColetor < tempoColetor) {
-			g.drawRect(x-75, y-75, 150, 150);
+			g.drawRect(x - 75, y - 75, 150, 150);
 		}
-		
 	}
-	
+
 	@Override
 	public void tick() {
 		super.tick();
-		
-		
 	}
-	
+
 	@Override
 	void comePastilha(ObjetoJogo tempObject, int i) {
 		if (tempObject.getID() == ID.Pastilha) {

@@ -8,5 +8,4 @@ public class PacmanBasico extends Pacman {
 	public PacmanBasico(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 	}
-
 }

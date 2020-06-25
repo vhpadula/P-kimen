@@ -10,5 +10,4 @@ public class PastilhaSupermercado extends Pastilha {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Supermercado/pastilha.png");
 	}
-
 }

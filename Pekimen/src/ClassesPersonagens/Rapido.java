@@ -23,12 +23,10 @@ public class Rapido extends DecoratorPacman {
 		if (pacDecorado.velocidade == Nivel.vPacman) {
 			this.velocidade = pacDecorado.velocidade + 1;
 		}
-
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
-
 	}
 }

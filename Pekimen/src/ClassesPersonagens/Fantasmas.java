@@ -24,6 +24,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 	boolean gaiola;
 	int pontosIniciais = HUD.pontos;
 	int pontosNecessarios;
+	int segundosAssustado = 0;
 
 	protected boolean comestivel;
 	boolean comido;
@@ -43,25 +44,18 @@ public abstract class Fantasmas extends ObjetoJogo {
 			geral.movimentacaoGaiola();
 		if (!comestivel) {
 			chase.movimentar();
-			/* nao rola usar isso por causa das fabricas diferentes, tem que ver como mudar as imagens de volta */
-			if (this.getClass().toString().contains("Rosa")) {
-			this.up = "Classic/pacman_up.png";
-			this.down = "Classic/pacman_down.png";
-			this.left = "Classic/pacman_left.png";
-			this.right = "Classic/pacman_right.png";
-			}
-		}
-		else {
+			SetTexture(VyFantasma, VxFantasma);
+		} else {
 			aleatorio = new ChaseRandom(controle, this);
 			aleatorio.movimentar();
-			this.up = "Classic/Assustado1.png";
-			this.down = "Classic/Assustado1.png";
-			this.left = "Classic/Assustado1.png";
-			this.right = "Classic/Assustado1.png";
+			setImage("Classic/Assustado1.png");
+		}
+		if (segundosAssustado == 5) {
+			this.comestivel = false;
+			segundosAssustado = 0;
 		}
 		geral.teleporte();
 		geral.movimentar();
-		SetTexture(VyFantasma, VxFantasma);
 	}
 
 	@Override

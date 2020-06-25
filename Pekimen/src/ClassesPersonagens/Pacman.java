@@ -20,14 +20,12 @@ public abstract class Pacman extends ObjetoJogo {
 	int tempoColetor = 3;
 	int segundosRapido = 0;
 	int segundosColetor = 0;
-	int segundosAssustado = 0;
 
 	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 		this.controle = controle;
 		this.xInicial = x;
 		this.yInicial = y;
-
 	}
 
 	@Override
@@ -73,12 +71,6 @@ public abstract class Pacman extends ObjetoJogo {
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
 			comeFantasma(tempObject, i);
-			if (segundosAssustado == 5) {
-				if (tempObject.getID() == ID.Fantasma) {
-					Fantasmas tempFantasma = (Fantasmas) tempObject;
-					tempFantasma.comestivel = false;
-				}
-			}
 		}
 	}
 
@@ -121,7 +113,6 @@ public abstract class Pacman extends ObjetoJogo {
 				if (!(tempObject.cruzamento == "U" && Vy < 0)) {
 					x -= Vx;
 					y -= Vy;
-
 					if (Vx != 0) {
 						Vx = 0;
 						if (vAnterior == "H" || vAnterior == null) {
@@ -166,7 +157,6 @@ public abstract class Pacman extends ObjetoJogo {
 					Vx = 0;
 					Vy = 0;
 				}
-
 			}
 		}
 	}
@@ -190,10 +180,8 @@ public abstract class Pacman extends ObjetoJogo {
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Pacman) {
 						Pacman temp = (Pacman) controle.objetos.get(j);
-
 						controle.objetos.set(j,
 								new Rapido(this.x, this.y, ID.Pacman, this.controle, this.cruzamento, temp));
-
 					}
 				}
 			}
@@ -210,7 +198,6 @@ public abstract class Pacman extends ObjetoJogo {
 						Pacman temp = (Pacman) controle.objetos.get(j);
 						controle.objetos.set(j,
 								new Coletor(this.x, this.y, ID.Pacman, this.controle, this.cruzamento, temp));
-
 					}
 				}
 			}
@@ -222,21 +209,21 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(50);
-				Timer timer = new Timer();
-				TimerTask task = new TimerTask() {
-					public void run() {
-						segundosAssustado++;
-					}
-				};
-				timer.scheduleAtFixedRate(task, 1000, 1000);
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Fantasma) {
+						Fantasmas tempFantasma = (Fantasmas) controle.objetos.get(j);
+						Timer timer = new Timer();
+						TimerTask task = new TimerTask() {
+							public void run() {
+								tempFantasma.segundosAssustado++;
+							}
+						};
+						timer.scheduleAtFixedRate(task, 1000, 1000);
 						Fantasmas temp = (Fantasmas) controle.objetos.get(j);
 						temp.comestivel = true;
 					}
 				}
 			}
-
 		}
 	}
 
@@ -248,17 +235,11 @@ public abstract class Pacman extends ObjetoJogo {
 					HUD.setPontos(200);
 					if (temp instanceof FantasmaAzul) {
 						controle.jogo.fabrica.fazFantasmaAzul(temp.xInicial, temp.yInicial, 'a', k);
-					}
-
-					if (temp instanceof FantasmaVermelho) {
+					} else if (temp instanceof FantasmaVermelho) {
 						controle.jogo.fabrica.fazFantasmaVermelho(temp.xInicial, temp.yInicial, 'v', k);
-					}
-
-					if (temp instanceof FantasmaLaranja) {
+					} else if (temp instanceof FantasmaLaranja) {
 						controle.jogo.fabrica.fazFantasmaLaranja(temp.xInicial, temp.yInicial, 'l', k);
-					}
-
-					if (temp instanceof FantasmaRosa) {
+					} else if (temp instanceof FantasmaRosa) {
 						controle.jogo.fabrica.fazFantasmaRosa(temp.xInicial, temp.yInicial, 'r', k);
 					}
 				}

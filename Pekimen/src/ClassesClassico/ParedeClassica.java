@@ -12,5 +12,4 @@ public class ParedeClassica extends Parede {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/wall.png");
 	}
-
 }

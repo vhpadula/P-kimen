@@ -10,9 +10,8 @@ import ClassesGerais.Musica;
 public class MusicaSelva extends Musica {
 	public MusicaSelva() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		super();
-		
-		this.pathLoop= "src/Selva/loopSelva.wav";
+
+		this.pathLoop = "src/Selva/loopSelva.wav";
 		this.tocaLoop();
-		
 	}
 }

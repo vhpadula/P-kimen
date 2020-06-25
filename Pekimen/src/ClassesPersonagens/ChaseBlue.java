@@ -24,7 +24,6 @@ public class ChaseBlue implements MovimentacaoFantasma {
 	private double mirrorPoint(double pontoReflexao, double posicaoVermelho) {
 		double target = pontoReflexao;
 		target += pontoReflexao - posicaoVermelho;
-
 		return target;
 	}
 

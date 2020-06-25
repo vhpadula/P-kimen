@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import ClassesInterface.HUD;
 import ClassesTabuleiro.Mapa;
 
-
 public class Controle {
 	public ArrayList<ObjetoJogo> objetos = new ArrayList<ObjetoJogo>();
 	public double xPacman, yPacman;
@@ -16,9 +15,9 @@ public class Controle {
 	public Jogo jogo;
 	public int numeroPastilhas = 0;
 
-	public Controle (Jogo jogo) {
+	public Controle(Jogo jogo) {
 		this.jogo = jogo;
-		this.mapa=jogo.mapa;
+		this.mapa = jogo.mapa;
 	}
 
 	public void tick() {
@@ -32,8 +31,7 @@ public class Controle {
 					mapa = new Mapa(true, this, jogo, jogo.fabrica);
 					try {
 						mapa.constroiTabuleiro();
-					}
-					catch (Exception e) {
+					} catch (Exception e) {
 						
 					}
 				}

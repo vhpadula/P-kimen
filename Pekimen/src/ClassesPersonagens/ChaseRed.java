@@ -5,15 +5,15 @@ import ClassesGerais.ID;
 import ClassesGerais.ObjetoJogo;
 
 public class ChaseRed implements MovimentacaoFantasma {
-	
+
 	Controle controle;
 	Fantasmas fantasma;
-	
+
 	public ChaseRed(Controle controle, Fantasmas fantasma) {
 		this.controle = controle;
 		this.fantasma = fantasma;
 	}
-	
+
 	public void movimentar() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
@@ -41,15 +41,14 @@ public class ChaseRed implements MovimentacaoFantasma {
 		if (tempObject.cruzamento.toString().contains("R") && !(fantasma.VxFantasma < 0))
 			distanciaR = getTargetVermelho(fantasma.x + 3, fantasma.y);
 
-			if (distanciaU <= distanciaD && distanciaU <= distanciaL && distanciaU <= distanciaR)
-				return 'U';
-			else if (distanciaL <= distanciaD && distanciaL <= distanciaU && distanciaL <= distanciaR)
-				return 'L';
-			else if (distanciaD <= distanciaU && distanciaD <= distanciaL && distanciaD <= distanciaR)
-				return 'D';
-			else
-				return 'R';
-
+		if (distanciaU <= distanciaD && distanciaU <= distanciaL && distanciaU <= distanciaR)
+			return 'U';
+		else if (distanciaL <= distanciaD && distanciaL <= distanciaU && distanciaL <= distanciaR)
+			return 'L';
+		else if (distanciaD <= distanciaU && distanciaD <= distanciaL && distanciaD <= distanciaR)
+			return 'D';
+		else
+			return 'R';
 	}
 
 	protected void cruzamento(ObjetoJogo tempObject) {

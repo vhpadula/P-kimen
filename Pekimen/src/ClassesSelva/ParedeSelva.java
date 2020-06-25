@@ -12,5 +12,4 @@ public class ParedeSelva extends Parede {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Selva/terra.png");
 	}
-
 }

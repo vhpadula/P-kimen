@@ -12,5 +12,4 @@ public class PortaoSelva extends Portao {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Selva/gate.png");
 	}
-
 }

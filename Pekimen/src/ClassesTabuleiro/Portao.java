@@ -12,7 +12,6 @@ public abstract class Portao extends ObjetoJogo {
 
 	public Portao(int x, int y, ID id, Controle controle, String cruzamento) throws IOException {
 		super(x, y, id, controle, cruzamento);
-
 	}
 
 	@Override
@@ -29,5 +28,4 @@ public abstract class Portao extends ObjetoJogo {
 	public void render(Graphics g) {
 		g.drawImage(textura, 30 * x, 22 * y, 30, -8, null);
 	}
-
 }

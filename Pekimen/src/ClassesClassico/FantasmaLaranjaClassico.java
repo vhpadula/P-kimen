@@ -15,5 +15,4 @@ public class FantasmaLaranjaClassico extends FantasmaLaranja {
 		this.right = "Classic/fantasmaLaranjaR.png";
 		this.setImage("Classic/fantasmaLaranjaR.png");
 	}
-
 }

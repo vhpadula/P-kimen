@@ -32,6 +32,5 @@ public class GameOver {
 		g.drawString("PONTOS: " + HUD.pontos, 220, 340);
 		g.drawString("RESTART", 290, 450);
 		g.drawRect(270, 400, 306, 70);
-
 	}
 }

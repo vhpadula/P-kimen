@@ -10,5 +10,4 @@ public class PastilhaSelva extends Pastilha{
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/pastilha.png");
 	}
-	
 }

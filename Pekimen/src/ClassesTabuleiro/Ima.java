@@ -27,7 +27,5 @@ public class Ima extends ObjetoJogo {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(textura, 30 * x , 21 * y-3, 30, 30, null);
-
 	}
-
 }

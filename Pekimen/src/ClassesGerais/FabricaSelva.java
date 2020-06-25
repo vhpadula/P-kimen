@@ -23,7 +23,6 @@ public class FabricaSelva extends Fabrica {
 
 	public FabricaSelva(Controle controle, Jogo jogo) {
 		super(controle, jogo);
-		
 	}
 
 	@Override
@@ -40,12 +39,12 @@ public class FabricaSelva extends Fabrica {
 	public void fazPastilhas(int x, int y) throws IOException {
 		controle.objetos.add(new PastilhaSelva(x, y, ID.Pastilha, controle, ""));
 	}
-	
+
 	@Override
 	public void fazCerejas(int x, int y) throws IOException {
 		controle.objetos.add(new CerejaSelva(x, y, ID.Cereja, controle, ""));
 	}
-	
+
 	@Override
 	public void fazPilulas(int x, int y) throws IOException {
 		controle.objetos.add(new PilulaSelva(x, y, ID.Pilula, controle, ""));
@@ -54,7 +53,6 @@ public class FabricaSelva extends Fabrica {
 	@Override
 	public void fazPacman(int x, int y) {
 		controle.objetos.add(new PacmanSelva(30 * x, 21 * y, ID.Pacman, controle, ""));
-
 	}
 
 	@Override
@@ -68,51 +66,47 @@ public class FabricaSelva extends Fabrica {
 		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaSelva(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
 	}
-	
-	public void fazFantasmaAzul (int x, int y, char c, int i) {
+
+	public void fazFantasmaAzul(int x, int y, char c, int i) {
 		if (c == 'a') {
-			controle.objetos.set(i,new FantasmaAzulSelva(x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaAzulSelva(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaVermelho (int x, int y, char c, int i) {
+
+	public void fazFantasmaVermelho(int x, int y, char c, int i) {
 		if (c == 'v') {
-			controle.objetos.set(i,new FantasmaVermelhoSelva(x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaVermelhoSelva(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaLaranja (int x, int y, char c, int i) {
+
+	public void fazFantasmaLaranja(int x, int y, char c, int i) {
 		if (c == 'l') {
-			controle.objetos.set(i,new FantasmaLaranjaSelva( x,y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaLaranjaSelva(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaRosa (int x, int y, char c, int i) {
+
+	public void fazFantasmaRosa(int x, int y, char c, int i) {
 		if (c == 'r') {
-			controle.objetos.set(i,new FantasmaRosaSelva( x,y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaRosaSelva(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
 
 	@Override
-	public void atualizaFundo() throws IOException  {
+	public void atualizaFundo() throws IOException {
 		jogo.janela.setImage("Selva/selva.png");
-		
 	}
 
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		jogo.musica = new MusicaSelva();
-		
 	}
 
 	@Override
 	public void fazImas(int x, int y) throws IOException {
-		controle.objetos.add(new ImaClassico(x,y,ID.Ima, controle, ""));
-		
+		controle.objetos.add(new ImaClassico(x, y, ID.Ima, controle, ""));
 	}
-
 }

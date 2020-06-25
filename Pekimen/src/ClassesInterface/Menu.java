@@ -42,10 +42,10 @@ public class Menu extends MouseAdapter {
 		if (jogo.estadoJogo == ESTADO.Menu) {
 			if (mouseOver(mx, my, 263, 260, 320, 80)) {
 				jogo.estadoJogo = ESTADO.Jogo;
-				
+
 				mapa = new Mapa(true, controle, jogo, jogo.fabrica);
 				try {
-					mapa.constroiTabuleiro();			
+					mapa.constroiTabuleiro();
 				} catch (IOException ex) {
 
 				}
@@ -69,7 +69,7 @@ public class Menu extends MouseAdapter {
 		// botao Classic
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 120, 230, 307, 70)) {
-				jogo.fabrica = new FabricaClassica(controle,jogo);
+				jogo.fabrica = new FabricaClassica(controle, jogo);
 				try {
 					jogo.fabrica.atualizaFundo();
 					jogo.musica.para();
@@ -83,7 +83,7 @@ public class Menu extends MouseAdapter {
 		// botao Selva
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 490, 230, 225, 70)) {
-				jogo.fabrica = new FabricaSelva(controle,jogo);
+				jogo.fabrica = new FabricaSelva(controle, jogo);
 				try {
 					jogo.musica.para();
 					jogo.fabrica.atualizaFundo();
@@ -97,7 +97,7 @@ public class Menu extends MouseAdapter {
 		// botao Supermercado
 		if (jogo.estadoJogo == ESTADO.Settings) {
 			if (mouseOver(mx, my, 170, 350, 506, 70)) {
-				jogo.fabrica = new FabricaSupermercado(controle,jogo);
+				jogo.fabrica = new FabricaSupermercado(controle, jogo);
 				try {
 					jogo.fabrica.atualizaFundo();
 				} catch (IOException e1) {
@@ -150,5 +150,4 @@ public class Menu extends MouseAdapter {
 			g.drawString("Settings", 295, 455);
 		}
 	}
-
 }

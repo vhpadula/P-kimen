@@ -25,7 +25,5 @@ public class Cruzamento extends ObjetoJogo {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(textura, 30 * x + 15, 21 * y + 10, 3, 3, null);
-
 	}
-
 }

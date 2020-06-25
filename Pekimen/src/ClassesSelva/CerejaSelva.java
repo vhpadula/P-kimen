@@ -10,5 +10,4 @@ public class CerejaSelva extends Cereja {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/Cereja.png");
 	}
-
 }

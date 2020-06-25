@@ -12,7 +12,6 @@ public abstract class Parede extends ObjetoJogo {
 
 	public Parede(int x, int y, ID id, Controle controle, String cruzamento) throws IOException {
 		super(x, y, id, controle, cruzamento);
-
 	}
 
 	@Override
@@ -28,7 +27,5 @@ public abstract class Parede extends ObjetoJogo {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(textura, 30 * x, 21 * y, 30, 21, null);
-
 	}
-
 }

@@ -23,7 +23,6 @@ public class FabricaClassica extends Fabrica {
 
 	public FabricaClassica(Controle controle, Jogo jogo) {
 		super(controle, jogo);
-
 	}
 
 	@Override
@@ -40,12 +39,12 @@ public class FabricaClassica extends Fabrica {
 	public void fazPastilhas(int x, int y) throws IOException {
 		controle.objetos.add(new PastilhaClassica(x, y, ID.Pastilha, controle, ""));
 	}
-	
+
 	@Override
 	public void fazCerejas(int x, int y) throws IOException {
 		controle.objetos.add(new CerejaClassico(x, y, ID.Cereja, controle, ""));
 	}
-	
+
 	@Override
 	public void fazPilulas(int x, int y) throws IOException {
 		controle.objetos.add(new PilulaClassica(x, y, ID.Pilula, controle, ""));
@@ -59,60 +58,56 @@ public class FabricaClassica extends Fabrica {
 
 	@Override
 	public void fazFantasmas(int x, int y, char c) {
-		if (c == 'a') 
+		if (c == 'a')
 			controle.objetos.add(new FantasmaAzulClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 1));
-		if (c == 'v') 
+		if (c == 'v')
 			controle.objetos.add(new FantasmaVermelhoClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
-		if (c == 'l') 
+		if (c == 'l')
 			controle.objetos.add(new FantasmaLaranjaClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, -1));
-		if (c == 'r') 
+		if (c == 'r')
 			controle.objetos.add(new FantasmaRosaClassico(30 * x + 4, 21 * y, ID.Fantasma, controle, "", 0, 0));
 	}
-	
-	public void fazFantasmaAzul (int x, int y, char c, int i ) {
+
+	public void fazFantasmaAzul(int x, int y, char c, int i) {
 		if (c == 'a') {
-			controle.objetos.set(i,new FantasmaAzulClassico(x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaAzulClassico(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaVermelho (int x, int y, char c, int i) {
+
+	public void fazFantasmaVermelho(int x, int y, char c, int i) {
 		if (c == 'v') {
-			controle.objetos.set(i,new FantasmaVermelhoClassico(x ,  y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaVermelhoClassico(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaLaranja (int x, int y, char c, int i) {
+
+	public void fazFantasmaLaranja(int x, int y, char c, int i) {
 		if (c == 'l') {
-			controle.objetos.set(i,new FantasmaLaranjaClassico( x,  y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaLaranjaClassico(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	public void fazFantasmaRosa (int x, int y, char c, int i) {
+
+	public void fazFantasmaRosa(int x, int y, char c, int i) {
 		if (c == 'r') {
-			controle.objetos.set(i,new FantasmaRosaClassico( x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.set(i, new FantasmaRosaClassico(x, y, ID.Fantasma, controle, "", 0, 1));
 			controle.objetos.get(i).velocidade = Nivel.vFantasma;
 		}
 	}
-	
-	
+
 	@Override
-	public void atualizaFundo() throws IOException  {
+	public void atualizaFundo() throws IOException {
 		jogo.janela.setImage("Classic/fundo.png");
-		
 	}
 
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		jogo.musica = new MusicaClassica();
-		
 	}
 
 	@Override
 	public void fazImas(int x, int y) throws IOException {
-		controle.objetos.add(new ImaClassico(x,y,ID.Ima, controle, "" ));
-		
+		controle.objetos.add(new ImaClassico(x, y, ID.Ima, controle, ""));
 	}
 }

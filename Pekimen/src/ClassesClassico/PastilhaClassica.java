@@ -10,5 +10,4 @@ public class PastilhaClassica extends Pastilha {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/pirula.png");
 	}
-
 }

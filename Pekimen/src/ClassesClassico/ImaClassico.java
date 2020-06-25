@@ -10,5 +10,4 @@ public class ImaClassico extends Ima {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/ima.png");
 	}
-
 }

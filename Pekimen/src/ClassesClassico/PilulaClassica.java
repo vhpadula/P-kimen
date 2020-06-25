@@ -10,5 +10,4 @@ public class PilulaClassica extends Pilula {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/pastilha.png");
 	}
-
 }

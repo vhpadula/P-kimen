@@ -12,7 +12,7 @@ public abstract class Cereja extends ObjetoJogo {
 	public Cereja(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
 	}
-	
+
 	@Override
 	public Rectangle getBounds() {
 		return new Rectangle(30 * x + 5, 21 * y + 5, 15, 15);
@@ -26,7 +26,5 @@ public abstract class Cereja extends ObjetoJogo {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(textura, 30 * x + 5, 21 * y + 5, 20, 20, null);
-
 	}
-
 }

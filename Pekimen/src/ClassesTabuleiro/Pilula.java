@@ -15,7 +15,7 @@ public class Pilula extends ObjetoJogo {
 
 	@Override
 	public void tick() {
-		
+
 	}
 
 	@Override
@@ -27,5 +27,4 @@ public class Pilula extends ObjetoJogo {
 	public Rectangle getBounds() {
 		return new Rectangle(30 * x + 11, 21 * y + 6, 12, 12);
 	}
-
 }

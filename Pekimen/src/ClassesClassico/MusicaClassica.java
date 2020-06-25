@@ -13,7 +13,5 @@ public class MusicaClassica extends Musica {
 		super();
 		this.pathLoop= "src/Classic/loopClassico.wav";
 		this.tocaLoop();
-	
 	}
-
 }

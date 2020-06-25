@@ -76,7 +76,6 @@ public abstract class ObjetoJogo{
 		} else if (Vy != 0) {
 			vVertical = true;
 		}
-
 		if (vHorizontal) {
 			vAnterior = "H";
 			valorVAnterior = Vx;

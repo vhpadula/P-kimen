@@ -12,5 +12,4 @@ public class PortaoClassico extends Portao {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/gate.png");
 	}
-
 }

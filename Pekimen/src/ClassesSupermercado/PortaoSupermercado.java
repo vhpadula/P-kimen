@@ -12,5 +12,4 @@ public class PortaoSupermercado extends Portao {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Supermercado/gate.png");
 	}
-
 }

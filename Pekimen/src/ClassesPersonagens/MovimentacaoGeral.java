@@ -8,22 +8,22 @@ import ClassesGerais.Jogo;
 import ClassesGerais.ObjetoJogo;
 
 public class MovimentacaoGeral implements MovimentacaoFantasma {
-	
+
 	Controle controle;
 	Fantasmas fantasma;
-	
-	public MovimentacaoGeral(Controle controle, Fantasmas fantasma){
+
+	public MovimentacaoGeral(Controle controle, Fantasmas fantasma) {
 		this.controle = controle;
 		this.fantasma = fantasma;
 	}
-	
+
 	public void movimentar() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
 			colisao(tempObject);
 		}
 	}
-	
+
 	protected void movimentacaoGaiola() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
 			ObjetoJogo tempObject = controle.objetos.get(i);
@@ -31,18 +31,17 @@ public class MovimentacaoGeral implements MovimentacaoFantasma {
 				if (fantasma.getBounds().intersects(tempObject.getBounds())) {
 					fantasma.x -= fantasma.VxFantasma;
 					fantasma.y -= fantasma.VyFantasma;
-
 					fantasma.VyFantasma *= -1;
 				}
 			}
 		}
 	}
-	
+
 	protected void teleporte() {
 		fantasma.x = Jogo.teleporte(fantasma.x, 0, 846);
 		fantasma.y = Jogo.teleporte(fantasma.y, 42, 680);
 	}
-	
+
 	protected int setVInicial() {
 		Random rand = new Random();
 		int aleatorio = rand.nextInt();
@@ -51,7 +50,7 @@ public class MovimentacaoGeral implements MovimentacaoFantasma {
 		else
 			return fantasma.velocidade;
 	}
-	
+
 	protected void sairGaiola(Fantasmas fantasma) {
 		if (fantasma.getClass().toString().contains("Rosa")) {
 			fantasma.VyFantasma = -1;
@@ -89,7 +88,7 @@ public class MovimentacaoGeral implements MovimentacaoFantasma {
 			fantasma.VxFantasma = setVInicial();
 		}
 	}
-	
+
 	void colisao(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Parede) {
 			if (fantasma.getBounds().intersects(tempObject.getBounds())) {

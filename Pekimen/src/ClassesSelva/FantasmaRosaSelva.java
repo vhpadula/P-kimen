@@ -15,5 +15,4 @@ public class FantasmaRosaSelva extends FantasmaRosa {
 		this.right = "Classic/fantasmaRosaR.png";
 		this.setImage("Classic/fantasmaRosaR.png");
 	}
-
 }

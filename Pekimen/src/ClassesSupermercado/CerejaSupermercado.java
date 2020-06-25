@@ -10,5 +10,4 @@ public class CerejaSupermercado extends Cereja {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Classic/Cereja.png");
 	}
-
 }

@@ -4,7 +4,6 @@ import ClassesGerais.Controle;
 import ClassesGerais.ID;
 import ClassesPersonagens.PacmanBasico;
 
-
 public class PacmanClassico extends PacmanBasico {
 
 	public PacmanClassico(int x, int y, ID id, Controle controle, String cruzamento) {
@@ -15,5 +14,4 @@ public class PacmanClassico extends PacmanBasico {
 		this.right = "Classic/pacman_right.png";
 		this.setImage("Classic/pacman_right.png");
 	}
-
 }

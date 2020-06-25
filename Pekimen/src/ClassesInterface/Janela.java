@@ -15,8 +15,9 @@ public class Janela extends Canvas {
 	private static final long serialVersionUID = 1L;
 	public JFrame frame;
 	public BufferedImage imagem;
+
 	public Janela(int largura, int altura, String titulo, Jogo jogo) throws IOException {
-		
+
 		frame = new JFrame(titulo);
 		String imagePath = ClassesGerais.SetPath.setPath("Classic/fundo.png");
 
@@ -31,13 +32,10 @@ public class Janela extends Canvas {
 		frame.add(jogo);
 		frame.setVisible(true);
 		jogo.iniciar();
-
-
 	}
-	
+
 	public void setImage(String path) throws IOException {
 		String imagePath = ClassesGerais.SetPath.setPath(path);
 		imagem = ImageIO.read(new File(imagePath));
 	}
-	
 }

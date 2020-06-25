@@ -60,7 +60,6 @@ public class Mapa {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
@@ -131,9 +130,7 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '|') {
-
 					fabrica.fazParedes(j, i);
-
 				}
 			}
 		}
@@ -143,9 +140,7 @@ public class Mapa {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == '_') {
-
 					fabrica.fazPortao(j, i);
-
 				}
 			}
 		}
@@ -167,7 +162,6 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'C') {
 					fabrica.fazCerejas(j, i);
-
 				}
 			}
 		}
@@ -178,7 +172,6 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'I') {
 					fabrica.fazImas(j, i);
-
 				}
 			}
 		}
@@ -199,7 +192,6 @@ public class Mapa {
 			for (int j = 0; j < cols; j++) {
 				if (map[i][j] == 'c') {
 					fabrica.fazPacman(j, i);
-
 				}
 			}
 		}
@@ -227,11 +219,9 @@ public class Mapa {
 				}
 			}
 		}
-
 	}
 
 	void atualizaNivel() {
 		nivel.handle();
 	}
-
 }

@@ -15,7 +15,7 @@ public class ChaseRandom implements MovimentacaoFantasma {
 		this.fantasma = fantasma;
 		this.controle = controle;
 	}
-	
+
 	@Override
 	public void movimentar() {
 		for (int i = 0; i < controle.objetos.size(); i++) {
@@ -23,7 +23,7 @@ public class ChaseRandom implements MovimentacaoFantasma {
 			cruzamento(tempObject);
 		}
 	}
-	
+
 	protected void cruzamento(ObjetoJogo tempObject) {
 		Random rand = new Random();
 		if (tempObject.getID() == ID.Cruzamento) {

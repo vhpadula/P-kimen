@@ -15,5 +15,4 @@ public class FantasmaVermelhoSupermercado extends FantasmaVermelho {
 		this.right = "Supermercado/fantasmaVermelho.png";
 		this.setImage("Supermercado/fantasmaVermelho.png");
 	}
-
 }

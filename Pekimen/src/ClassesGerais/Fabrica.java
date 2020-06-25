@@ -15,16 +15,15 @@ public abstract class Fabrica {
 	Controle controle;
 	Jogo jogo;
 	Nivel nivel;
+
 	public Fabrica(Controle controle, Jogo jogo) {
 		this.controle = controle;
-		this.jogo=jogo;
+		this.jogo = jogo;
 		if (HUD.nivel == 1) {
 			this.nivel = new NivelUm(controle);
-		}
-		else if (HUD.nivel >= 2 && HUD.nivel <= 4) {
+		} else if (HUD.nivel >= 2 && HUD.nivel <= 4) {
 			this.nivel = new NivelDoisAQuatro(controle);
-		}
-		else {
+		} else {
 			this.nivel = new Nivel5pMais(controle);
 		}
 	}
@@ -34,24 +33,26 @@ public abstract class Fabrica {
 	abstract public void fazPortao(int x, int y) throws IOException;
 
 	abstract public void fazPastilhas(int x, int y) throws IOException;
-	
+
 	abstract public void fazCerejas(int x, int y) throws IOException;
-	
-	abstract public void fazImas(int x,int y) throws IOException;
-	
+
+	abstract public void fazImas(int x, int y) throws IOException;
+
 	abstract public void fazPilulas(int x, int y) throws IOException;
 
 	abstract public void fazPacman(int x, int y) throws IOException;
 
 	abstract public void fazFantasmas(int x, int y, char c) throws IOException;
-	
-	abstract public void fazFantasmaAzul (int x, int y, char c, int i);
-	abstract public void fazFantasmaVermelho (int x, int y, char c, int i); 
-	abstract public void fazFantasmaLaranja (int x, int y, char c, int i);
-	abstract public void fazFantasmaRosa (int x, int y, char c, int i);
-	
+
+	abstract public void fazFantasmaAzul(int x, int y, char c, int i);
+
+	abstract public void fazFantasmaVermelho(int x, int y, char c, int i);
+
+	abstract public void fazFantasmaLaranja(int x, int y, char c, int i);
+
+	abstract public void fazFantasmaRosa(int x, int y, char c, int i);
+
 	abstract public void atualizaFundo() throws IOException;
-	
+
 	abstract public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException;
-	
 }

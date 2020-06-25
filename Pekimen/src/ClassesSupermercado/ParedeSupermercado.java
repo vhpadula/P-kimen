@@ -12,5 +12,4 @@ public class ParedeSupermercado extends Parede {
 		super(x, y, id, controle, cruzamento);
 		this.setImage("Supermercado/wall.png");
 	}
-
 }
