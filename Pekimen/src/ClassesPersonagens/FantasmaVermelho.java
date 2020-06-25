@@ -15,8 +15,4 @@ public abstract class FantasmaVermelho extends Fantasmas {
 		this.comido=false;
 		this.comestivel=false;
 	}
-	
-	
-
-	
 }

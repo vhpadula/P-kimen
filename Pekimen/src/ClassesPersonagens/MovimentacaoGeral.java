@@ -47,9 +47,9 @@ public class MovimentacaoGeral implements MovimentacaoFantasma {
 		Random rand = new Random();
 		int aleatorio = rand.nextInt();
 		if (aleatorio % 2 == 1)
-			return -2;
+			return -fantasma.velocidade;
 		else
-			return 2;
+			return fantasma.velocidade;
 	}
 	
 	protected void sairGaiola(Fantasmas fantasma) {

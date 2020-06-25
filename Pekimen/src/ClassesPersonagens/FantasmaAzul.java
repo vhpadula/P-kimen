@@ -2,7 +2,6 @@ package ClassesPersonagens;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesInterface.HUD;
 
 public abstract class FantasmaAzul extends Fantasmas {
 	
@@ -16,8 +15,4 @@ public abstract class FantasmaAzul extends Fantasmas {
 		this.comido=false;
 		this.comestivel=false;
 	}
-	
-	
-
-	
 }

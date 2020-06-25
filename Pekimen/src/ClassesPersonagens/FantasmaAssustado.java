@@ -5,7 +5,7 @@ import java.io.IOException;
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 
-public class FantasmaAssustado extends DecoratorFantasma{
+public class FantasmaAssustado extends DecoratorFantasma {
 	int posicaoControle;
 	
 	FantasmaAssustado(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma, int VyFantasma, Fantasmas fantaDecorado, int posicaoControle) {
@@ -27,16 +27,14 @@ public class FantasmaAssustado extends DecoratorFantasma{
 		}
 		*/
 		
-		this.comestivel= true;
-		this.comido=false;
-		this.posicaoControle=posicaoControle;
-		
-		
+		this.comestivel = true;
+		this.comido = false;
+		this.posicaoControle = posicaoControle;
 	}
+	
 	@Override
 	public void tick() {
 		super.tick();
-		
 	}
 	
 }

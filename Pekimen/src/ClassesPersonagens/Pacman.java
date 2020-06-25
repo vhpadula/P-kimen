@@ -2,6 +2,8 @@ package ClassesPersonagens;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
@@ -18,6 +20,7 @@ public abstract class Pacman extends ObjetoJogo {
 	int tempoColetor = 3;
 	int segundosRapido = 0;
 	int segundosColetor = 0;
+	int segundosAssustado = 0;
 
 	public Pacman(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
@@ -52,7 +55,6 @@ public abstract class Pacman extends ObjetoJogo {
 		} else if (Vx > 0) {
 			controle.direcaoPacman = 'R';
 		}
-
 	}
 
 	@Override
@@ -71,6 +73,12 @@ public abstract class Pacman extends ObjetoJogo {
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
 			comeFantasma(tempObject, i);
+			if (segundosAssustado == 7) {
+				if (tempObject.getID() == ID.Fantasma) {
+					Fantasmas tempFantasma = (Fantasmas) tempObject;
+					tempFantasma.comestivel = false;
+				}
+			}
 		}
 	}
 
@@ -158,7 +166,7 @@ public abstract class Pacman extends ObjetoJogo {
 					Vx = 0;
 					Vy = 0;
 				}
-				
+
 			}
 		}
 	}
@@ -222,63 +230,47 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(50);
-				for(int j=0; j<controle.objetos.size(); j++) {
-					
-					if(controle.objetos.get(j).getID()==ID.Fantasma) {
-						Fantasmas temp= (Fantasmas) controle.objetos.get(j);
-						controle.objetos.set(j, new FantasmaAssustado (temp.x,temp.y,temp.getID(),temp.controle,temp.cruzamento,
-								temp.Vx, temp.Vy, temp, j));
+				Timer timer = new Timer();
+				TimerTask task = new TimerTask() {
+					public void run() {
+						segundosAssustado++;
+					}
+				};
+				timer.scheduleAtFixedRate(task, 1000, 1000);
+				for (int j = 0; j < controle.objetos.size(); j++) {
+					if (controle.objetos.get(j).getID() == ID.Fantasma) {
+						Fantasmas temp = (Fantasmas) controle.objetos.get(j);
+						temp.comestivel = true;
 					}
 				}
 			}
-			
-			
+
 		}
 	}
-	
+
 	void comeFantasma(ObjetoJogo tempObject, int k) {
 		if (tempObject.getID() == ID.Fantasma) {
 			Fantasmas temp = (Fantasmas) tempObject;
-				if (getBounds().intersects(tempObject.getBounds())) {
-					
-					if(temp.comestivel) {
-						
-					FantasmaAssustado tempA=  (FantasmaAssustado) temp;
-					
+			if (getBounds().intersects(tempObject.getBounds())) {
+				if (temp.comestivel) {
 					HUD.setPontos(200);
-					
-					
-					if (tempA.fantaDecorado instanceof FantasmaAzul) {
-					
-						controle.jogo.mapa.fabrica.fazFantasmaAzul(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'a', k);
-	
-						
+					if (temp instanceof FantasmaAzul) {
+						controle.jogo.mapa.fabrica.fazFantasmaAzul(temp.xInicial, temp.yInicial, 'a', k);
 					}
-					
-					if (tempA.fantaDecorado instanceof FantasmaVermelho) {
-						
-						controle.jogo.mapa.fabrica.fazFantasmaVermelho(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'v', k);
-						
-					
+
+					if (temp instanceof FantasmaVermelho) {
+						controle.jogo.mapa.fabrica.fazFantasmaVermelho(temp.xInicial, temp.yInicial, 'v', k);
 					}
-					
-					if (tempA.fantaDecorado instanceof FantasmaLaranja) {
-						
-						controle.jogo.mapa.fabrica.fazFantasmaLaranja(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'l', k);
-						
-						
+
+					if (temp instanceof FantasmaLaranja) {
+						controle.jogo.mapa.fabrica.fazFantasmaLaranja(temp.xInicial, temp.yInicial, 'l', k);
 					}
-					
-					if (tempA.fantaDecorado instanceof FantasmaRosa) {
-						
-						controle.jogo.mapa.fabrica.fazFantasmaRosa(tempA.fantaDecorado.xInicial, tempA.fantaDecorado.yInicial, 'r', k);
-						
-						
+
+					if (temp instanceof FantasmaRosa) {
+						controle.jogo.mapa.fabrica.fazFantasmaRosa(temp.xInicial, temp.yInicial, 'r', k);
 					}
 				}
-				}
-			
-			
+			}
 		}
 	}
 }
