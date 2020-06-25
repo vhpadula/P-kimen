@@ -5,17 +5,28 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import ClassesClassico.FantasmaAzulClassico;
-import ClassesClassico.FantasmaLaranjaClassico;
-import ClassesClassico.FantasmaRosaClassico;
-import ClassesClassico.FantasmaVermelhoClassico;
+import ClassesInterface.HUD;
+import Niveis.Nivel;
+import Niveis.Nivel5pMais;
+import Niveis.NivelDoisAQuatro;
+import Niveis.NivelUm;
 
 public abstract class Fabrica {
 	Controle controle;
 	Jogo jogo;
+	Nivel nivel;
 	public Fabrica(Controle controle, Jogo jogo) {
 		this.controle = controle;
 		this.jogo=jogo;
+		if (HUD.nivel == 1) {
+			this.nivel = new NivelUm(controle);
+		}
+		else if (HUD.nivel >= 2 && HUD.nivel <= 4) {
+			this.nivel = new NivelDoisAQuatro(controle);
+		}
+		else {
+			this.nivel = new Nivel5pMais(controle);
+		}
 	}
 
 	abstract public void fazParedes(int x, int y) throws IOException;

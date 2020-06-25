@@ -5,10 +5,6 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import ClassesClassico.FantasmaAzulClassico;
-import ClassesClassico.FantasmaLaranjaClassico;
-import ClassesClassico.FantasmaRosaClassico;
-import ClassesClassico.FantasmaVermelhoClassico;
 import ClassesClassico.ImaClassico;
 import ClassesSelva.CerejaSelva;
 import ClassesSelva.FantasmaAzulSelva;
@@ -21,6 +17,7 @@ import ClassesSelva.ParedeSelva;
 import ClassesSelva.PastilhaSelva;
 import ClassesSelva.PilulaSelva;
 import ClassesSelva.PortaoSelva;
+import Niveis.Nivel;
 
 public class FabricaSelva extends Fabrica {
 
@@ -73,23 +70,31 @@ public class FabricaSelva extends Fabrica {
 	}
 	
 	public void fazFantasmaAzul (int x, int y, char c, int i) {
-		if (c == 'a')
+		if (c == 'a') {
 			controle.objetos.set(i,new FantasmaAzulSelva(x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.get(i).velocidade = Nivel.vFantasma;
+		}
 	}
 	
 	public void fazFantasmaVermelho (int x, int y, char c, int i) {
-		if (c == 'v')
+		if (c == 'v') {
 			controle.objetos.set(i,new FantasmaVermelhoSelva(x, y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.get(i).velocidade = Nivel.vFantasma;
+		}
 	}
 	
 	public void fazFantasmaLaranja (int x, int y, char c, int i) {
-		if (c == 'l')
+		if (c == 'l') {
 			controle.objetos.set(i,new FantasmaLaranjaSelva( x,y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.get(i).velocidade = Nivel.vFantasma;
+		}
 	}
 	
 	public void fazFantasmaRosa (int x, int y, char c, int i) {
-		if (c == 'r')
+		if (c == 'r') {
 			controle.objetos.set(i,new FantasmaRosaSelva( x,y, ID.Fantasma, controle, "", 0, 1));
+			controle.objetos.get(i).velocidade = Nivel.vFantasma;
+		}
 	}
 
 	@Override

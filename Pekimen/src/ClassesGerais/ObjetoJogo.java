@@ -12,7 +12,7 @@ public abstract class ObjetoJogo{
 	public int numeroPastilhas = 240; //tem que mudar
 	public int x, Vx;
 	public int y, Vy;
-	public int velocidade = 2;
+	public int velocidade = 1;
 	public int valorVAnterior = 0;
 	protected ID id;
 	public String vAnterior = null;

@@ -73,7 +73,7 @@ public abstract class Pacman extends ObjetoJogo {
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
 			comeFantasma(tempObject, i);
-			if (segundosAssustado == 7) {
+			if (segundosAssustado == 5) {
 				if (tempObject.getID() == ID.Fantasma) {
 					Fantasmas tempFantasma = (Fantasmas) tempObject;
 					tempFantasma.comestivel = false;
@@ -187,14 +187,6 @@ public abstract class Pacman extends ObjetoJogo {
 				controle.objetos.remove(i);
 
 				HUD.setPontos(20);
-
-				/*
-				 * Timer timer = new Timer(); TimerTask task = new TimerTask() { public void
-				 * run() { secondsPassed++; } }; timer.scheduleAtFixedRate(task, 1000, 1000);
-				 * DecoratorSpeedUp speed = new DecoratorSpeedUp(0, 0, ID.Cereja, this.controle,
-				 * ""); speed.setVel(this);
-				 */
-
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Pacman) {
 						Pacman temp = (Pacman) controle.objetos.get(j);

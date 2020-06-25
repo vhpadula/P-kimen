@@ -4,8 +4,6 @@ import java.awt.Graphics;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
-import ClassesInterface.HUD;
-
 
 public abstract class DecoratorFantasma extends Fantasmas {
 	Fantasmas fantaDecorado;

@@ -83,7 +83,6 @@ public class Mapa {
 			} else {
 				nivel = new Nivel5pMais(controle);
 			}
-
 			this.atualizaNivel();
 		}
 	}

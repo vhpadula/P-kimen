@@ -43,10 +43,12 @@ public abstract class Fantasmas extends ObjetoJogo {
 			geral.movimentacaoGaiola();
 		if (!comestivel) {
 			chase.movimentar();
+			if (this.getClass().toString().contains("Rosa")) {
 			this.up = "Classic/pacman_up.png";
 			this.down = "Classic/pacman_down.png";
 			this.left = "Classic/pacman_left.png";
 			this.right = "Classic/pacman_right.png";
+			}
 		}
 		else {
 			aleatorio = new ChaseRandom(controle, this);

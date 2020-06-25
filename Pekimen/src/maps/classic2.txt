@@ -20,7 +20,7 @@ xxxxx o   ||arl ||   o xxxxx
      |o||     c    ||o|
      |o|| |||||||| ||o|
 ||||||o|| |||||||| ||o||||||
-|oooooooooIoo||oooooooooooo|
+|oooooooooIoo||ooOooooooooo|
 |o||||o|||||o||o|||||o||||o|
 |o||||o|||||o||o|||||o||||C|
 |ooo||oooooooooooooooo||ooo|

@@ -1,7 +1,5 @@
 package ClassesPersonagens;
 
-import java.io.IOException;
-
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
 
