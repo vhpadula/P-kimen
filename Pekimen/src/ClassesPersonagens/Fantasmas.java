@@ -21,7 +21,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 	}
 
 	int xInicial, yInicial;
-	boolean gaiola;
+	boolean gaiola=true;
 	int pontosIniciais = HUD.pontos;
 	int pontosNecessarios;
 	int segundosAssustado = 0;
@@ -45,15 +45,8 @@ public abstract class Fantasmas extends ObjetoJogo {
 		if (!comestivel) {
 			chase.movimentar();
 			SetTexture(VyFantasma, VxFantasma);
-		} else {
-			aleatorio = new ChaseRandom(controle, this);
-			aleatorio.movimentar();
-			setImage("Classic/Assustado1.png");
 		}
-		if (segundosAssustado == 5) {
-			this.comestivel = false;
-			segundosAssustado = 0;
-		}
+		
 		geral.teleporte();
 		geral.movimentar();
 	}

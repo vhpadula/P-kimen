@@ -10,21 +10,10 @@ public class FantasmaAssustado extends DecoratorFantasma {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma, fantaDecorado);
 		//colocar o path de textura de assustado no lugar de fantaDecorado.X
 		/*
-		this.up = fantaDecorado.up;
-		this.down = fantaDecorado.down;
-		this.left = fantaDecorado.left;
-		this.right = fantaDecorado.right;
-		if (fantaDecorado.Vx>0) {
-			this.setImage(fantaDecorado.right);
-		} else if (fantaDecorado.Vx<0) {
-			this.setImage(fantaDecorado.left);
-		}else if (fantaDecorado.Vy>0) {
-			this.setImage(fantaDecorado.down);
-		}else if (fantaDecorado.Vy<0) {
-			this.setImage(fantaDecorado.up);
-		}
+		
 		*/
 		
+		setImage("Classic/Assustado1.png");
 		this.comestivel = true;
 		this.comido = false;
 		this.posicaoControle = posicaoControle;
@@ -33,6 +22,26 @@ public class FantasmaAssustado extends DecoratorFantasma {
 	@Override
 	public void tick() {
 		super.tick();
+		aleatorio = new ChaseRandom(controle, this);
+		aleatorio.movimentar();
+		
+		if (fantaDecorado.segundosAssustado == 5) {
+			this.comestivel=false;
+			this.up = fantaDecorado.up;
+			this.down = fantaDecorado.down;
+			this.left = fantaDecorado.left;
+			this.right = fantaDecorado.right;
+			if (fantaDecorado.Vx>0) {
+				this.setImage(fantaDecorado.right);
+			} else if (fantaDecorado.Vx<0) {
+				this.setImage(fantaDecorado.left);
+			}else if (fantaDecorado.Vy>0) {
+				this.setImage(fantaDecorado.down);
+			}else if (fantaDecorado.Vy<0) {
+				this.setImage(fantaDecorado.up);
+			}
+			
+		}
 	}
 	
 }

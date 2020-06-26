@@ -212,15 +212,18 @@ public abstract class Pacman extends ObjetoJogo {
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Fantasma) {
 						Fantasmas tempFantasma = (Fantasmas) controle.objetos.get(j);
-						Timer timer = new Timer();
-						TimerTask task = new TimerTask() {
-							public void run() {
-								tempFantasma.segundosAssustado++;
-							}
-						};
-						timer.scheduleAtFixedRate(task, 1000, 1000);
-						Fantasmas temp = (Fantasmas) controle.objetos.get(j);
-						temp.comestivel = true;
+						if(!tempFantasma.gaiola) {
+							Timer timer = new Timer();
+							TimerTask task = new TimerTask() {
+								public void run() {
+									tempFantasma.segundosAssustado++;
+								}
+							};
+							timer.scheduleAtFixedRate(task, 1000, 1000);
+							controle.objetos.set(j, new FantasmaAssustado(tempFantasma.x, tempFantasma.y,tempFantasma.getID(),tempFantasma.controle,
+									tempFantasma.cruzamento, tempFantasma.VxFantasma, tempFantasma.VyFantasma,tempFantasma, j));
+						}
+						
 					}
 				}
 			}
@@ -229,10 +232,12 @@ public abstract class Pacman extends ObjetoJogo {
 
 	void comeFantasma(ObjetoJogo tempObject, int k) {
 		if (tempObject.getID() == ID.Fantasma) {
-			Fantasmas temp = (Fantasmas) tempObject;
+			Fantasmas tempA = (Fantasmas) tempObject;
 			if (getBounds().intersects(tempObject.getBounds())) {
-				if (temp.comestivel) {
+				if (tempA.comestivel) {
 					HUD.setPontos(200);
+					FantasmaAssustado tempB=(FantasmaAssustado) tempA;
+					Fantasmas temp=tempB.fantaDecorado;
 					if (temp instanceof FantasmaAzul) {
 						controle.jogo.fabrica.fazFantasmaAzul(temp.xInicial, temp.yInicial, 'a', k);
 					} else if (temp instanceof FantasmaVermelho) {
