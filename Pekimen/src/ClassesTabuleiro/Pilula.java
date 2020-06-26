@@ -20,11 +20,11 @@ public class Pilula extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, 30 * x + 11, 21 * y + 6, 12, 12, null);
+		g.drawImage(textura, 30 * x + 1, 21 * y , 25, 25, null);
 	}
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(30 * x + 11, 21 * y + 6, 12, 12);
+		return new Rectangle(30 * x, 21 * y + 4, 25, 25);
 	}
 }

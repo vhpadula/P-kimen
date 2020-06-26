@@ -8,6 +8,6 @@ public class CerejaSupermercado extends Cereja {
 
 	public CerejaSupermercado(int x, int y, ID id, Controle controle, String cruzamento) {
 		super(x, y, id, controle, cruzamento);
-		this.setImage("Classic/Cereja.png");
+		this.setImage("Supermercado/cerejaMercado.png");
 	}
 }

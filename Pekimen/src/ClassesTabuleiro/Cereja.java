@@ -25,6 +25,6 @@ public abstract class Cereja extends ObjetoJogo {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(textura, 30 * x + 5, 21 * y + 5, 20, 20, null);
+		g.drawImage(textura, 30 * x + 5, 21 * y, 20, 20, null);
 	}
 }
