@@ -10,7 +10,11 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 
 **Padrão State:** Representado no pacote de "Niveis", onde separamos as caracteristicas dos diferentes estados de acordo com os niveis, ou seja, o nível 1 tem um estado, os níveis 2 a 4 têm outro e os níveis de 5 para cima têm outro. Muda-se a velocidade dos fantasmas, do pacman e a quantidade de "poderes" apresentados no mapa.
 
-**Padrão Decorator:** Utilizado, como instruído, quando o Pacman obtém poderes. Eles estão dentro do pacote de "ClassesPersonagens", e são representados pelo ímã (PacmanColetor; maior alcance de pastilhas) e pela cereja (PacmanRapido; maior velocidade). Para a pílula, como as modificações não ocorrem no Pacman, mais sim nos fantasmas, não é utilizado o padrão Decorator.
+**Padrão Decorator:** Utilizado, como instruído, quando o Pacman obtém poderes. Eles estão dentro do pacote de "ClassesPersonagens", e são representados pelo ímã (PacmanColetor; maior alcance de pastilhas), pela cereja (PacmanRapido; maior velocidade) e pela pílula (FantasmaAssustado; fantasma se torna "comestível").
+
+**Música:** Aplicamos diferentes músicas para os diferentes fundos do jogo, uma para supermercado, uma para selva e uma para o clássico. As músicas da selva e do clássico foram compostas e gravadas por um dos integrantes. Elas são "feitas" pelas respectivas fábricas e é possível vê-las sendo modificadas na classe "Menu" ao serem pressionados os diferentes botões de "Settings".
+
+**Efeitos Sonoros:** Há efeitos sonoros para quando o Pacman come qualquer um dos poderes e quando morre. Os arquivos dos sons estão em "SoundFX" e são implementados na classe "Pacman".
 
 14/05: Criada a classe para criar janela do jogo, e configurada para mostrar imagem de fundo. Também foram criadas classes para configurar os objetos do jogo, entretanto nada foi implementado ainda. Foi utilizado como base o vídeo disponibilizado pelo professor na proposta do trabalho e outros sites para incluir a imagem.
 
@@ -49,3 +53,7 @@ Para jogar o jogo, é possível se movimentar tanto a partir das teclas "A" (esq
 23/06: Colocada skin para os fantasmas assustados.
 
 25/06: Adaptação dos fantasmas comestíveis para implementar tempo e movimentação aleatória para quando o fantasma fica assustado.
+
+26/06: Adaptação dos fantasmas assustados para Decorator.
+
+27/06: Ajustes finais no jogo, incluindo colocar uma música para o supermercado e efeitos sonoros.
