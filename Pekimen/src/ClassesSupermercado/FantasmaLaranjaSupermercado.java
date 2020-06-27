@@ -9,10 +9,10 @@ public class FantasmaLaranjaSupermercado extends FantasmaLaranja {
 	public FantasmaLaranjaSupermercado(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
-		this.up = "Supermercado/fantasmaLaranja.png";
-		this.down = "Supermercado/fantasmaLaranja.png";
-		this.left = "Supermercado/fantasmaLaranja.png";
-		this.right = "Supermercado/fantasmaLaranja.png";
-		this.setImage("Supermercado/fantasmaLaranja.png");
+		this.up = "Supermercado/fantasmaLaranjaMaskU.png";
+		this.down = "Supermercado/fantasmaLaranjaMaskD.png";
+		this.left = "Supermercado/fantasmaLaranjaMaskL.png";
+		this.right = "Supermercado/fantasmaLaranjaMaskR.png";
+		this.setImage("Supermercado/fantasmaLaranjaMaskR.png");
 	}
 }

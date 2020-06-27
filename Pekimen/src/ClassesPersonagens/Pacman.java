@@ -66,7 +66,7 @@ public abstract class Pacman extends ObjetoJogo {
 			cruzamento(tempObject);
 			colisao(tempObject);
 			comePastilha(tempObject, i);
-			colisaoFantasma(tempObject);
+			//colisaoFantasma(tempObject);
 			comeCereja(tempObject, i);
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
