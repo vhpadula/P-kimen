@@ -21,7 +21,7 @@ public abstract class Fantasmas extends ObjetoJogo {
 	}
 
 	int xInicial, yInicial;
-	boolean gaiola=true;
+	boolean gaiola = true;
 	int pontosIniciais = HUD.pontos;
 	int pontosNecessarios;
 	int segundosAssustado = 0;
@@ -46,7 +46,6 @@ public abstract class Fantasmas extends ObjetoJogo {
 			chase.movimentar();
 			SetTexture(VyFantasma, VxFantasma);
 		}
-		
 		geral.teleporte();
 		geral.movimentar();
 	}

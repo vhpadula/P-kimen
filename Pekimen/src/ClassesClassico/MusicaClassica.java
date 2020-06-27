@@ -11,7 +11,7 @@ public class MusicaClassica extends Musica {
 
 	public MusicaClassica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 		super();
-		this.pathLoop= "src/Classic/loopClassico.wav";
+		this.pathLoop= "Classic/loopClassico.wav";
 		this.tocaLoop();
 	}
 }

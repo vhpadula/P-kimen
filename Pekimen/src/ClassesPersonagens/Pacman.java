@@ -223,7 +223,6 @@ public abstract class Pacman extends ObjetoJogo {
 							controle.objetos.set(j, new FantasmaAssustado(tempFantasma.x, tempFantasma.y,tempFantasma.getID(),tempFantasma.controle,
 									tempFantasma.cruzamento, tempFantasma.VxFantasma, tempFantasma.VyFantasma,tempFantasma, j));
 						}
-						
 					}
 				}
 			}

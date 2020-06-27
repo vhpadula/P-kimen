@@ -15,7 +15,7 @@ public class Musica {
 	public Clip clipLoop;
 
 	public void tocaLoop() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-		File f = new File(pathLoop);
+		File f = new File(ClassesGerais.SetPath.setPath(pathLoop));
 
 		AudioInputStream loop = AudioSystem.getAudioInputStream(f.getAbsoluteFile());
 		clipLoop = AudioSystem.getClip();
