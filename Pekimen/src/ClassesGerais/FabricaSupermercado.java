@@ -11,6 +11,7 @@ import ClassesSupermercado.FantasmaAzulSupermercado;
 import ClassesSupermercado.FantasmaLaranjaSupermercado;
 import ClassesSupermercado.FantasmaRosaSupermercado;
 import ClassesSupermercado.FantasmaVermelhoSupermercado;
+import ClassesSupermercado.MusicaSupermercado;
 import ClassesSupermercado.PacmanSupermercado;
 import ClassesSupermercado.ParedeSupermercado;
 import ClassesSupermercado.PastilhaSupermercado;
@@ -97,12 +98,12 @@ public class FabricaSupermercado extends Fabrica {
 
 	@Override
 	public void atualizaFundo() throws IOException {
-		jogo.janela.setImage("Supermercado/fundo.png");
+		jogo.janela.setImage("Supermercado/supermercadofundopixel.png");
 	}
 
 	@Override
 	public void fazMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-
+		jogo.musica=new MusicaSupermercado();
 	}
 
 	@Override

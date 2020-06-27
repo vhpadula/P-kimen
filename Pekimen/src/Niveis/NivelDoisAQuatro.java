@@ -7,7 +7,7 @@ public class NivelDoisAQuatro extends Nivel {
 	public NivelDoisAQuatro(Controle ctrl) {
 		super(ctrl);
 		vFantasma = 2;
-		vPacman = 2;
-		mapa = "maps/classic2.txt";
+		vPacman = 3;
+		mapa = "maps/classic3.txt";
 	}
 }

@@ -49,9 +49,7 @@ public abstract class DecoratorPacman extends Pacman {
 	@Override
 	public void tick() {
 		super.tick();
-		if (segundosRapido == 3) {
-			this.velocidade = pacDecorado.velocidade;
-		}
+		
 	}
 
 	@Override

@@ -6,8 +6,8 @@ public class Nivel5pMais extends Nivel {
 
 	public Nivel5pMais(Controle ctrl) {
 		super(ctrl);
-		vFantasma = 3;
-		vPacman = 3;
-		mapa = "maps/classic3.txt";
+		vFantasma = 2;
+		vPacman = 2;
+		mapa = "maps/classic2.txt";
 	}
 }

@@ -50,7 +50,7 @@ public class HUD {
 		g.drawString("Pontos ", 0, 30);
 		g.drawString(Integer.toString(pontos), 140, 30);
 		g.drawString("Vidas", 620, 30);
-		g.drawString("Nivel ", 0, 740);
+		
 		g.drawString(Integer.toString(nivel), 400, 30);
 		try {
 			textura = ImageIO.read(new File(imagePath));

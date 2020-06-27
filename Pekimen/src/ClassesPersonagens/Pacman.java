@@ -2,8 +2,16 @@ package ClassesPersonagens;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import ClassesGerais.Controle;
 import ClassesGerais.ID;
@@ -66,7 +74,7 @@ public abstract class Pacman extends ObjetoJogo {
 			cruzamento(tempObject);
 			colisao(tempObject);
 			comePastilha(tempObject, i);
-			//colisaoFantasma(tempObject);
+			colisaoFantasma(tempObject);
 			comeCereja(tempObject, i);
 			comePilula(tempObject, i);
 			comeIma(tempObject, i);
@@ -156,6 +164,18 @@ public abstract class Pacman extends ObjetoJogo {
 					setImage(right);
 					Vx = 0;
 					Vy = 0;
+					try {
+						controle.jogo.musica.fazBarulho("SoundFX/pacman_death.wav");
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (UnsupportedAudioFileException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
@@ -166,6 +186,7 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(10);
+				
 				controle.numeroPastilhas--;
 			}
 		}
@@ -175,7 +196,18 @@ public abstract class Pacman extends ObjetoJogo {
 		if (tempObject.getID() == ID.Cereja) {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
-
+				try {
+					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
+				} catch (LineUnavailableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedAudioFileException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				HUD.setPontos(20);
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Pacman) {
@@ -193,6 +225,18 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(20);
+				try {
+					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
+				} catch (LineUnavailableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedAudioFileException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Pacman) {
 						Pacman temp = (Pacman) controle.objetos.get(j);
@@ -209,6 +253,18 @@ public abstract class Pacman extends ObjetoJogo {
 			if (getBounds().intersects(tempObject.getBounds())) {
 				controle.objetos.remove(i);
 				HUD.setPontos(50);
+				try {
+					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
+				} catch (LineUnavailableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedAudioFileException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
 					if (controle.objetos.get(j).getID() == ID.Fantasma) {
 						Fantasmas tempFantasma = (Fantasmas) controle.objetos.get(j);
@@ -228,13 +284,26 @@ public abstract class Pacman extends ObjetoJogo {
 			}
 		}
 	}
-
+	
+	
 	void comeFantasma(ObjetoJogo tempObject, int k) {
 		if (tempObject.getID() == ID.Fantasma) {
 			Fantasmas tempA = (Fantasmas) tempObject;
 			if (getBounds().intersects(tempObject.getBounds())) {
 				if (tempA.comestivel) {
 					HUD.setPontos(200);
+					try {
+						controle.jogo.musica.fazBarulho("SoundFX/pacman_eatghost.wav");
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (UnsupportedAudioFileException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					FantasmaAssustado tempB=(FantasmaAssustado) tempA;
 					Fantasmas temp=tempB.fantaDecorado;
 					if (temp instanceof FantasmaAzul) {

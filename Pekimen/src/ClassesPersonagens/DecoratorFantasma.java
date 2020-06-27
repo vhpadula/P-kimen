@@ -14,7 +14,7 @@ public abstract class DecoratorFantasma extends Fantasmas {
 
 		this.fantaDecorado = fantaDecorado;
 
-		this.geral = fantaDecorado.geral;
+		this.geral = new MovimentacaoGeral(super.controle, this);
 		this.scatter = fantaDecorado.scatter;
 		this.chase = fantaDecorado.chase;
 		this.VxFantasma = fantaDecorado.VxFantasma;

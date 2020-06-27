@@ -99,8 +99,10 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 170, 350, 506, 70)) {
 				jogo.fabrica = new FabricaSupermercado(controle, jogo);
 				try {
+					jogo.musica.para();
 					jogo.fabrica.atualizaFundo();
-				} catch (IOException e1) {
+					jogo.fabrica.fazMusica();
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 					e1.printStackTrace();
 				}
 			}

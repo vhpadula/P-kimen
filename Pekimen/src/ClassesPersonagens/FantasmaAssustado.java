@@ -18,11 +18,20 @@ public class FantasmaAssustado extends DecoratorFantasma {
 	@Override
 	public void tick() {
 		super.tick();
-		aleatorio = new ChaseRandom(controle, this);
-		aleatorio.movimentar();
 		
 		if (fantaDecorado.segundosAssustado == 5) {
-			super.chase.movimentar();
+			
+			Fantasmas temp= fantaDecorado;
+			if (temp instanceof FantasmaAzul) {
+				chase = new ChaseBlue(controle,this);
+			} else if (temp instanceof FantasmaVermelho) {
+				chase = new ChaseRed(controle,this);
+			} else if (temp instanceof FantasmaLaranja) {
+				chase = new ChaseOrange(controle,this);
+			} else if (temp instanceof FantasmaRosa) {
+				chase = new ChasePink(controle,this);
+			}
+			
 			this.comestivel = false;
 			this.up = fantaDecorado.up;
 			this.down = fantaDecorado.down;
@@ -38,6 +47,8 @@ public class FantasmaAssustado extends DecoratorFantasma {
 				this.setImage(fantaDecorado.up);
 			}
 		}
+		
+		
 	}
 	
 }

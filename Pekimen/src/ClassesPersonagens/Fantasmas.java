@@ -38,16 +38,24 @@ public abstract class Fantasmas extends ObjetoJogo {
 	public void tick() {
 		x += VxFantasma;
 		y += VyFantasma;
+		
 		if (gaiola && HUD.pontos >= pontosIniciais + pontosNecessarios)
 			geral.sairGaiola(this);
 		else
 			geral.movimentacaoGaiola();
+		geral.teleporte();
+		geral.movimentar();
 		if (!comestivel) {
 			chase.movimentar();
 			SetTexture(VyFantasma, VxFantasma);
 		}
-		geral.teleporte();
-		geral.movimentar();
+		else if(comestivel){
+			aleatorio = new ChaseRandom(controle, this);
+			aleatorio.movimentar();
+			
+		}
+		
+		
 	}
 
 	@Override

@@ -28,5 +28,8 @@ public class Rapido extends DecoratorPacman {
 	@Override
 	public void tick() {
 		super.tick();
+		if (segundosRapido ==3) {
+			this.velocidade = Nivel.vPacman;
+		}
 	}
 }
