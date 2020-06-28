@@ -9,10 +9,10 @@ public class FantasmaRosaSelva extends FantasmaRosa {
 	public FantasmaRosaSelva(int x, int y, ID id, Controle controle, String cruzamento, int VxFantasma,
 			int VyFantasma) {
 		super(x, y, id, controle, cruzamento, VxFantasma, VyFantasma);
-		this.up = "Classic/fantasmaRosaU.png";
-		this.down = "Classic/fantasmaRosaD.png";
-		this.left = "Classic/fantasmaRosaL.png";
-		this.right = "Classic/fantasmaRosaR.png";
-		this.setImage("Classic/fantasmaRosaR.png");
+		this.up = "Selva/fantasmaRosaSaiaU.png";
+		this.down = "Selva/fantasmaRosaSaiaD.png";
+		this.left = "Selva/fantasmaRosaSaiaL.png";
+		this.right = "Selva/fantasmaRosaSaiaR.png";
+		this.setImage("Selva/fantasmaRosaSaiaR.png");
 	}
 }
