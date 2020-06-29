@@ -24,8 +24,17 @@ public class ChaseRandom implements MovimentacaoFantasma {
 		}
 	}
 
-	protected void cruzamento(ObjetoJogo tempObject) {
+	protected char sortearDirecao(ObjetoJogo tempObject) {
 		Random rand = new Random();
+		int aleatorio = rand.nextInt();
+		if (aleatorio < 0) {
+			aleatorio *= -1;
+		}
+		char direcao = tempObject.cruzamento.toCharArray()[aleatorio % tempObject.cruzamento.length()];
+		return direcao;
+	}
+
+	protected void cruzamento(ObjetoJogo tempObject) {
 		if (tempObject.getID() == ID.Cruzamento) {
 			double xCruzamento = tempObject.getBounds().getCenterX();
 			double yCruzamento = tempObject.getBounds().getCenterY();
@@ -34,11 +43,21 @@ public class ChaseRandom implements MovimentacaoFantasma {
 			if ((xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 1.5)
 					|| (xFantasma == xCruzamento - 1.5 && yFantasma == yCruzamento - 0.5)) {
 
-				int aleatorio = rand.nextInt();
-				if (aleatorio < 0) {
-					aleatorio *= -1;
+				char direcao = sortearDirecao(tempObject);
+
+				if (fantasma.VyFantasma > 0) {
+					while (direcao == 'U')
+						direcao = sortearDirecao(tempObject);
+				} else if (fantasma.VyFantasma < 0) {
+					while (direcao == 'D')
+						direcao = sortearDirecao(tempObject);
+				} else if (fantasma.VxFantasma > 0) {
+					while (direcao == 'L')
+						direcao = sortearDirecao(tempObject);
+				} else if (fantasma.VxFantasma < 0) {
+					while (direcao == 'R')
+						direcao = sortearDirecao(tempObject);
 				}
-				char direcao = tempObject.cruzamento.toCharArray()[aleatorio % tempObject.cruzamento.length()];
 
 				if (direcao == 'U') {
 					fantasma.VxFantasma = 0;

@@ -163,13 +163,10 @@ public abstract class Pacman extends ObjetoJogo {
 					try {
 						controle.jogo.musica.fazBarulho("SoundFX/pacman_death.wav");
 					} catch (LineUnavailableException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (UnsupportedAudioFileException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -195,13 +192,10 @@ public abstract class Pacman extends ObjetoJogo {
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
 				} catch (LineUnavailableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnsupportedAudioFileException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				HUD.setPontos(20);
@@ -224,13 +218,10 @@ public abstract class Pacman extends ObjetoJogo {
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
 				} catch (LineUnavailableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnsupportedAudioFileException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
@@ -252,13 +243,10 @@ public abstract class Pacman extends ObjetoJogo {
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
 				} catch (LineUnavailableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnsupportedAudioFileException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
@@ -291,13 +279,10 @@ public abstract class Pacman extends ObjetoJogo {
 					try {
 						controle.jogo.musica.fazBarulho("SoundFX/pacman_eatghost.wav");
 					} catch (LineUnavailableException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (UnsupportedAudioFileException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					FantasmaAssustado tempB=(FantasmaAssustado) tempA;
