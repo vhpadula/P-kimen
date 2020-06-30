@@ -191,11 +191,7 @@ public abstract class Pacman extends ObjetoJogo {
 				controle.objetos.remove(i);
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
-				} catch (LineUnavailableException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (UnsupportedAudioFileException e) {
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 					e.printStackTrace();
 				}
 				HUD.setPontos(20);
@@ -217,11 +213,7 @@ public abstract class Pacman extends ObjetoJogo {
 				HUD.setPontos(20);
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
-				} catch (LineUnavailableException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (UnsupportedAudioFileException e) {
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 					e.printStackTrace();
 				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
@@ -242,11 +234,7 @@ public abstract class Pacman extends ObjetoJogo {
 				HUD.setPontos(50);
 				try {
 					controle.jogo.musica.fazBarulho("SoundFX/pacman_eatfruit.wav");
-				} catch (LineUnavailableException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (UnsupportedAudioFileException e) {
+				} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 					e.printStackTrace();
 				}
 				for (int j = 0; j < controle.objetos.size(); j++) {
@@ -278,11 +266,7 @@ public abstract class Pacman extends ObjetoJogo {
 					HUD.setPontos(200);
 					try {
 						controle.jogo.musica.fazBarulho("SoundFX/pacman_eatghost.wav");
-					} catch (LineUnavailableException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (UnsupportedAudioFileException e) {
+					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 						e.printStackTrace();
 					}
 					FantasmaAssustado tempB=(FantasmaAssustado) tempA;
