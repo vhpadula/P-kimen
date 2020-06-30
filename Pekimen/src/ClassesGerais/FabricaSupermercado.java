@@ -11,6 +11,7 @@ import ClassesSupermercado.FantasmaAzulSupermercado;
 import ClassesSupermercado.FantasmaLaranjaSupermercado;
 import ClassesSupermercado.FantasmaRosaSupermercado;
 import ClassesSupermercado.FantasmaVermelhoSupermercado;
+import ClassesSupermercado.ImaSupermercado;
 import ClassesSupermercado.MusicaSupermercado;
 import ClassesSupermercado.PacmanSupermercado;
 import ClassesSupermercado.ParedeSupermercado;
@@ -108,6 +109,6 @@ public class FabricaSupermercado extends Fabrica {
 
 	@Override
 	public void fazImas(int x, int y) throws IOException {
-		controle.objetos.add(new ImaClassico(x, y, ID.Ima, controle, ""));
+		controle.objetos.add(new ImaSupermercado(x, y, ID.Ima, controle, ""));
 	}
 }
